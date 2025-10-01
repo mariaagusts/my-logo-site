@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Multa Bene Agere</title>
-  <link rel="icon" href="mbalogo.png">
   <style>
     body {
       display: flex;
@@ -12,55 +11,18 @@
       height: 100vh;
       margin: 0;
       background: #f6f4f0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-    }
-      .container {
-      text-align: center;
     }
     img {
-     width: 80vw;
-      max-width: 400px;
-      height: auto;
-      margin-bottom: 1em;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-      color: #333;
-    }
-    .email-btn {
-      display: inline-block;
-      padding: 0.7em 1.5em;
-      background: #333;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 25px;
-      font-size: 1em;
-      transition: background 0.2s;
-    }
-    .email-btn:hover {
-      background: #555;
-    }
-    @media (max-width: 600px) {
-      img {
-        width: 90vw;
-        max-width: 90vw;
-      }
-      h1 {
-        font-size: 1.3em;
-      }
+      width: 80%;   /* always 80% of the screen width */
+      height: auto; /* keeps aspect ratio */
     }
   </style>
 </head>
 <body>
-<div class="container">
-    <h1>Multa Bene Agere</h1>
-    <img src="mbalogo.png" alt="Multa Bene Agere logo">
-    <br>
-    <a href="mailto:mariaagusts@gmail.com?subject=Hello%20from%20the%20site"
-       class="email-btn"
-       aria-label="Email us" title="Email us">
-      Email us
+<div style="text-align: center;">
+  <a href="mailto:mariaagusts@gmail.com?subject=Hello%20from%20the%20site"
+     aria-label="Email us" title="Email us">
+    <img src="mbalogo.png" alt="Email us">
   </a>
 </div>
 </body>
