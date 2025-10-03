@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Multa Bene Agere</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
       background: #f6f4f0;
+      font-family: 'Playfair Display', serif;
     }
     img {
       width: 80%;   /* always 80% of the screen width */
@@ -18,13 +21,24 @@
     }
     #about-me {
       margin-top: 40px;
-      background: #fff;
+      background: #f6f4f0;
       padding: 24px 16px;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       max-width: 500px;
       text-align: center;
-      font-family: sans-serif;
+      font-family: 'Playfair Display', serif;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #about-me h2 {
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    #about-me p {
+      font-weight: 400;
+      font-size: 1.1em;
     }
   </style>
 </head>
