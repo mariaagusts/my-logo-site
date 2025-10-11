@@ -8,7 +8,7 @@
     body {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
@@ -18,13 +18,23 @@
     img {
       width: 80%;   /* always 80% of the screen width */
       height: auto; /* keeps aspect ratio */
+      display: block;
+      margin: 0 auto 16px auto;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 100vh;
     }
     #about-me {
-      margin-top: 40px;
+      margin-top: 0;
       background: #f6f4f0;
-      padding: 24px 16px;
+      padding: 24px 16px 0 16px;
       border-radius: 12px;
-      max-width: 500px;
+      max-width: 600px;
       text-align: center;
       font-family: 'Playfair Display', serif;
       box-shadow: none;
@@ -43,18 +53,20 @@
   </style>
 </head>
 <body>
-  <a href="mailto:mariaagusts@gmail.com?subject=Hello%20from%20the%20site"
-     aria-label="Email us" title="Email us">
-    <img src="mbalogo.png" alt="Email us">
-  </a>
-  <section id="about-me">
-    <h2>About Me</h2>
-    <p>
-      Hi, I’m María.<br><br>
-      I’ve always been curious about how things work, how ideas turn into action, and how teams find their rhythm. Growing up in Iceland, I chose to study Economics at Harvard because in a small, ever-changing economy, understanding how things connect feels almost essential. Later, my curiosity about people and behavior led me to Oxford, where I completed a master’s degree in Management Research, originally with the thought of pursuing an academic path.<br><br>
-      Alongside my studies and career, I spent over 20 years playing football, including for the national team of Iceland, with years in the USA and Sweden. That experience taught me that while everyone is different, every voice matters, and each person’s strengths are unique. A team only succeeds when every contribution is recognized and valued, even those we might not fully understand at first. Listening, adapting, and building trust are what allow teams to thrive, lessons that apply just as much in business as they do on the field.<br><br>
-      After many years in finance, operations, and business development, I now focus on helping small and medium-sized businesses bring clarity, structure, and teamwork into their daily work. My goal is to find simple, effective ways to organize, improve, and communicate — whether through practical consulting or translations from my native Icelandic, a language I’m proudly aware descends from the first Vikings. I believe real progress comes from collaboration, clear communication, and genuine respect for the people behind every business.
-    </p>
-  </section>
+  <div class="main-content">
+    <a href="mailto:mariaagusts@gmail.com?subject=Hello%20from%20the%20site"
+       aria-label="Email us" title="Email us">
+      <img src="mbalogo.png" alt="Email us">
+    </a>
+    <section id="about-me">
+      <h2>About Me</h2>
+      <p>
+        Hi, I’m María.<br><br>
+        I’ve always been curious about how things work, how ideas turn into action, and how teams find their rhythm. Growing up in Iceland, I chose to study Economics at Harvard because in a small, ever-changing economy, understanding how things connect feels almost essential. Later, my curiosity about people and behavior led me to Oxford, where I completed a master’s degree in Management Research, originally with the thought of pursuing an academic path.<br><br>
+        Alongside my studies and career, I spent over 20 years playing football, including for the national team of Iceland, with years in the USA and Sweden. That experience taught me that while everyone is different, every voice matters, and each person’s strengths are unique. A team only succeeds when every contribution is recognized and valued, even those we might not fully understand at first. Listening, adapting, and building trust are what allow teams to thrive, lessons that apply just as much in business as they do on the field.<br><br>
+        After many years in finance, operations, and business development, I now focus on helping small and medium-sized businesses bring clarity, structure, and teamwork into their daily work. My goal is to find simple, effective ways to organize, improve, and communicate — whether through practical consulting or translations from my native Icelandic, a language I’m proudly aware descends from the first Vikings. I believe real progress comes from collaboration, clear communication, and genuine respect for the people behind every business.
+      </p>
+    </section>
+  </div>
 </body>
 </html>
