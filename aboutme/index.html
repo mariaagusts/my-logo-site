@@ -49,16 +49,17 @@
       text-align:left;
     }
 
-    /* About me: justified, avoid aggressive hyphenation */
+    /* About me: justified, reduce "rivers" by removing word-spacing + allow hyphenation */
     .about{ text-align:left; }
     .about p{
       text-align: justify;
       text-justify: inter-word;
       margin-bottom: 12px;
-      hyphens: manual;
-      -webkit-hyphens: manual;
-      -ms-hyphens: manual;
-      word-spacing: 0.01em;
+
+      word-spacing: normal;      /* changed from 0.01em */
+      hyphens: auto;             /* changed from manual */
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
     }
 
     .about p:first-of-type{
@@ -78,12 +79,16 @@
       line-height:1.6;
     }
 
-    /* CTA: make sentence slightly more intentional, keep email normal */
+    /* CTA: only the instruction part is italic */
     .cta{
       margin-top:18px;
       padding-top:10px;
       margin-bottom:28px;
-      font-style: italic;
+      font-style: normal;        /* changed from italic */
+    }
+
+    .cta-note{
+      font-style: italic;        /* added */
     }
 
     .cta a{
@@ -94,7 +99,6 @@
       font-style: normal;
     }
 
-    /* Give Key experience content a touch more breathing room */
     .experience{
       margin-top:10px;
     }
@@ -135,7 +139,9 @@
       }
       .about p{
         text-align:left;
-        word-spacing: normal;
+        hyphens: manual;         /* keep mobile clean */
+        -webkit-hyphens: manual;
+        -ms-hyphens: manual;
       }
     }
   </style>
@@ -145,18 +151,21 @@
   <main class="wrap">
     <h1>About me</h1>
 
-    <!-- Steps 1–8 applied here: tighter, less repetitive, proof earlier, SME + translation-forward, clearer CTA -->
     <section class="about">
       <p>
-        I help small businesses untangle messy workflows and turn decisions into follow-through. The output is practical: a clearer process, templates people actually use, and documentation that makes day to day work easier.
+        I help small teams and businesses untangle messy workflows and turn decisions into follow-through.
+        The output is practical: a clearer process, templates people actually use, and documentation that makes day to day work easier.
       </p>
 
       <p>
-        I also translate and edit Icelandic and English business writing, especially where tone and accuracy matter: websites, client communication, internal documentation, and professional reports. I aim for English that reads naturally while staying faithful to the Icelandic meaning.
+        I also translate and edit Icelandic and English business writing, especially where tone and accuracy matter:
+        websites, client communication, internal documentation, and professional reports.
+        I aim for English that reads naturally while staying faithful to the Icelandic meaning.
       </p>
 
       <p>
-        My background is in economics and management research, with experience across finance, operations, and business development. I’m straightforward, curious, and calm under pressure. Outside of work, life revolves around my two daughters and the small moments that keep everything grounded.
+        My background is in economics and management research, with experience across finance, operations, and business development.
+        I’m straightforward, curious, and calm under pressure. Outside of work, life revolves around my two daughters and the small moments that keep everything grounded.
       </p>
 
       <p>
@@ -164,9 +173,8 @@
       </p>
 
       <p class="cta">
-        Email me at
-        <a href="mailto:hello@multabene.is">hello@multabene.is</a>
-        with a few lines on what’s stuck, what you need, and your timeline.
+        Email me at <a href="mailto:hello@multabene.is">hello@multabene.is</a>
+        <span class="cta-note">with a few lines on what’s stuck, what you need, and your timeline.</span>
       </p>
     </section>
 
@@ -176,7 +184,6 @@
       Typical work includes simplifying internal workflows, building templates, and making documentation easier to use.
     </p>
 
-    <!-- Step 9 applied: sharpen translation bullet wording -->
     <ul>
       <li>Process mapping and simplification</li>
       <li>Templates, documentation, and internal playbooks</li>
@@ -192,7 +199,7 @@
         <div class="title">Founder &amp; Consultant</div>
         <div class="meta">Multa Bene Agere, 2025 to present</div>
         <p>
-          Helping small and mid sized businesses bring clarity to day to day operations, communication, and bilingual documentation.
+          Helping small and mid-sized businesses bring clarity to day-to-day operations, communication, and bilingual documentation.
           I support clients with organization, internal templates, and translation between Icelandic and English.
           Typical deliverables include templates, simple process maps, and bilingual documentation.
         </p>
