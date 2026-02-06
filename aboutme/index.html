@@ -43,9 +43,15 @@
       text-align:left;
     }
 
-    /* Force About me text to stay left aligned (guards against inherited centering) */
+    /* About me: justified with hyphenation to avoid awkward spacing gaps */
     .about{ text-align:left; }
-    .about p{ text-align:left; }
+    .about p{
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+    }
 
     .about p:first-of-type{
       font-size:1.08rem;
@@ -53,24 +59,25 @@
       margin-bottom:18px;
     }
 
-    /* Align bullets more naturally with the paragraph text */
     ul{
-      margin:12px 0 0;
-      padding-left:18px; /* was 16px */
+      margin:10px 0 0;
+      padding-left:18px;
     }
 
     li{
-      margin:6px 0;
+      margin:5px 0;
       line-height:1.6;
     }
 
     .cta{
+      font font-style: italic;
       margin-top:18px;
       padding-top:10px;
       margin-bottom:28px;
     }
 
     .cta a{
+      font-style: normal;
       color:inherit;
       font-weight:600;
       text-decoration:underline;
@@ -81,20 +88,19 @@
       margin-top:6px;
     }
 
-    /* Slightly tighter Key experience rhythm */
     .role{
-      margin:16px 0 18px; /* was 18px 0 22px */
+      margin:16px 0 18px;
     }
 
     .role .title{
-      font-weight:700;
+      font-weight:600;
       margin:0 0 6px;
     }
 
     .role .meta{
       font-style:italic;
       font-weight:400;
-      margin:0 0 6px; /* was 0 0 8px */
+      margin:0 0 6px;
     }
 
     .role p{
@@ -107,7 +113,18 @@
       color:inherit;
       text-decoration:underline;
       text-underline-offset:0.12em;
-      text-decoration-thickness:1px; /* slightly calmer underline */
+      text-decoration-thickness:1px;
+    }
+
+    /* On small screens, justified text often looks worse. Revert to left aligned. */
+    @media (max-width: 640px){
+      .wrap{
+        padding:40px 18px 56px;
+      }
+      .about p{
+        text-align:left;
+        hyphens: manual;
+      }
     }
   </style>
 </head>
