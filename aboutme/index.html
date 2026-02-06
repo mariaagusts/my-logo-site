@@ -14,12 +14,12 @@
       margin:0;
       background:#f6f4f0;
       min-height:100vh;
-      display:block; /* was flex-centering */
+      display:block;
     }
 
     .wrap{
       max-width:740px;
-      margin:0 auto;               /* centers the content block */
+      margin:0 auto;
       padding:56px 24px 72px;
     }
 
@@ -43,15 +43,20 @@
       text-align:left;
     }
 
+    /* Force About me text to stay left aligned (guards against inherited centering) */
+    .about{ text-align:left; }
+    .about p{ text-align:left; }
+
     .about p:first-of-type{
       font-size:1.08rem;
       line-height:1.7;
       margin-bottom:18px;
     }
 
+    /* Align bullets more naturally with the paragraph text */
     ul{
       margin:12px 0 0;
-      padding-left:16px; /* slightly tighter than before */
+      padding-left:18px; /* was 16px */
     }
 
     li{
@@ -62,11 +67,11 @@
     .cta{
       margin-top:18px;
       padding-top:10px;
-      margin-bottom:28px; /* more breathing room before next section */
+      margin-bottom:28px;
     }
 
     .cta a{
-      color:inherit;                 /* remove default blue */
+      color:inherit;
       font-weight:600;
       text-decoration:underline;
       text-underline-offset:0.12em;
@@ -76,8 +81,9 @@
       margin-top:6px;
     }
 
+    /* Slightly tighter Key experience rhythm */
     .role{
-      margin:18px 0 22px;
+      margin:16px 0 18px; /* was 18px 0 22px */
     }
 
     .role .title{
@@ -88,7 +94,7 @@
     .role .meta{
       font-style:italic;
       font-weight:400;
-      margin:0 0 8px;
+      margin:0 0 6px; /* was 0 0 8px */
     }
 
     .role p{
@@ -101,6 +107,7 @@
       color:inherit;
       text-decoration:underline;
       text-underline-offset:0.12em;
+      text-decoration-thickness:1px; /* slightly calmer underline */
     }
   </style>
 </head>
