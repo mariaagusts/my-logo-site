@@ -49,17 +49,19 @@
       text-align:left;
     }
 
-    /* About me: justified, reduce "rivers" by removing word-spacing + allow hyphenation */
+    /* About me: justified, NO hyphenation */
     .about{ text-align:left; }
     .about p{
       text-align: justify;
       text-justify: inter-word;
       margin-bottom: 12px;
 
-      word-spacing: normal;      /* changed from 0.01em */
-      hyphens: auto;             /* changed from manual */
-      -webkit-hyphens: auto;
-      -ms-hyphens: auto;
+      word-spacing: normal;
+      hyphens: none;            /* changed */
+      -webkit-hyphens: none;    /* changed */
+      -ms-hyphens: none;        /* changed */
+      word-break: normal;       /* added */
+      overflow-wrap: normal;    /* added */
     }
 
     .about p:first-of-type{
@@ -84,11 +86,11 @@
       margin-top:18px;
       padding-top:10px;
       margin-bottom:28px;
-      font-style: normal;        /* changed from italic */
+      font-style: normal;
     }
 
     .cta-note{
-      font-style: italic;        /* added */
+      font-style: italic;
     }
 
     .cta a{
@@ -139,9 +141,9 @@
       }
       .about p{
         text-align:left;
-        hyphens: manual;         /* keep mobile clean */
-        -webkit-hyphens: manual;
-        -ms-hyphens: manual;
+        hyphens: none;           /* changed */
+        -webkit-hyphens: none;   /* changed */
+        -ms-hyphens: none;       /* changed */
       }
     }
   </style>
