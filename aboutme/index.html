@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="https://www.multabene.is/favicon.ico?v=2">
+  <link rel="icon" type="image/x-icon" href="https://www.multabene.is/favicon.ico?v=2">
   <meta charset="UTF-8" />
   <title>About me — Multa Bene Agere</title>
 
@@ -16,70 +16,148 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      min-height:100vh
+      min-height:100vh;
     }
-    .wrap{max-width:900px;padding:40px}
+
+    .wrap{
+      max-width:740px;
+      padding:56px 24px 72px;
+    }
+
+    h1{margin:0 0 18px; font-size:1.8rem; font-weight:700; text-align:center}
+    h2{margin:42px 0 14px; font-size:1.25rem; font-weight:700; text-align:center}
+
+    p{
+      line-height:1.75;
+      margin:0 0 14px;
+      text-align:left;
+    }
+
+    .about p:first-of-type{
+      font-size:1.08rem;
+      line-height:1.7;
+      margin-bottom:18px;
+    }
+
+    ul{
+      margin:12px 0 0;
+      padding-left:18px;
+    }
+    li{
+      margin:6px 0;
+      line-height:1.6;
+    }
+
+    .cta{
+      margin-top:18px;
+      padding-top:10px;
+    }
+    .cta a{
+      font-weight:600;
+      text-decoration:underline;
+    }
+
+    .role{
+      margin:18px 0 22px;
+    }
+    .role .title{
+      font-weight:700;
+      margin:0 0 6px;
+    }
+    .role .meta{
+      font-style:italic;
+      font-weight:400;
+      margin:0 0 8px;
+    }
+    .role p{
+      margin:0;
+    }
+
     a.back{display:inline-block;margin-top:24px;color:inherit;text-decoration:underline}
-
-    h1{margin:0 0 14px; font-size:1.8rem; font-weight:700; text-align:center}
-    h2{margin:22px 0 10px; font-size:1.25rem; font-weight:700; text-align:center}
-    p{line-height:1.6; margin:0 0 14px; text-align:left}
-
-    .experience p{margin:0 0 18px}
-
-    /* Italic role lines: slightly larger + underline for readability */
-    .experience em{
-      font-style: italic;
-      font-size: 1.08em;
-      display: inline-block;
-      text-decoration: underline;
-      text-underline-offset: 0.12em;
-      text-decoration-thickness: 1px;
-    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <h1>About me</h1>
 
-          <p>
-     I help teams untangle messy workflows, clarify information, and turn decisions into follow through. 
-     I like to build things that work, whether it’s a process, a plan, or a sense of calm in a busy day. </p>
-     <p>As an economics graduate, improving efficiency and finding practical solutions is somewhat in my DNA, and certainly a core part of my approach. 
-     I’m also a translator and editor, with a knack for making complex information clear and accessible in both Icelandic and English.</p>
-      I’m straightforward, curious, and at my best when my work helps others move forward. 
-      Outside of work, life revolves around my two daughters, laughter, and the small moments that make everything else worthwhile.</p>
-</p>  
-      <p>Based in Iceland, working with clients locally and internationally. I take on projects, short engagements, or ongoing support.</p>
-       <p>I have always been curious about how things work and how they can work better. That mindset took me from Economics at Harvard to Management Research at Oxford, and into roles across finance, operations, and business development.</p>
-      <p>I also spent two decades in international football. It taught me a lot about preparation, teamwork, and staying calm when it matters. I bring that into my work: clear roles, steady progress, and practical solutions people actually use.</p>
-    
-      <p>If you are thinking about a project, feel free to email me at hello@multabene.is</p>
- 
-      <h2>What I help with</h2>
+    <section class="about">
+      <p>
+        I help teams untangle messy workflows, clarify information, and turn decisions into follow through.
+        I like to build things that work, whether it’s a process, a plan, or a sense of calm in a busy day.
+      </p>
+
+      <p>
+        As an economics graduate, improving efficiency and finding practical solutions is somewhat in my DNA, and certainly a core part of my approach.
+        I’m also a translator and editor, with a knack for making complex information clear and accessible in both Icelandic and English.
+      </p>
+
+      <p>
+        I’m straightforward, curious, and at my best when my work helps others move forward.
+        Outside of work, life revolves around my two daughters, laughter, and the small moments that make everything else worthwhile.
+      </p>
+
+      <p>
+        Based in Iceland, working with clients locally and internationally. I take on projects, short engagements, or ongoing support.
+      </p>
+
+      <p>
+        I have always been curious about how things work and how they can work better.
+        That mindset took me from Economics at Harvard to Management Research at Oxford, and into roles across finance, operations, and business development.
+      </p>
+
+      <p>
+        I also spent two decades in international football. It taught me a lot about preparation, teamwork, and staying calm when it matters.
+        I bring that into my work: clear roles, steady progress, and practical solutions people actually use.
+      </p>
+
+      <p class="cta">
+        If you are thinking about a project, feel free to email me at
+        <a href="mailto:hello@multabene.is">hello@multabene.is</a>
+      </p>
+    </section>
+
+    <h2>What I help with</h2>
+
     <p>
-     Typical work includes simplifying internal workflows, building templates, and making documentation easier to use.<br><br>
-     • Process mapping and simplification <br>
-     • Templates, documentation, and internal playbooks <br>
-     • Icelandic to English translation and editing for business and legal writing <br>
-     • Project coordination and delivery support <br>
-     • Turning dense text or numbers into clear memos, slide decks, and spreadsheets <br>
+      Typical work includes simplifying internal workflows, building templates, and making documentation easier to use.
     </p>
-  
+    <ul>
+      <li>Process mapping and simplification</li>
+      <li>Templates, documentation, and internal playbooks</li>
+      <li>Icelandic to English translation and editing for business and legal writing</li>
+      <li>Project coordination and delivery support</li>
+      <li>Turning dense text or numbers into clear memos, slide decks, and spreadsheets</li>
+    </ul>
+
     <h2>Key experience</h2>
+
     <div class="experience">
-      <p><em>Founder &amp; Consultant, Multa Bene Agere, 2025 to present</em><br>
-        Helping small and mid sized businesses bring clarity to day to day operations, communication, and bilingual documentation. I support clients with organization, internal templates, and translation between Icelandic and English.
-      </p>
+      <div class="role">
+        <div class="title">Founder &amp; Consultant</div>
+        <div class="meta">Multa Bene Agere, 2025 to present</div>
+        <p>
+          Helping small and mid sized businesses bring clarity to day to day operations, communication, and bilingual documentation.
+          I support clients with organization, internal templates, and translation between Icelandic and English.
+        </p>
+      </div>
 
-      <p><em>Director of Business Development, Iceland Funds, 2018 to 2024</em><br>
-        Led business development initiatives across fund operations, marketing, and alternative investments at Iceland’s largest mutual fund manager (AuM ≈ ISK 349 bn).
-      </p>
+      <div class="role">
+        <div class="title">Director of Business Development</div>
+        <div class="meta">Iceland Funds, 2018 to 2024</div>
+        <p>
+          Led business development initiatives across fund operations, marketing, and alternative investments at Iceland’s largest mutual fund manager (AuM ≈ ISK 349 bn).
+        </p>
+      </div>
 
-      <p><em>Executive Director, Glitnir HoldCo ehf, 2008 to 2018</em><br>
-        Oversaw investor relations and operations for a USD 49 bn bankruptcy estate, coordinating operational, financial, and
-        compliance processes under tight deadlines.
-      </p>
+      <div class="role">
+        <div class="title">Executive Director</div>
+        <div class="meta">Glitnir HoldCo ehf, 2008 to 2018</div>
+        <p>
+          Oversaw investor relations and operations for a USD 49 bn bankruptcy estate, coordinating operational, financial, and
+          compliance processes under tight deadlines.
+        </p>
+      </div>
     </div>
 
     <h2>Education &amp; Certifications</h2>
@@ -91,7 +169,8 @@
 
     <h2>Language and background</h2>
     <p>
-      Former national team goalkeeper for 19 years, with professional play in Sweden’s Damallsvenskan. Fluent in English and Icelandic. Basic Swedish.   </p>
+      Former national team goalkeeper for 19 years, with professional play in Sweden’s Damallsvenskan. Fluent in English and Icelandic. Basic Swedish.
+    </p>
 
     <a class="back" href="/">← Back to home</a>
   </div>
