@@ -9,6 +9,7 @@
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       display: flex;
@@ -20,30 +21,45 @@
       background: #f6f4f0;
       font-family: 'Playfair Display', serif;
     }
+
     img {
       width: 80%;   /* always 80% of the screen width */
       height: auto; /* keeps aspect ratio */
       display: block;
       margin: 0 auto 8px auto;
     }
+
     .main-content {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
     }
-    /* About section moved to /aboutme/index.html */
+
+    /* Subtle underline on hover for nav link */
+    .nav-link{
+      text-decoration: none;
+      color: inherit;
+      font-family: 'Playfair Display', serif;
+      text-underline-offset: 0.12em;
+      text-decoration-thickness: 1px;
+    }
+    .nav-link:hover,
+    .nav-link:focus-visible{
+      text-decoration: underline;
+    }
   </style>
 </head>
-<body>
 
+<body>
   <div class="main-content">
     <a href="mailto:hello@multabene.is?subject=Hello%20from%20the%20site"
        aria-label="Email us" title="Email us">
       <img src="mbalogo.png" alt="Email us">
     </a>
+
     <nav style="width:100%; text-align:center; padding:8px 0 0 0;">
-      <a href="/aboutme/" style="text-decoration:none; color:inherit; font-family:'Playfair Display', serif;">What I do</a>
+      <a class="nav-link" href="/aboutme/">What I do</a>
     </nav>
   </div>
 </body>
