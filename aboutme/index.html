@@ -12,24 +12,25 @@
   <!-- Speed up Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Headings: Playfair Display. Body: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Playfair Display only -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg: #f6f4f0;
       --text: #111111;
-      --muted: #272525;
-      --card: #ffffff;
+      --muted: #111111; /* keep minimal; set to #272525 if you want softer body text */
     }
 
     body{
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:'Playfair Display', serif;
       margin:0;
-      background: var(--bg);
-      color: var(--text);
+      background:var(--bg);
+      color:var(--text);
       min-height:100vh;
       display:block;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .wrap{
@@ -38,28 +39,28 @@
       padding:56px 24px 72px;
     }
 
-    h1, h2{
-      font-family:'Playfair Display',serif;
-      font-weight:700;
-      text-align:center;
-      color: var(--text);
-    }
-
     h1{
       margin:0 0 18px;
       font-size:1.8rem;
+      font-weight:700;
+      text-align:center;
+      color:var(--text);
     }
 
     h2{
       margin:36px 0 14px;
       font-size:1.25rem;
+      font-weight:700;
+      text-align:center;
+      color:var(--text);
     }
 
     p{
-      line-height:1.75;
+      line-height:1.8;
       margin:0 0 14px;
       text-align:left;
-      color: var(--muted);
+      color:var(--muted);
+      font-size:1.02rem;
     }
 
     /* About me: LEFT aligned, no hyphenation */
@@ -79,12 +80,14 @@
       margin:12px 0 0;
       padding-left:18px;
       margin-bottom:8px;
-      color: var(--muted);
+      color:var(--muted);
+      font-size:1.02rem;
+      line-height:1.8;
     }
 
     li{
       margin:6px 0;
-      line-height:1.6;
+      line-height:1.7;
     }
 
     /* CTA */
@@ -93,16 +96,16 @@
       padding-top:10px;
       margin-bottom:28px;
       font-style:normal;
-      color: var(--muted);
+      color:var(--muted);
     }
 
     .cta-note{
-      font-style:normal; /* keep clean */
+      font-style:normal;
     }
 
     .cta a{
       color:inherit;
-      font-weight:600;
+      font-weight:700;
       text-decoration:underline;
       text-underline-offset:0.12em;
       font-style:normal;
@@ -117,37 +120,41 @@
     }
 
     .role .title{
-      font-weight:600;
+      font-weight:700;
       margin:0 0 6px;
-      color: var(--text);
+      color:var(--text);
     }
 
     .role .meta{
       font-style:italic;
       font-weight:400;
       margin:0 0 6px;
-      color: var(--muted);
+      color:var(--muted);
     }
 
     .role p{
       margin:0;
       text-align:left;
-      color: var(--muted);
+      color:var(--muted);
     }
 
     a.back{
       display:inline-block;
       margin-top:24px;
-      color: var(--text);
+      color:var(--text);
       text-decoration:underline;
       text-underline-offset:0.12em;
       text-decoration-thickness:1px;
+      font-weight:700;
     }
 
     @media (max-width: 640px){
       .wrap{
         max-width:740px;
         padding:40px 18px 56px;
+      }
+      p, ul{
+        font-size:1rem;
       }
       .about p{
         text-align:left;
@@ -231,7 +238,8 @@
         <div class="title">Executive Director</div>
         <div class="meta">Glitnir HoldCo ehf, 2008 to 2018</div>
         <p>
-          Oversaw investor relations and operations for a USD 49 bn bankruptcy estate, coordinating operational, financial, and compliance processes under tight deadlines.
+          Oversaw investor relations and operations for a USD 49 bn bankruptcy estate, coordinating operational, financial, and
+          compliance processes under tight deadlines.
         </p>
       </div>
     </div>
