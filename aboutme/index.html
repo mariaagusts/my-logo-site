@@ -12,13 +12,22 @@
   <!-- Speed up Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- Headings: Playfair Display. Body: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    :root{
+      --bg: #f6f4f0;
+      --text: #111111;
+      --muted: #272525;
+      --card: #ffffff;
+    }
+
     body{
-      font-family:'Playfair Display',serif;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       margin:0;
-      background:#f6f4f0;
+      background: var(--bg);
+      color: var(--text);
       min-height:100vh;
       display:block;
     }
@@ -29,51 +38,48 @@
       padding:56px 24px 72px;
     }
 
+    h1, h2{
+      font-family:'Playfair Display',serif;
+      font-weight:700;
+      text-align:center;
+      color: var(--text);
+    }
+
     h1{
       margin:0 0 18px;
       font-size:1.8rem;
-      font-weight:700;
-      text-align:center;
     }
 
     h2{
       margin:36px 0 14px;
       font-size:1.25rem;
-      font-weight:700;
-      text-align:center;
     }
 
     p{
       line-height:1.75;
       margin:0 0 14px;
       text-align:left;
+      color: var(--muted);
     }
 
-    /* About me: justified, NO hyphenation */
+    /* About me: LEFT aligned, no hyphenation */
     .about{ text-align:left; }
     .about p{
-      text-align: justify;
-      text-justify: inter-word;
-      margin-bottom: 12px;
+      text-align:left;
+      margin-bottom:12px;
 
-      word-spacing: normal;
-      hyphens: none;            /* changed */
-      -webkit-hyphens: none;    /* changed */
-      -ms-hyphens: none;        /* changed */
-      word-break: normal;       /* added */
-      overflow-wrap: normal;    /* added */
-    }
-
-    .about p:first-of-type{
-      font-size:1.08rem;
-      line-height:1.7;
-      margin-bottom:18px;
+      hyphens:none;
+      -webkit-hyphens:none;
+      -ms-hyphens:none;
+      word-break:normal;
+      overflow-wrap:normal;
     }
 
     ul{
       margin:12px 0 0;
       padding-left:18px;
       margin-bottom:8px;
+      color: var(--muted);
     }
 
     li{
@@ -81,16 +87,17 @@
       line-height:1.6;
     }
 
-    /* CTA: only the instruction part is italic */
+    /* CTA */
     .cta{
       margin-top:18px;
       padding-top:10px;
       margin-bottom:28px;
-      font-style: normal;
+      font-style:normal;
+      color: var(--muted);
     }
 
     .cta-note{
-      font-style: italic;
+      font-style:normal; /* keep clean */
     }
 
     .cta a{
@@ -98,7 +105,7 @@
       font-weight:600;
       text-decoration:underline;
       text-underline-offset:0.12em;
-      font-style: normal;
+      font-style:normal;
     }
 
     .experience{
@@ -112,23 +119,26 @@
     .role .title{
       font-weight:600;
       margin:0 0 6px;
+      color: var(--text);
     }
 
     .role .meta{
       font-style:italic;
       font-weight:400;
       margin:0 0 6px;
+      color: var(--muted);
     }
 
     .role p{
       margin:0;
       text-align:left;
+      color: var(--muted);
     }
 
     a.back{
       display:inline-block;
       margin-top:24px;
-      color:inherit;
+      color: var(--text);
       text-decoration:underline;
       text-underline-offset:0.12em;
       text-decoration-thickness:1px;
@@ -141,9 +151,9 @@
       }
       .about p{
         text-align:left;
-        hyphens: none;           /* changed */
-        -webkit-hyphens: none;   /* changed */
-        -ms-hyphens: none;       /* changed */
+        hyphens:none;
+        -webkit-hyphens:none;
+        -ms-hyphens:none;
       }
     }
   </style>
@@ -156,43 +166,45 @@
     <section class="about">
       <p>
         I help small businesses untangle messy workflows and turn decisions into follow-through.
-        The output is practical: a clearer process, templates people actually use, and documentation that makes day to day work easier.
+        That means clearer roles, simpler processes, and templates people actually use.
       </p>
 
       <p>
-        I also translate and edit Icelandic and English business writing, especially where tone and accuracy matter:
-        web content, client communication, internal documentation, and professional reports.
-        I aim for English that reads naturally while staying faithful to the Icelandic meaning.
+        My background is in finance, operations, and business development, including senior roles in regulated environments.
+        I’m used to taking something complex and turning it into a practical plan that gets executed.
       </p>
 
       <p>
-        I studied Economics at Harvard and Management Research at Oxford. I’ve worked across finance, operations, and business development, including senior roles in regulated environments.
+        I also translate and edit Icelandic and English business writing when tone and accuracy matter
+        (web content, client communication, internal documentation, and reports).
       </p>
 
       <p>
-        Based in Iceland, working with clients locally and internationally, I take on short, focused engagements or ongoing support.
+        Based in Iceland, working with clients locally and internationally.
+        I take on short, focused engagements or ongoing support.
       </p>
-<p>
-  Outside of work, life revolves around my two daughters and the small moments that keep everything grounded.
-</p>
+
+      <p>
+        Outside of work, life revolves around my two daughters and the small moments that keep everything grounded.
+      </p>
+
       <p class="cta">
-        <em>Email</em> <a href="mailto:hello@multabene.is">hello@multabene.is</a>
+        Email <a href="mailto:hello@multabene.is">hello@multabene.is</a>
         <span class="cta-note">with a few lines on what’s stuck, what you need, and your timeline.</span>
       </p>
     </section>
 
     <h2>What I help with</h2>
 
-    <p>
-      A few ways I can help:
-    </p>
+    <p>A few ways I can help:</p>
 
     <ul>
-      <li>Workflow simplification</li>
-      <li>Templates and internal documentation</li>
-      <li>Icelandic to English translation and editing</li>
-      <li>Project support and coordination</li>
+      <li>Workflow simplification and execution support</li>
+      <li>Process mapping, roles, and practical operating routines</li>
+      <li>Templates, internal documentation, and playbooks</li>
+      <li>Project coordination and follow-through</li>
       <li>Clear outputs from messy info (memos, decks, spreadsheets)</li>
+      <li>Icelandic to English translation and editing (business writing)</li>
     </ul>
 
     <h2>Key experience</h2>
@@ -203,8 +215,7 @@
         <div class="meta">Multa Bene Agere, 2025 to present</div>
         <p>
           Helping small and mid-sized businesses bring clarity to day-to-day operations, communication, and bilingual documentation.
-          I support clients with organization, internal templates, and translation between Icelandic and English.
-          Typical deliverables include templates, simple process maps, and bilingual documentation.
+          Typical deliverables include templates, simple process maps, and documentation that teams actually use.
         </p>
       </div>
 
@@ -220,8 +231,7 @@
         <div class="title">Executive Director</div>
         <div class="meta">Glitnir HoldCo ehf, 2008 to 2018</div>
         <p>
-          Oversaw investor relations and operations for a USD 49 bn bankruptcy estate, coordinating operational, financial, and
-          compliance processes under tight deadlines.
+          Oversaw investor relations and operations for a USD 49 bn bankruptcy estate, coordinating operational, financial, and compliance processes under tight deadlines.
         </p>
       </div>
     </div>
@@ -235,7 +245,8 @@
 
     <h2>Language and background</h2>
     <p>
-      Former national team goalkeeper for 19 years, with professional play in Sweden’s Damallsvenskan. Fluent in English and Icelandic. Basic Swedish.
+      Former national team goalkeeper for 19 years, with professional play in Sweden’s Damallsvenskan.
+      Fluent in English and Icelandic. Basic Swedish.
     </p>
 
     <a class="back" href="/">← Back to home</a>
