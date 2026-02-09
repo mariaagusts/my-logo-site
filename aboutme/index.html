@@ -5,22 +5,20 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- UPDATED: added "Icelandic" for search -->
   <meta name="description" content="Operations and execution support for small businesses: clearer workflows, roles and ownership, and decision materials (one-pagers, decks, briefs) that drive follow-through. Icelandic and English support available." />
 
   <title>About me — Multa Bene Agere</title>
 
-  <!-- Speed up Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Playfair Display only -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg: #f6f4f0;
       --text: #111111;
-      --muted: #111111; /* set to #272525 if you want slightly softer body text */
+      --muted: #111111;
+      --rule: rgba(0,0,0,.12);
     }
 
     body{
@@ -64,12 +62,10 @@
       font-size:1.02rem;
     }
 
-    /* About me: LEFT aligned, no hyphenation */
     .about{ text-align:left; }
     .about p{
       text-align:left;
       margin-bottom:12px;
-
       hyphens:none;
       -webkit-hyphens:none;
       -ms-hyphens:none;
@@ -91,7 +87,6 @@
       line-height:1.7;
     }
 
-    /* CTA */
     .cta{
       margin-top:18px;
       padding-top:10px;
@@ -100,9 +95,7 @@
       color:var(--muted);
     }
 
-    .cta-note{
-      font-style:normal;
-    }
+    .cta-note{ font-style:normal; }
 
     .cta a{
       color:inherit;
@@ -110,16 +103,12 @@
       text-decoration:underline;
       text-underline-offset:0.12em;
       font-style:normal;
-      cursor:pointer; /* UPDATED: show hand cursor */
+      cursor:pointer;
     }
 
-    .experience{
-      margin-top:10px;
-    }
+    .experience{ margin-top:10px; }
 
-    .role{
-      margin:16px 0 18px;
-    }
+    .role{ margin:16px 0 18px; }
 
     .role .title{
       font-weight:700;
@@ -150,33 +139,63 @@
       font-weight:700;
     }
 
-    table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:14px;
-      margin-bottom:28px;
+    /* Education & Certifications (UPDATED) */
+    .ec{
+      margin-top:36px;
     }
 
-    th{
-      text-align:left;
+    .ec h2{
+      margin:36px 0 10px;
+      padding-bottom:10px;
+      border-bottom:1px solid var(--rule);
+    }
+
+    .ec-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:48px;
+      max-width:760px;
+      margin: 0 auto;
+      padding-top:14px;
+    }
+
+    .ec h3{
+      margin:0 0 14px;
+      font-size:1.02rem;
       font-weight:700;
-      color:var(--text);
-      padding:0 12px 12px 0;
-      font-size:1.02rem;
-      line-height:1.8;
-    }
-
-    td{
       text-align:left;
-      color:var(--muted);
-      padding:0 12px 0 0;
-      font-size:1.02rem;
-      line-height:1.8;
-      vertical-align:top;
+      color:var(--text);
     }
 
-    td:last-child{
-      padding-right:0;
+    .ec-item{
+      margin:0 0 14px;
+    }
+
+    .ec-primary{
+      font-weight:700;
+      line-height:1.35;
+      font-size:1.02rem;
+      color:var(--text);
+      text-align:left;
+    }
+
+    .ec-secondary{
+      margin-top:2px;
+      line-height:1.35;
+      font-size:1.02rem;
+      color:rgba(0,0,0,.75);
+      text-align:left;
+    }
+
+    /* Keep certifications as single-line items but consistent spacing */
+    .ec-item.single .ec-secondary{ display:none; }
+
+    @media (max-width: 720px){
+      .ec-grid{
+        grid-template-columns: 1fr;
+        gap:28px;
+        padding-top:12px;
+      }
     }
 
     @media (max-width: 640px){
@@ -192,6 +211,9 @@
         hyphens:none;
         -webkit-hyphens:none;
         -ms-hyphens:none;
+      }
+      .ec-primary, .ec-secondary, .ec h3{
+        font-size:1rem;
       }
     }
   </style>
@@ -267,17 +289,38 @@
       </div>
     </div>
 
-    <h2>Education &amp; Certifications</h2>
-    <table>
-      <tr>
-        <th>Education</th>
-        <th>Certifications</th>
-      </tr>
-      <tr>
-        <td>MSc, Management Research, University of Oxford<br>BA, Economics, Harvard University</td>
-        <td>CAIA Charterholder<br>Certified Securities Broker</td>
-      </tr>
-    </table>
+    <!-- UPDATED SECTION -->
+    <section class="ec">
+      <h2>Education &amp; Certifications</h2>
+
+      <div class="ec-grid">
+        <div class="ec-col">
+          <h3>Education</h3>
+
+          <div class="ec-item">
+            <div class="ec-primary">MSc, Management Research</div>
+            <div class="ec-secondary">University of Oxford</div>
+          </div>
+
+          <div class="ec-item">
+            <div class="ec-primary">BA, Economics</div>
+            <div class="ec-secondary">Harvard University</div>
+          </div>
+        </div>
+
+        <div class="ec-col">
+          <h3>Certifications</h3>
+
+          <div class="ec-item single">
+            <div class="ec-primary">CAIA Charterholder</div>
+          </div>
+
+          <div class="ec-item single">
+            <div class="ec-primary">Certified Securities Broker (CSB)</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <h2>Language and background</h2>
     <p>
