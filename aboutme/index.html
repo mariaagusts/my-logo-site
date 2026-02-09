@@ -150,6 +150,35 @@
       font-weight:700;
     }
 
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:14px;
+      margin-bottom:28px;
+    }
+
+    th{
+      text-align:left;
+      font-weight:700;
+      color:var(--text);
+      padding:0 12px 12px 0;
+      font-size:1.02rem;
+      line-height:1.8;
+    }
+
+    td{
+      text-align:left;
+      color:var(--muted);
+      padding:0 12px 0 0;
+      font-size:1.02rem;
+      line-height:1.8;
+      vertical-align:top;
+    }
+
+    td:last-child{
+      padding-right:0;
+    }
+
     @media (max-width: 640px){
       .wrap{
         max-width:740px;
@@ -238,17 +267,17 @@
       </div>
     </div>
 
-    <h2>Education</h2>
-    <p>
-      MSc, Management Research, University of Oxford<br>
-      BA, Economics, Harvard University
-    </p>
-
-    <h2>Certifications</h2>
-    <p>
-      CAIA Charterholder<br>
-      Certified Securities Broker
-    </p>
+    <h2>Education &amp; Certifications</h2>
+    <table>
+      <tr>
+        <th>Education</th>
+        <th>Certifications</th>
+      </tr>
+      <tr>
+        <td>MSc, Management Research, University of Oxford<br>BA, Economics, Harvard University</td>
+        <td>CAIA Charterholder<br>Certified Securities Broker</td>
+      </tr>
+    </table>
 
     <h2>Language and background</h2>
     <p>
