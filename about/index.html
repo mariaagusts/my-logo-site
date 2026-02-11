@@ -1,321 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="https://www.multabene.is/favicon.ico?v=2">
-
   <meta charset="UTF-8" />
+  <title>About — Multa Bene Agere</title>
+
+  <link rel="icon" type="image/x-icon" href="https://www.multabene.is/favicon.ico?v=2">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Operations and execution support for small businesses: clearer workflows, roles and ownership, and decision materials (one-pagers, decks, briefs) that drive follow-through. Icelandic and English support available." />
 
-  <title>About me — Multa Bene Agere</title>
+  <link rel="alternate" hreflang="en" href="https://www.multabene.is/about/">
+  <link rel="alternate" hreflang="is" href="https://www.multabene.is/um-mba/">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg: #f6f4f0;
       --text: #111111;
-      --muted: #111111;
-      --rule: rgba(0,0,0,.12);
+      --muted: rgba(17,17,17,0.72);
+      --max: 840px;
     }
 
     body{
-      font-family:'Playfair Display', serif;
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      display:block;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Playfair Display', serif;
     }
 
     .wrap{
-      max-width:820px;
-      margin:0 auto;
-      padding:56px 24px 72px;
-    }
-
-    /* Headers with fine rule under them */
-    h1{
-      margin:0 0 18px;
-      padding-bottom:10px;
-      border-bottom:1px solid var(--rule);
-      font-size:1.8rem;
-      font-weight:700;
-      text-align:center;
-      color:var(--text);
-    }
-
-    h2{
-      margin:36px 0 14px;
-      padding-bottom:10px;
-      border-bottom:1px solid var(--rule);
-      font-size:1.25rem;
-      font-weight:700;
-      text-align:center;
-      color:var(--text);
-    }
-
-    p{
-      line-height:1.8;
-      margin:0 0 14px;
-      text-align:left;
-      color:var(--muted);
-      font-size:1.02rem;
-    }
-
-    .about{ text-align:left; }
-    .about p{
-      text-align:left;
-      margin-bottom:12px;
-      hyphens:none;
-      -webkit-hyphens:none;
-      -ms-hyphens:none;
-      word-break:normal;
-      overflow-wrap:normal;
-    }
-
-    ul{
-      margin:12px 0 0;
-      padding-left:18px;
-      margin-bottom:8px;
-      color:var(--muted);
-      font-size:1.02rem;
-      line-height:1.8;
-    }
-
-    li{
-      margin:6px 0;
-      line-height:1.7;
-    }
-
-    .cta{
-      margin-top:18px;
-      padding-top:10px;
-      margin-bottom:28px;
-      font-style:normal;
-      color:var(--muted);
-    }
-
-    .cta-note{ font-style:normal; }
-
-    .cta a{
-      color:inherit;
-      font-weight:700;
-      text-decoration:underline;
-      text-underline-offset:0.12em;
-      font-style:normal;
-      cursor:pointer;
-    }
-
-    .experience{ margin-top:10px; }
-
-    .role{ margin:16px 0 18px; }
-
-    .role .title{
-      font-weight:700;
-      margin:0 0 6px;
-      color:var(--text);
-    }
-
-    .role .meta{
-      font-style:italic;
-      font-weight:400;
-      margin:0 0 6px;
-      color:var(--muted);
-    }
-
-    .role p{
-      margin:0;
-      text-align:left;
-      color:var(--muted);
-    }
-
-    a.back{
-      display:inline-block;
-      margin-top:24px;
-      color:var(--text);
-      text-decoration:underline;
-      text-underline-offset:0.12em;
-      text-decoration-thickness:1px;
-      font-weight:700;
-    }
-
-    /* Education & Certifications */
-    .ec{
-      margin-top:36px;
-    }
-
-    .ec-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:48px;
-      max-width:760px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding-top:14px;
+      padding: 28px 18px 60px 18px;
     }
 
-    .ec-item{
-      margin:0 0 14px;
+    .top{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 18px;
     }
 
-    .ec-primary{
-      font-weight:700;
-      line-height:1.35;
-      font-size:1.02rem;
-      color:var(--text);
-      text-align:left;
+    .logo{
+      width: min(520px, 82vw);
+      height: auto;
+      display: block;
+      margin: 0 auto;
     }
 
-    .ec-secondary{
-      margin-top:2px;
-      line-height:1.35;
-      font-size:1.02rem;
-      color:rgba(0,0,0,.75);
-      text-align:left;
+    /* Language switch */
+    .lang-switch{
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      font-size: 14px;
+      background: rgba(246,244,240,0.92);
+      padding: 8px 10px;
+      border-radius: 999px;
+      z-index: 9999;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .lang-switch a{
+      text-decoration: none;
+      color: inherit;
+      opacity: 0.8;
+    }
+    .lang-switch a:hover,
+    .lang-switch a:focus-visible{
+      text-decoration: underline;
+      text-underline-offset: 0.12em;
+      text-decoration-thickness: 1px;
+      opacity: 1;
+    }
+    .lang-switch a[aria-current="page"]{
+      font-weight: 700;
+      opacity: 1;
+      text-decoration: none;
+    }
+    .lang-switch .sep{
+      opacity: 0.45;
     }
 
-    .ec-item.single .ec-secondary{ display:none; }
-
-    @media (max-width: 720px){
-      .ec-grid{
-        grid-template-columns: 1fr;
-        gap:28px;
-        padding-top:12px;
-      }
+    /* Nav links */
+    nav{
+      text-align: center;
+      padding: 12px 0 10px 0;
+    }
+    .nav-link{
+      text-decoration: none;
+      color: inherit;
+      text-underline-offset: 0.12em;
+      text-decoration-thickness: 1px;
+    }
+    .nav-link:hover,
+    .nav-link:focus-visible{
+      text-decoration: underline;
+    }
+    .divider{
+      opacity: 0.4;
+      padding: 0 10px;
     }
 
-    @media (max-width: 640px){
-      .wrap{
-        max-width:740px;
-        padding:40px 18px 56px;
-      }
-      p, ul{
-        font-size:1rem;
-      }
-      .about p{
-        text-align:left;
-        hyphens:none;
-        -webkit-hyphens:none;
-        -ms-hyphens:none;
-      }
-      .ec-primary, .ec-secondary{
-        font-size:1rem;
-      }
+    /* Content */
+    h1{
+      font-size: 34px;
+      margin: 26px 0 10px 0;
+      text-align: center;
+      font-weight: 700;
+    }
+    h2{
+      font-size: 22px;
+      margin: 26px 0 10px 0;
+      font-weight: 700;
+    }
+    p{
+      font-size: 18px;
+      line-height: 1.55;
+      margin: 0 0 14px 0;
+      color: var(--text);
+    }
+    .muted{
+      color: var(--muted);
+    }
+    ul{
+      margin: 8px 0 18px 22px;
+      padding: 0;
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    li{ margin: 6px 0; }
+
+    .section{
+      margin-top: 18px;
+    }
+
+    .role{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(17,17,17,0.10);
+    }
+    .role h3{
+      margin: 0 0 6px 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .role .meta{
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .email{
+      display: inline-block;
+      text-decoration: none;
+      color: inherit;
+      text-underline-offset: 0.12em;
+      text-decoration-thickness: 1px;
+      border-bottom: 1px solid rgba(17,17,17,0.35);
+    }
+    .email:hover,
+    .email:focus-visible{
+      border-bottom-color: rgba(17,17,17,0.85);
+    }
+
+    footer{
+      text-align: center;
+      margin-top: 34px;
+      font-size: 16px;
+      color: var(--muted);
     }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
+  <div class="lang-switch" aria-label="Language">
+    <a href="/um-mba/">IS</a>
+    <span class="sep">|</span>
+    <a href="/about/" aria-current="page">EN</a>
+  </div>
+
+  <div class="wrap">
+    <div class="top">
+      <a href="mailto:contact@multabene.is?subject=Hello%20from%20Multa%20Bene%20Agere%20website" aria-label="Email us" title="Email us">
+        <img class="logo" src="/mbalogo.png" alt="Email us">
+      </a>
+    </div>
+
+    <nav>
+      <a class="nav-link" href="/">Home</a>
+      <span class="divider">|</span>
+      <a class="nav-link" href="/about/">About</a>
+    </nav>
+
     <h1>About me</h1>
 
-    <section class="about">
-      <p>
-        I’m María Björg Ágústsdóttir. I run Multa Bene Agere, an independent consultancy. I help small businesses turn messy operations into clear, repeatable ways of working. The result is simpler workflows, clearer ownership, and routines that make follow-through easier.
-      </p>
+    <div class="section">
+      <p>I’m María Björg Ágústsdóttir. I run Multa Bene Agere, an independent consultancy. I help small businesses turn messy operations into clear, repeatable ways of working. The result is simpler workflows, clearer ownership, and routines that make follow-through easier.</p>
 
-      <p>
-        My background spans finance, operations, and business development, including senior roles in regulated environments. I work best in environments where accuracy, documentation, and follow-through matter. I enjoy finding bottlenecks, clarifying responsibilities, and building simple structures that work in everyday operations.
-      </p>
+      <p>My background spans finance, operations, and business development, including senior roles in regulated environments. I work best in environments where accuracy, documentation, and follow-through matter. I enjoy finding bottlenecks, clarifying responsibilities, and building simple structures that work in everyday operations.</p>
 
-      <p>
-        When needed, I also translate and edit Icelandic and English business writing where tone and accuracy matter, from web content to internal documentation and reports. The goal is English that reads naturally and stays faithful to the Icelandic meaning.
-      </p>
+      <p>When needed, I also translate and edit Icelandic and English business writing where tone and accuracy matter, from web content to internal documentation and reports. The goal is English that reads naturally and stays faithful to the Icelandic meaning.</p>
 
-      <p>
-        Based in Iceland, working with clients locally and internationally. I take on short, focused engagements or ongoing support.
-      </p>
+      <p class="muted">Based in Iceland, working with clients locally and internationally. I take on short, focused engagements or ongoing support.</p>
 
-      <p class="cta">
-        Email <a href="mailto:mba@multabene.is">mba@multabene.is</a>
-        <span class="cta-note">with what’s stuck, what you want to change, and your timeline.</span>
-      </p>
-    </section>
+      <p>Email <a class="email" href="mailto:mba@multabene.is?subject=Multa%20Bene%20Agere%20inquiry">mba@multabene.is</a> with what’s stuck, what you want to change, and your timeline.</p>
+    </div>
 
-    <h2>How I can help</h2>
+    <div class="section">
+      <h2>How I can help</h2>
+      <p class="muted">A few ways I can help:</p>
+      <ul>
+        <li>Execution support (from decision to follow-through)</li>
+        <li>Decision materials for clarity and alignment (one-pagers, decks, concise briefs)</li>
+        <li>Roles and ownership (who does what, and when)</li>
+        <li>Workflow simplification and operating routines</li>
+        <li>Clear outputs from messy info (memos, decks, spreadsheets)</li>
+        <li>When needed: Icelandic-to-English translation and editing</li>
+      </ul>
+    </div>
 
-    <p>A few ways I can help:</p>
+    <div class="section">
+      <h2>Key experience</h2>
 
-    <ul>
-      <li>Execution support (from decision to follow-through)</li>
-      <li>Decision materials for clarity and alignment (one-pagers, decks, concise briefs)</li>
-      <li>Roles and ownership (who does what, and when)</li>
-      <li>Workflow simplification and operating routines</li>
-      <li>Clear outputs from messy info (memos, decks, spreadsheets)</li>
-      <li>When needed: Icelandic-to-English translation and editing</li>
-    </ul>
-
-    <h2>Key experience</h2>
-
-    <div class="experience">
       <div class="role">
-        <div class="title">Founder &amp; Consultant</div>
-        <div class="meta">Multa Bene Agere, 2025 to present</div>
-        <p>
-          Helping small and mid-sized businesses bring clarity to day-to-day operations and execution.
-          I also turn complex information into clear one-pagers, decks, and concise briefs that drive alignment and follow-through.
-        </p>
+        <h3>Founder & Consultant</h3>
+        <p class="meta">Multa Bene Agere, 2025 to present</p>
+        <p>Helping small and mid-sized businesses bring clarity to day-to-day operations and execution. I also turn complex information into clear one-pagers, decks, and concise briefs that drive alignment and follow-through.</p>
       </div>
 
       <div class="role">
-        <div class="title">Director of Business Development</div>
-        <div class="meta">Iceland Funds, 2018 to 2024</div>
-        <p>
-          Led business development initiatives across fund operations, marketing, and alternative investments at Iceland’s largest mutual fund manager (AuM ≈ ISK 349 bn).
-        </p>
+        <h3>Director of Business Development</h3>
+        <p class="meta">Iceland Funds, 2018 to 2024</p>
+        <p>Led business development initiatives across fund operations, marketing, and alternative investments at Iceland’s largest mutual fund manager (AuM ≈ ISK 349 bn).</p>
       </div>
 
       <div class="role">
-        <div class="title">Executive Director</div>
-        <div class="meta">Glitnir HoldCo ehf, 2008 to 2018</div>
-        <p>
-          Oversaw investor relations and operations for a USD 49 bn bankruptcy estate, coordinating operational, financial, and
-          compliance processes under tight deadlines.
-        </p>
+        <h3>Executive Director</h3>
+        <p class="meta">Glitnir HoldCo ehf, 2008 to 2018</p>
+        <p>Oversaw investor relations and operations for a USD 49 bn bankruptcy estate, coordinating operational, financial, and compliance processes under tight deadlines.</p>
       </div>
     </div>
 
-    <section class="ec">
-      <h2>Education &amp; Certifications</h2>
+    <div class="section">
+      <h2>Education & Certifications</h2>
+      <ul>
+        <li>MSc, Management Research, University of Oxford</li>
+        <li>BA, Economics, Harvard University</li>
+        <li>CAIA Charterholder (Chartered Alternative Investment Analyst)</li>
+        <li>Certified Securities Broker (Within Iceland)</li>
+      </ul>
+    </div>
 
-      <div class="ec-grid">
-        <div class="ec-col">
-          <div class="ec-item">
-            <div class="ec-primary">MSc, Management Research</div>
-            <div class="ec-secondary">University of Oxford</div>
-          </div>
+    <div class="section">
+      <h2>Languages & Athletics</h2>
+      <p>Former national team goalkeeper for 19 years in football (soccer), with professional play in Sweden’s Damallsvenskan.</p>
+      <p class="muted">Fluent in English and Icelandic. Basic Swedish. Limited reading knowledge of Danish, Norwegian and German.</p>
+    </div>
 
-          <div class="ec-item">
-            <div class="ec-primary">BA, Economics</div>
-            <div class="ec-secondary">Harvard University</div>
-          </div>
-        </div>
-
-        <div class="ec-col">
-          <div class="ec-item">
-            <div class="ec-primary">CAIA Charterholder</div>
-            <div class="ec-secondary">Chartered Alternative Investment Analyst</div>
-          </div>
-
-          <div class="ec-item">
-            <div class="ec-primary">Certified Securities Broker</div>
-            <div class="ec-secondary">Within Iceland</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <h2>Languages &amp; Athletics</h2>
-    <p>
-      Former national team goalkeeper for 19 years in football (soccer), with professional play in Sweden’s Damallsvenskan.<br>
-      <p>Fluent in English and Icelandic. Basic Swedish. Limited reading knowledge of Danish, Norwegian and German.</p>
-    </p>
-
-    <a class="back" href="/">← Back to home</a>
-  </main>
+    <footer>
+      <a class="nav-link" href="/">&larr; Back to home</a>
+    </footer>
+  </div>
 </body>
 </html>
