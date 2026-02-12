@@ -38,6 +38,50 @@
       padding:56px 24px 72px;
     }
 
+    /* Language switch (top-right) */
+    .lang-switch{
+      position:fixed;
+      top:18px;
+      right:22px;
+      z-index:9999;
+      font-family:inherit;
+      font-size:14px;
+      letter-spacing:0.02em;
+      user-select:none;
+    }
+
+    .lang-switch .lang{
+      color:var(--text);
+      text-decoration:none;
+      opacity:0.75;
+    }
+
+    .lang-switch .lang:hover{
+      opacity:1;
+      text-decoration:underline;
+      text-underline-offset:0.12em;
+    }
+
+    .lang-switch .active{
+      opacity:1;
+      font-weight:700;
+      cursor:default;
+      text-decoration:none;
+    }
+
+    .lang-switch .sep{
+      margin:0 6px;
+      opacity:0.45;
+    }
+
+    @media (max-width: 640px){
+      .lang-switch{
+        top:14px;
+        right:16px;
+        font-size:13px;
+      }
+    }
+
     /* Headers with fine rule under them */
     h1{
       margin:0 0 18px;
@@ -211,6 +255,14 @@
 </head>
 
 <body>
+
+  <!-- Language switch (EN is active on this page) -->
+  <div class="lang-switch" aria-label="Language switch">
+    <span class="lang active">IS</span>
+    <span class="sep">/</span>
+    <a class="lang" href="/about/">EN</a>
+  </div>
+
   <main class="wrap">
     <h1>About me</h1>
 
@@ -312,8 +364,10 @@
 
     <h2>Languages &amp; Athletics</h2>
     <p>
-      Former national team goalkeeper for 19 years in football (soccer), with professional play in Sweden’s Damallsvenskan.<br></p>
-      <p>Fluent in English and Icelandic. Basic Swedish. Limited reading knowledge of Danish, Norwegian and German.
+      Former national team goalkeeper for 19 years in football (soccer), with professional play in Sweden’s Damallsvenskan.<br>
+    </p>
+    <p>
+      Fluent in English and Icelandic. Basic Swedish. Limited reading knowledge of Danish, Norwegian and German.
     </p>
 
     <a class="back" href="/">← Back to home</a>
