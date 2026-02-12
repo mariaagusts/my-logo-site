@@ -33,16 +33,17 @@
     }
 
     .wrap{
+      position:relative; /* NEW: makes absolute children align to the content column */
       max-width:820px;
       margin:0 auto;
       padding:56px 24px 72px;
     }
 
-    /* Language switch (top-right) */
+    /* Language switch (aligned to the wrap, not the browser corner) */
     .lang-switch{
-      position:fixed;
+      position:absolute;  /* CHANGED: was fixed */
       top:18px;
-      right:22px;
+      right:24px;         /* matches wrap padding */
       z-index:9999;
       font-family:inherit;
       font-size:14px;
@@ -77,7 +78,7 @@
     @media (max-width: 640px){
       .lang-switch{
         top:14px;
-        right:16px;
+        right:18px; /* a bit tighter on mobile */
         font-size:13px;
       }
     }
@@ -255,15 +256,15 @@
 </head>
 
 <body>
-
-  <!-- Language switch (EN is active on this page) -->
-  <div class="lang-switch" aria-label="Language switch">
-    <span class="lang active">EN</span>
-    <span class="sep">/</span>
-    <a class="lang" href="/um-mba/">IS</a>
-  </div>
-
   <main class="wrap">
+
+    <!-- Language switch (EN is active on this page) -->
+    <div class="lang-switch" aria-label="Language switch">
+      <span class="lang active">EN</span>
+      <span class="sep">/</span>
+      <a class="lang" href="/um-mba/">IS</a>
+    </div>
+
     <h1>About me</h1>
 
     <section class="about">
