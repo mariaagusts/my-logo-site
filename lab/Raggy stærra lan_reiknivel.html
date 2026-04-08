@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lán 328195 — Reiknivél</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; font-size: 14px; color: #1a1a1a; background: #f5f5f2; padding: 1.5rem; max-width: 860px; margin: 0 auto; }
+h1 { font-size: 18px; font-weight: 500; margin-bottom: 1.5rem; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+.card { background: #ebebea; border-radius: 8px; padding: 14px 16px; }
+.card-label { font-size: 11px; color: #5f5e5a; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+.card-value { font-size: 18px; font-weight: 500; }
+.section { background: #fff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+.slider-row { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.slider-row label { font-size: 13px; color: #5f5e5a; min-width: 180px; }
+.slider-row input[type=range] { flex: 1; accent-color: #1D9E75; }
+.slider-val { font-size: 13px; font-weight: 500; min-width: 90px; text-align: right; }
+.results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+.res-card { background: #ebebea; border-radius: 8px; padding: 12px 16px; }
+.res-label { font-size: 11px; color: #5f5e5a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.res-value { font-size: 17px; font-weight: 500; }
+.res-value.good { color: #1D9E75; }
+.legend { display: flex; gap: 20px; margin-bottom: 8px; font-size: 12px; color: #5f5e5a; }
+.legend span { display: flex; align-items: center; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.chart-wrap { position: relative; height: 260px; }
+.section-title { font-size: 11px; font-weight: 500; color: #5f5e5a; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+
+<h1>Lán 328195 — Aukagreiðslu reiknivél</h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Nafnverð</div>
+    <div class="card-value">36.257.444 kr.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Heildarstaða m. verðbótum</div>
+    <div class="card-value">39.216.405 kr.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Vextir</div>
+    <div class="card-value">4,00%</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Eftir</div>
+    <div class="card-value">338 mán.</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Lokadag</div>
+    <div class="card-value">Jún 2054</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Stillingar</div>
+  <div class="slider-row">
+    <label>Aukagreiðsla á mánuði</label>
+    <input type="range" min="0" max="500000" step="5000" value="50000" id="extra" oninput="update()">
+    <span class="slider-val" id="extra-out">20.000 kr.</span>
+  </div>
+  <div class="slider-row">
+    <label>Áætluð verðbólga (árleg)</label>
+    <input type="range" min="1" max="12" step="0.5" value="4" id="infl" oninput="update()">
+    <span class="slider-val" id="infl-out">4,0%</span>
+  </div>
+  <div class="slider-row">
+    <label>Eingreiðsla strax</label>
+    <input type="range" min="0" max="5000000" step="50000" value="0" id="lump" oninput="update()">
+    <span class="slider-val" id="lump-out">0 kr.</span>
+  </div>
+</div>
+
+<div class="results-grid">
+  <div class="res-card">
+    <div class="res-label">Sparaðar vaxtagreiðslur</div>
+    <div class="res-value good" id="saved-interest">—</div>
+  </div>
+  <div class="res-card">
+    <div class="res-label">Lækkun á mánaðarlegri greiðslu eftir 1 ár</div>
+    <div class="res-value good" id="payment-reduction">—</div>
+  </div>
+  <div class="res-card">
+    <div class="res-label">Nýr lokadag</div>
+    <div class="res-value" id="new-date">—</div>
+  </div>
+  <div class="res-card">
+    <div class="res-label">Mánaðarleg greiðsla</div>
+    <div class="res-value" id="monthly-payment">—</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Þróun láns yfir tíma</div>
+  <div class="legend">
+    <span><span class="dot" style="background:#73726c;"></span>Án aukagreiðslna</span>
+    <span><span class="dot" style="background:#1D9E75;"></span>Með aukagreiðslum</span>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="balanceChart"></canvas>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Samanburður á heildarkostnaði</div>
+  <div class="chart-wrap" style="height: 200px;">
+    <canvas id="costChart"></canvas>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// Loan constants
+const NAFNVERD_BALANCE = 36257444;   // nafnverð eftir greiðslu
+const VERDBAETUR_BALANCE = 2958961;  // accumulated verðbætur
+const ORIGINAL_AMOUNT = 37500000;    // upphafleg upphæð
+const TOTAL_MONTHS = 360;
+const RATE_ANNUAL = 4.00;
+const REMAINING_MONTHS = 338;
+
+// Fixed real annuity payment (in terms of original CPI base)
+const r = RATE_ANNUAL / 100 / 12;
+const REAL_PMT = ORIGINAL_AMOUNT * r / (1 - Math.pow(1 + r, -TOTAL_MONTHS));
+
+function fmt(n) { return Math.round(n).toLocaleString('is-IS') + ' kr.'; }
+function fmtNoKr(n) { return Math.round(n).toLocaleString('is-IS'); }
+
+function simulate(extra, lump, inflAnnual) {
+  const monthlyInfl = inflAnnual / 100 / 12;
+  // Current CPI ratio relative to loan origination base
+  // At month 22 the CPI ratio ≈ 674.60/623.70 = 1.0816
+  const BASE_CPI_RATIO = 674.60 / 623.70;
+
+  let nafnBalance = NAFNVERD_BALANCE - lump;
+  if (nafnBalance <= 0) return { months: 0, totalInterest: 0, totalPaid: lump, nafnBalances: [0], totalBalances: [0], firstPayment: 0, regularPaymentAt12: 0 };
+
+  let totalInterest = 0, totalPaid = lump;
+  let nafnBalances = [nafnBalance];
+  let totalBalances = [nafnBalance + VERDBAETUR_BALANCE];
+  let firstPayment = null;
+  let cumInflFactor = 1;
+  let m = 0;
+
+  while (nafnBalance > 0 && m < REMAINING_MONTHS) {
+    cumInflFactor *= (1 + monthlyInfl);
+    const cpiRatio = BASE_CPI_RATIO * cumInflFactor;
+
+    // Nominal annuity payment (real PMT indexed to current CPI)
+    const nominalPMT = REAL_PMT * cpiRatio;
+
+    // Verðbætur on nafnverð balance (CPI adjustment this month)
+    const verdbaetur = nafnBalance * monthlyInfl;
+    nafnBalance += verdbaetur;
+
+    // Interest on nafnverð (vextir)
+    const interest = nafnBalance * r;
+    totalInterest += interest;
+
+    // Principal = nominal payment minus interest, capped at remaining balance
+    let principal = Math.min(nominalPMT - interest, nafnBalance);
+    if (principal < 0) principal = 0;
+
+    // Extra payment reduces nafnBalance further
+    const extraPay = Math.min(extra, Math.max(0, nafnBalance - principal));
+
+    const payment = principal + extraPay + interest;
+    if (firstPayment === null) firstPayment = payment;
+    totalPaid += payment;
+
+    nafnBalance -= (principal + extraPay);
+    if (nafnBalance < 0) nafnBalance = 0;
+
+    nafnBalances.push(nafnBalance);
+    totalBalances.push(nafnBalance * cpiRatio);
+    m++;
+  }
+
+  const regularPaymentAt12 = (() => {
+    if (nafnBalances.length <= 12) return 0;
+    const b = nafnBalances[12];
+    const cpi12 = BASE_CPI_RATIO * Math.pow(1 + monthlyInfl, 12);
+    const nomPMT12 = REAL_PMT * cpi12;
+    const verd12 = b * monthlyInfl;
+    const bAdj = b + verd12;
+    const int12 = bAdj * r;
+    return Math.min(nomPMT12, bAdj) + int12;
+  })();
+
+  return { months: m, totalInterest, totalPaid, nafnBalances, totalBalances, firstPayment: firstPayment || 0, regularPaymentAt12 };
+}
+
+let balChart = null, costChart = null;
+
+function update() {
+  const extra = parseInt(document.getElementById('extra').value);
+  const infl = parseFloat(document.getElementById('infl').value);
+  const lump = parseInt(document.getElementById('lump').value);
+
+  document.getElementById('extra-out').textContent = fmtNoKr(extra) + ' kr.';
+  document.getElementById('infl-out').textContent = infl.toFixed(1).replace('.', ',') + '%';
+  document.getElementById('lump-out').textContent = fmtNoKr(lump) + ' kr.';
+
+  const base = simulate(0, 0, infl);
+  const withExtra = simulate(extra, lump, infl);
+
+  const savedInterest = base.totalInterest - withExtra.totalInterest;
+  const paymentReduction = base.regularPaymentAt12 - withExtra.regularPaymentAt12;
+
+  document.getElementById('saved-interest').textContent = fmt(Math.max(0, savedInterest));
+  document.getElementById('payment-reduction').textContent = paymentReduction > 0 ? fmt(paymentReduction) : '0 kr.';
+  document.getElementById('monthly-payment').textContent = fmtNoKr(withExtra.firstPayment) + ' kr.';
+
+  const now = new Date(2026, 3, 1);
+  const newEnd = new Date(now.getFullYear(), now.getMonth() + withExtra.months, 1);
+  const months = ['jan','feb','mar','apr','maí','jún','júl','ágú','sep','okt','nóv','des'];
+  document.getElementById('new-date').textContent = months[newEnd.getMonth()] + ' ' + newEnd.getFullYear();
+
+  const stride = 2;
+  const baseLabels = [], baseBals = [], extraBals = [];
+  const maxLen = Math.max(base.totalBalances.length, withExtra.totalBalances.length);
+  for (let i = 0; i < maxLen; i += stride) {
+    const d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+    baseLabels.push(i % 12 === 0 ? d.getFullYear().toString() : '');
+    baseBals.push(i < base.totalBalances.length ? Math.round(base.totalBalances[i]) : 0);
+    extraBals.push(i < withExtra.totalBalances.length ? Math.round(withExtra.totalBalances[i]) : 0);
+  }
+
+  if (balChart) balChart.destroy();
+  balChart = new Chart(document.getElementById('balanceChart'), {
+    type: 'line',
+    data: {
+      labels: baseLabels,
+      datasets: [
+        { label: 'Án aukagreiðslna', data: baseBals, borderColor: '#73726c', backgroundColor: 'rgba(115,114,108,0.08)', borderWidth: 1.5, pointRadius: 0, tension: 0.3, spanGaps: true },
+        { label: 'Með aukagreiðslum', data: extraBals, borderColor: '#1D9E75', backgroundColor: 'rgba(29,158,117,0.1)', borderWidth: 2, pointRadius: 0, tension: 0.3, spanGaps: true, fill: true }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => fmtNoKr(ctx.raw) + ' kr.' } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#888', font: { size: 11 }, maxRotation: 0, autoSkip: false } },
+        y: { grid: { color: 'rgba(0,0,0,0.07)' }, ticks: { color: '#888', font: { size: 11 }, callback: v => (v/1000000).toFixed(1) + 'M' } }
+      }
+    }
+  });
+
+  if (costChart) costChart.destroy();
+  costChart = new Chart(document.getElementById('costChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Án aukagreiðslna', 'Með aukagreiðslum'],
+      datasets: [
+        { label: 'Afborgun', data: [Math.round(base.totalPaid - base.totalInterest), Math.round(withExtra.totalPaid - withExtra.totalInterest)], backgroundColor: ['rgba(115,114,108,0.4)', 'rgba(29,158,117,0.4)'] },
+        { label: 'Vextir', data: [Math.round(base.totalInterest), Math.round(withExtra.totalInterest)], backgroundColor: ['rgba(215,90,48,0.5)', 'rgba(215,90,48,0.25)'] }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: true, labels: { font: { size: 11 }, color: '#888', boxWidth: 10 } }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmtNoKr(ctx.raw) + ' kr.' } } },
+      scales: {
+        x: { stacked: true, grid: { display: false }, ticks: { color: '#888', font: { size: 12 } } },
+        y: { stacked: true, grid: { color: 'rgba(0,0,0,0.07)' }, ticks: { color: '#888', font: { size: 11 }, callback: v => (v/1000000).toFixed(1) + 'M' } }
+      }
+    }
+  });
+}
+
+update();
+</script>
+</body>
+</html>
