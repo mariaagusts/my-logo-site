@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UMF Stjarnan — Stjórnendayfirlit 2024</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --navy-mid: #162452;
+    --navy-light: #1e3070;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --white: #f8f7f4;
+    --muted: #a8a89e;
+    --danger: #c0392b;
+    --danger-light: #f9e8e7;
+    --success: #1a7a4a;
+    --success-light: #e6f4ed;
+    --warn: #c47f17;
+    --warn-light: #fef5e3;
+    --border: rgba(201,168,76,0.2);
+    --card-bg: rgba(255,255,255,0.04);
+    --card-bg-light: rgba(255,255,255,0.07);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .site-header {
+    background: linear-gradient(135deg, #0a1530 0%, #162452 60%, #1e3070 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 3rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo-circle {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px; color: var(--navy); font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.3);
+  }
+  .header-text h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px; font-weight: 400;
+    color: var(--white); letter-spacing: 0.01em;
+  }
+  .header-text p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .header-badges { margin-left: auto; display: flex; gap: 8px; }
+  .badge {
+    font-size: 11px; padding: 4px 12px;
+    border-radius: 20px; font-weight: 500; letter-spacing: 0.03em;
+  }
+  .badge-gold { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+  .badge-green { background: var(--success-light); color: var(--success); }
+
+  .main { padding: 2rem 3rem 4rem; max-width: 1400px; margin: 0 auto; }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 13px; font-weight: 400;
+    color: var(--gold); letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .kpi-card {
+    background: var(--card-bg-light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+  .kpi-label { font-size: 12px; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .kpi-value { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--white); }
+  .kpi-change { font-size: 12px; margin-top: 6px; }
+  .up { color: #4ecb87; }
+  .down { color: #e07070; }
+  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+  .alert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .alert-card {
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid;
+  }
+  .alert-danger { background: rgba(192,57,43,0.12); border-color: var(--danger); }
+  .alert-warn { background: rgba(196,127,23,0.12); border-color: var(--warn); }
+  .alert-ok { background: rgba(26,122,74,0.12); border-color: var(--success); }
+  .alert-title { font-size: 12px; font-weight: 600; margin-bottom: 6px; letter-spacing: 0.02em; }
+  .alert-danger .alert-title { color: #e07070; }
+  .alert-warn .alert-title { color: #e8a83a; }
+  .alert-ok .alert-title { color: #4ecb87; }
+  .alert-body { font-size: 12px; line-height: 1.6; color: rgba(248,247,244,0.75); }
+
+  .chart-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .chart-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px; font-weight: 400;
+    color: var(--white); margin-bottom: 4px;
+  }
+  .chart-card .chart-sub {
+    font-size: 12px; color: var(--muted); margin-bottom: 1.25rem;
+  }
+  .charts-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .charts-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 1rem; }
+  .leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+  .leg-sq { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+  .info-box {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    font-size: 13px;
+    color: rgba(248,247,244,0.8);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .info-box strong { color: var(--gold-light); }
+
+  .gb-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .gb-table th {
+    text-align: left; padding: 8px 12px;
+    font-size: 11px; color: var(--gold); letter-spacing: 0.06em;
+    text-transform: uppercase; border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .gb-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(248,247,244,0.85); }
+  .gb-table tr:last-child td { border-bottom: none; }
+  .gb-table .total td { color: var(--gold-light); font-weight: 600; border-top: 1px solid var(--border); }
+  .tag {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 20px; font-weight: 500;
+  }
+  .tag-money { background: rgba(78,203,135,0.15); color: #4ecb87; }
+  .tag-kind { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+  .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .rel-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+  }
+  .rel-title { font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+  .rel-title.danger { color: #e07070; }
+  .rel-title.ok { color: #4ecb87; }
+  .rel-row { display: flex; justify-content: space-between; font-size: 12px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .rel-row:last-child { border-bottom: none; }
+  .rel-lbl { color: var(--muted); }
+  .rel-val { font-weight: 600; }
+  .rel-val.danger { color: #e07070; }
+  .rel-val.ok { color: #4ecb87; }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 3rem;
+    text-align: center;
+    font-size: 12px; color: var(--muted);
+  }
+  .footer strong { color: var(--gold); }
+
+  @media (max-width: 900px) {
+    .main { padding: 1rem 1rem 3rem; }
+    .site-header { padding: 1rem 1rem 1rem; flex-wrap: wrap; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .alert-grid { grid-template-columns: 1fr; }
+    .charts-2col { grid-template-columns: 1fr; }
+    .charts-3col { grid-template-columns: 1fr; }
+    .rel-grid { grid-template-columns: 1fr; }
+    .header-badges { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-circle">UMF</div>
+  <div class="header-text">
+    <h1>Ungmennafélagið Stjarnan — Stjórnendayfirlit</h1>
+    <p>Samstæðuársreikningur 2024 · Garðabær · kt. 611175-0199 · Endurskoðað af Deloitte, maí 2025</p>
+  </div>
+  <div class="header-badges">
+    <span class="badge badge-gold">Ársreikningur 2024</span>
+    <span class="badge badge-green">Endurskoðað ✓</span>
+  </div>
+</header>
+
+<main class="main">
+
+  <div class="section-title">Helstu lykilstærðir samstæðu</div>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Heildartekjur</div>
+      <div class="kpi-value">1.234m</div>
+      <div class="kpi-change up">▲ +21,5%</div>
+      <div class="kpi-sub">frá 1.015m árið 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Rekstrarniðurstaða</div>
+      <div class="kpi-value">+56,4m</div>
+      <div class="kpi-change up">▲ Snúningur</div>
+      <div class="kpi-sub">frá −12,6m árið 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Handbært fé í árslok</div>
+      <div class="kpi-value">219,5m</div>
+      <div class="kpi-change up">▲ +85,8m</div>
+      <div class="kpi-sub">frá 133,7m árið 2023</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Eigið fé samstæðu</div>
+      <div class="kpi-value">204,6m</div>
+      <div class="kpi-change up">▲ +56,3m</div>
+      <div class="kpi-sub">frá 148,3m árið 2023</div>
+    </div>
+  </div>
+
+  <div class="section-title">Lykiláhættuþættir og tækifæri</div>
+  <div class="alert-grid">
+    <div class="alert-card alert-danger">
+      <div class="alert-title">⚠ Körfuknattleikur mfl. — alvarlegt</div>
+      <div class="alert-body">Uppsafnað eigið fé <strong style="color:#e07070">−92,7m kr.</strong> Tap upp á 38,5m á árinu. Algerlega háð fjármögnun frá Aðalstjórn (95,3m millifélags­skuld). Gjaldþrota ef deild stæði ein.</div>
+    </div>
+    <div class="alert-card alert-danger">
+      <div class="alert-title">⚠ Handknattleikur mfl. — alvarlegt</div>
+      <div class="alert-body">Uppsafnað eigið fé <strong style="color:#e07070">−52,4m kr.</strong> þrátt fyrir lítinn hagnað á árinu (1,3m). Skuldar Aðalstjórn 60,0m kr. Langtíma halli heldur áfram.</div>
+    </div>
+    <div class="alert-card alert-ok">
+      <div class="alert-title">✓ Knattspyrna mfl. — besta deild</div>
+      <div class="alert-body">Nettóhagnaður <strong style="color:#4ecb87">+66,0m kr.</strong> Tekjur hækkuðu í 355,9m, knúnar af Evrópu­keppni. Mótakekjur fóru úr 18,1m í 122,5m á einu ári.</div>
+    </div>
+    <div class="alert-card alert-warn">
+      <div class="alert-title">⚡ Fimleikur B&U — varasamt</div>
+      <div class="alert-body">Stærsta æfingagjaldstekjulínan (128m kr.) en deildinn tapaði 5,3m. Halli stafar af launakostnaði 140,4m sem er umfram tekjur.</div>
+    </div>
+    <div class="alert-card alert-warn">
+      <div class="alert-title">⚡ Evrópuháðar tekjur</div>
+      <div class="alert-body">Mótakekjur hækkuðu úr 28,9m í 140,3m — mest vegna Evrópu­keppni knattspyrnu. Ef félagið kemst ekki áfram í keppni gætu tekjur 2025 lækkað um ~100m.</div>
+    </div>
+    <div class="alert-card alert-ok">
+      <div class="alert-title">✓ Engar langtímaskuldir</div>
+      <div class="alert-body">Félagið er skuldlaust til langs tíma. Allar skuldir eru skammtímaskuldir. Handbært fé jókst um 85,8m kr. á árinu og gefur öryggisgeymi.</div>
+    </div>
+  </div>
+
+  <div class="section-title">Tekjur 2024</div>
+  <div class="charts-2col">
+    <div class="chart-card">
+      <h3>Skipting eftir tegund tekna</h3>
+      <div class="chart-sub">Samstæða — hvernig 1.234m kr. koma inn</div>
+      <div style="position:relative;height:220px"><canvas id="revPie"></canvas></div>
+      <div id="pieLeg" style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;margin-top:14px;font-size:11px;color:rgba(248,247,244,0.65)"></div>
+    </div>
+    <div class="chart-card">
+      <h3>Tekjur eftir deild</h3>
+      <div class="chart-sub">Hversu mikið aflar hver deild (m.kr.)</div>
+      <div style="position:relative;height:300px"><canvas id="divRevChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="section-title">Rekstrarniðurstaða deilda 2024</div>
+  <div class="chart-card">
+    <h3>Hagnaður og tap eftir deildum (m.kr.)</h3>
+    <div class="chart-sub">Knattspyrna mfl. er í raun að niðurgreiða flestar aðrar deildir</div>
+    <div class="legend">
+      <span class="leg"><span class="leg-sq" style="background:#4ecb87"></span>Hagnaður</span>
+      <span class="leg"><span class="leg-sq" style="background:#e07070"></span>Tap</span>
+    </div>
+    <div style="position:relative;height:280px"><canvas id="divNet"></canvas></div>
+  </div>
+
+  <div class="section-title">Tekjur og gjöld eftir deildum 2024</div>
+  <div class="chart-card">
+    <h3>Samanburður tekna og gjalda (m.kr.)</h3>
+    <div class="chart-sub">Þar sem gjaldastikan er hærri en tekjustikan er deildinn með tap</div>
+    <div class="legend">
+      <span class="leg"><span class="leg-sq" style="background:#4a90d9"></span>Tekjur</span>
+      <span class="leg"><span class="leg-sq" style="background:#c9a84c"></span>Gjöld</span>
+    </div>
+    <div style="position:relative;height:300px"><canvas id="revExp"></canvas></div>
+  </div>
+
+  <div class="charts-2col">
+    <div class="chart-card">
+      <h3>Eigið fé deilda í árslok</h3>
+      <div class="chart-sub">Uppsafnað eigið fé — neikvætt þýðir uppsafnað tap (m.kr.)</div>
+      <div style="position:relative;height:320px"><canvas id="equityChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Samanburður 2023 vs 2024</h3>
+      <div class="chart-sub">Helstu samstæðuliðir — skýr bati á milli ára (m.kr.)</div>
+      <div class="legend">
+        <span class="leg"><span class="leg-sq" style="background:#4a90d9"></span>2024</span>
+        <span class="leg"><span class="leg-sq" style="background:rgba(248,247,244,0.25)"></span>2023</span>
+      </div>
+      <div style="position:relative;height:280px"><canvas id="yoyChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="section-title">Skuldir deilda — hverjum eru þær skuldaðar</div>
+  <div class="info-box">
+    Þrjár gerðir skulda eru í ársreikningi deildanna: <strong>Millifélags­skuldir</strong> (deild skuldar Aðalstjórn eða öfugt), <strong>Fyrirframinnheimt æfingagjöld</strong> (peningar móttegnir en þjónusta ekki enn veitt — tæknilegar skuldir) og <strong>Ógreiddur kostnaður og aðrar skuldir</strong> (hefðbundnar skammtímaskuldir).
+  </div>
+  <div class="chart-card">
+    <h3>Heildarskuldir eftir deild og tegund (m.kr.)</h3>
+    <div class="chart-sub">Raðað eftir heildarfjárhæð — staflarit sýnir samsetningu skulda</div>
+    <div class="legend">
+      <span class="leg"><span class="leg-sq" style="background:#c0392b"></span>Skuldir við Aðalstjórn</span>
+      <span class="leg"><span class="leg-sq" style="background:#e07b39"></span>Inneign hjá Aðalstjórn</span>
+      <span class="leg"><span class="leg-sq" style="background:#4a90d9"></span>Fyrirframinnheimt æfingagjöld</span>
+      <span class="leg"><span class="leg-sq" style="background:#7f77dd"></span>Ógreiddur kostnaður</span>
+      <span class="leg"><span class="leg-sq" style="background:rgba(248,247,244,0.3)"></span>Ýmsar aðrar</span>
+    </div>
+    <div style="position:relative;height:380px"><canvas id="debtStack"></canvas></div>
+  </div>
+
+  <div class="section-title">Millifélags­skuldir — nánar</div>
+  <div class="rel-grid">
+    <div class="rel-card">
+      <div class="rel-title danger">⚠ Körfuknattleikur mfl. skuldar Aðalstjórn</div>
+      <div class="rel-row"><span class="rel-lbl">Skuld við Aðalstjórn</span><span class="rel-val danger">95,3 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Eigið fé deildar</span><span class="rel-val danger">−92,7 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Tap 2024</span><span class="rel-val danger">−38,5 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Staða</span><span class="rel-val danger">Gjaldþrota ef ein</span></div>
+    </div>
+    <div class="rel-card">
+      <div class="rel-title danger">⚠ Handknattleikur mfl. skuldar Aðalstjórn</div>
+      <div class="rel-row"><span class="rel-lbl">Skuld við Aðalstjórn</span><span class="rel-val danger">60,0 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Eigið fé deildar</span><span class="rel-val danger">−52,4 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Hagnaður 2024</span><span class="rel-val ok">+1,3 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Staða</span><span class="rel-val danger">Gjaldþrota ef ein</span></div>
+    </div>
+    <div class="rel-card">
+      <div class="rel-title ok">✓ Knattspyrna mfl. — Aðalstjórn skuldar þeim</div>
+      <div class="rel-row"><span class="rel-lbl">Inneign hjá Aðalstjórn</span><span class="rel-val ok">+32,2 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Eigið fé deildar</span><span class="rel-val ok">+78,5 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Hagnaður 2024</span><span class="rel-val ok">+66,0 m.kr.</span></div>
+      <div class="rel-row"><span class="rel-lbl">Staða</span><span class="rel-val ok">Sterkasta deild</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Stuðningur Garðabæjar við Stjörnuna 2024</div>
+  <div class="info-box">
+    Ársreikningurinn sundurliðar ekki hvaðan styrkir koma en þrír liðir benda skýrt til Garðabæjar. <strong>Reiknuð afnot mannvirkja eru bæði tekjur og gjöld</strong> sem núllast saman — en endurspegla raunverulegan stuðning í formi húsnæðis. Óvíst er hvort hluti af línu "Styrkir og fjárö­flun" (388,8m) komi einnig frá bænum — mikilvæg spurning á fyrsta stjórnarfundi.
+  </div>
+  <div class="chart-card">
+    <div style="overflow-x:auto">
+      <table class="gb-table">
+        <thead>
+          <tr>
+            <th>Liður</th>
+            <th>Tegund</th>
+            <th>Fjárhæð</th>
+            <th>Hlutfall af heildartekjum</th>
+            <th>Athugasemd</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Reiknuð afnot íþróttamannvirkja</td>
+            <td><span class="tag tag-kind">Ópeningaleg</span></td>
+            <td style="color:var(--gold-light);font-weight:600">122,3 m.kr.</td>
+            <td>9,9%</td>
+            <td>Ókeypis aðgangur að mannvirkjum bæjarins — birtist bæði sem tekjur og gjöld</td>
+          </tr>
+          <tr>
+            <td>Rekstur knattspyrnuvalla</td>
+            <td><span class="tag tag-money">Peningaleg</span></td>
+            <td style="color:var(--gold-light);font-weight:600">61,0 m.kr.</td>
+            <td>4,9%</td>
+            <td>Greiðsla frá bænum fyrir rekstur og umsjón knattspyrnuvalla</td>
+          </tr>
+          <tr>
+            <td>Afrekssjóður</td>
+            <td><span class="tag tag-money">Peningaleg</span></td>
+            <td style="color:var(--gold-light);font-weight:600">60,0 m.kr.</td>
+            <td>4,9%</td>
+            <td>Sérstakur línuliður í reikn. Aðalstjórnar — líklega ÍTG-afreksstyrkir Garðabæjar</td>
+          </tr>
+          <tr>
+            <td>Hluti af "Styrkir og fjárö­flun"</td>
+            <td><span class="tag tag-money">Peningaleg?</span></td>
+            <td style="color:var(--muted)">Óþekkt</td>
+            <td>?</td>
+            <td>Hluti af 388,8m gæti komið frá Garðabæ — þarf sundurliðun</td>
+          </tr>
+          <tr class="total">
+            <td><strong>Samtals peningalegur stuðningur (þekktur)</strong></td>
+            <td></td>
+            <td><strong>121,0 m.kr.</strong></td>
+            <td><strong>9,8%</strong></td>
+            <td></td>
+          </tr>
+          <tr class="total">
+            <td><strong>Samtals með ópeningalegum stuðningi</strong></td>
+            <td></td>
+            <td><strong>243,3 m.kr.</strong></td>
+            <td><strong>~19,7%</strong></td>
+            <td>Garðabær er einn stærsti fjármögnunaraðili félagsins</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="charts-2col">
+    <div class="chart-card">
+      <h3>Garðabær stuðningur sem hlutfall af tekjum</h3>
+      <div class="chart-sub">Bær fjármagnar um 20% af rekstri þegar bæði er talið (m.kr.)</div>
+      <div style="position:relative;height:220px"><canvas id="gbChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Hvatapengar til barna og unglinga</h3>
+      <div class="chart-sub">Garðabær greiðir árlega hvatapeninga til íbúa 5–18 ára til að lækka kostnað við íþróttastarf.</div>
+      <div style="padding:1rem 0;font-size:13px;line-height:2;color:rgba(248,247,244,0.8)">
+        <div>→ Hvatapengar til barna 5–18 ára</div>
+        <div>→ Ókeypis sund í Ásgarðslaug og Álftaneslaug undir 18 ára</div>
+        <div>→ Íþróttaráð Garðabæjar (ÍTG) veitir afreksstyrki</div>
+        <div>→ Bærinn rekur og hlúir að mannvirkjum</div>
+        <div style="margin-top:1rem;color:var(--gold)">→ Lykilspurning á stjórnarfundi: Fáum við sundurliðun á öllum styrkjum frá bænum?</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Æfingagjöld á móti launakostnaði eftir deildum 2024</div>
+  <div class="info-box">
+    Þessi greining sýnir hvort deildir séu að greiða launakostnað sinn með æfingagjöldum. <strong>Meistaradeildir (mfl.) hafa nánast engar æfingagjaldstekjur</strong> — þær reiða sig á styrki og mótakekjur. <strong>Unglingadeildir (B&U) eru mun nær jafngildi</strong> — en sum þeirra ná samt ekki að þekja launakostnað eingöngu með æfingagjöldum.
+  </div>
+
+  <div class="chart-card">
+    <h3>Æfingagjöld vs launakostnaður (m.kr.)</h3>
+    <div class="chart-sub">Deildir þar sem gul stika (laun) er hærri en blá (æfingagjöld) þurfa aðrar tekjur til að greiða þjálfara</div>
+    <div class="legend">
+      <span class="leg"><span class="leg-sq" style="background:#4a90d9"></span>Æfingagjöld</span>
+      <span class="leg"><span class="leg-sq" style="background:#c9a84c"></span>Launakostnaður</span>
+    </div>
+    <div style="position:relative;height:320px"><canvas id="aefLaunChart"></canvas></div>
+  </div>
+
+  <div class="charts-2col">
+    <div class="chart-card">
+      <h3>Þekjuhlutfall — æfingagjöld sem % af launum</h3>
+      <div class="chart-sub">100% þýðir að æfingagjöld þekja nákvæmlega launakostnað.</div>
+      <div style="position:relative;height:320px"><canvas id="coverChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Sundurliðuð þekjutafla</h3>
+      <div class="chart-sub">Nákvæmar tölur — allar fjárhæðir í m.kr.</div>
+      <div style="overflow-x:auto;margin-top:0.5rem">
+        <table class="gb-table" id="aefTable">
+          <thead>
+            <tr>
+              <th>Deild</th>
+              <th style="text-align:right">Æfingagjöld</th>
+              <th style="text-align:right">Laun</th>
+              <th style="text-align:right">Mismunur</th>
+              <th style="text-align:right">Þekja</th>
+            </tr>
+          </thead>
+          <tbody id="aefTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Styrkir og fjárö­flun sem hlutfall af heildartekjum eftir deildum 2024</div>
+  <div class="info-box">
+    Þessi greining sýnir hversu <strong>styrk­háðar</strong> deildarnar eru. Meistaradeildir í handknattleik og fimleik eru nær <strong>95% háðar styrkjum</strong> — ef styrkir dragast saman hrynur reksturinn. Unglingadeildir (B&U) eru aftur á móti að mestu sjálfbærar með æfingagjöldum. <strong>Knattspyrna mfl.</strong> er áhugaverð undantekning — meistaradeild með aðeins 32% styrk­háð vegna mikilla mótakekna.
+  </div>
+
+  <div class="charts-2col">
+    <div class="chart-card">
+      <h3>Styrkhlutfall eftir deildum</h3>
+      <div class="chart-sub">Hlutfall styrkja og fjárö­flunar af heildartekjum — raðað frá hæstu til lægstu</div>
+      <div class="legend">
+        <span class="leg"><span class="leg-sq" style="background:#e07070"></span>Yfir 80% — mjög háð styrkjum</span>
+        <span class="leg"><span class="leg-sq" style="background:#c9a84c"></span>40–80% — háð styrkjum</span>
+        <span class="leg"><span class="leg-sq" style="background:#4ecb87"></span>Undir 40% — hlutlægt sjálfbær</span>
+      </div>
+      <div style="position:relative;height:340px"><canvas id="styrkChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Styrk­háðni — samanburður mfl. vs B&U</h3>
+      <div class="chart-sub">Meistaradeildir eru mun háðari styrkjum en unglingadeildir</div>
+      <div style="position:relative;height:220px"><canvas id="styrkComp"></canvas></div>
+      <div style="margin-top:1.5rem">
+        <table class="gb-table" id="styrkTable">
+          <thead>
+            <tr>
+              <th>Deild</th>
+              <th style="text-align:right">Styrkir</th>
+              <th style="text-align:right">Heildartekjur</th>
+              <th style="text-align:right">Hlutfall</th>
+            </tr>
+          </thead>
+          <tbody id="styrkTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <strong>UMF Stjarnan — Stjórnendayfirlit 2024</strong> · Byggt á endurskoðuðum samstæðuársreikningi · Deloitte, maí 2025 · <a href="https://www.stjarnan.is" style="color:var(--gold)">stjarnan.is</a>
+</footer>
+
+<script>
+Chart.defaults.color = 'rgba(248,247,244,0.55)';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+const pieLabels = ['Styrkir og fjárö­flun','Æfingagjöld','Aðrar tekjur','Mótakekjur','Reiknuð afnot mannvirkja','Rekstur knattspyrnuvalla'];
+const pieVals   = [388.8, 356.2, 165.4, 140.3, 122.3, 61.0];
+const pieColors = ['#4a90d9','#4ecb87','#c9a84c','#e07b39','#7f77dd','#888780'];
+new Chart(document.getElementById('revPie'), {
+  type: 'doughnut',
+  data: { labels: pieLabels, datasets: [{ data: pieVals, backgroundColor: pieColors, borderWidth: 0 }] },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw.toFixed(1) + 'm (' + ((ctx.raw/1234)*100).toFixed(1) + '%)' } } },
+    cutout: '62%'
+  }
+});
+const pieLeg = document.getElementById('pieLeg');
+pieLabels.forEach((l,i) => {
+  pieLeg.innerHTML += `<div style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:${pieColors[i]};flex-shrink:0"></span>${l} (${((pieVals[i]/1234)*100).toFixed(0)}%)</div>`;
+});
+
+const divNames = ['Knattspyrna mfl.','Knattspyrna B&U','Fimleikur B&U','Handknattleikur mfl.','Körfuknattl. B&U','Handknattl. B&U','Körfuknattl. mfl.','Fimleikur mfl.','Sunddeild','Lyftingadeild','Almenningsíþróttad.'];
+const divRevVals = [355.9, 145.7, 146.8, 79.1, 60.3, 41.9, 53.0, 14.5, 10.6, 8.2, 6.5];
+const paired = divNames.map((n,i)=>[n,divRevVals[i]]).sort((a,b)=>b[1]-a[1]);
+new Chart(document.getElementById('divRevChart'), {
+  type: 'bar', indexAxis: 'y',
+  data: { labels: paired.map(p=>p[0]), datasets: [{ data: paired.map(p=>p[1]), backgroundColor: '#4a90d9', borderRadius: 3 }] },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.raw.toFixed(1) + ' m.kr.' } } }, scales: { x: { ticks: { callback: v => v + 'm' } }, y: { ticks: { font: { size: 11 } } } } }
+});
+
+const netLabels = ['Knattspyrna mfl.','Knattspyrna B&U','Handknattleikur mfl.','Fimleikur mfl.','Almenningsíþróttad.','Sunddeild','Handknattl. B&U','Lyftingadeild','Körfuknattl. B&U','Fimleikur B&U','Körfuknattl. mfl.'];
+const netVals = [66.0, 2.9, 1.3, 3.3, 2.3, 0.7, -3.9, -2.5, -1.8, -5.3, -38.5];
+new Chart(document.getElementById('divNet'), {
+  type: 'bar',
+  data: { labels: netLabels, datasets: [{ data: netVals, backgroundColor: netVals.map(v=>v>=0?'#4ecb87':'#e07070'), borderRadius: 4 }] },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => (ctx.raw>0?'+':'')+ctx.raw.toFixed(1)+' m.kr.' } } }, scales: { x: { ticks: { font: { size: 11 }, maxRotation: 35 } }, y: { ticks: { callback: v=>(v>0?'+':'')+v+'m' } } } }
+});
+
+const reNames = ['Knattspyrna mfl.','Knattspyrna B&U','Fimleikur B&U','Handknattl. mfl.','Körfuknattl. B&U','Handknattl. B&U','Körfuknattl. mfl.','Fimleikur mfl.','Sunddeild','Lyftingadeild','Almenningsíþróttad.'];
+new Chart(document.getElementById('revExp'), {
+  type: 'bar',
+  data: { labels: reNames, datasets: [
+    { label: 'Tekjur', data: [355.9,145.7,146.8,79.1,60.3,41.9,53.0,14.5,10.6,8.2,6.5], backgroundColor: '#4a90d9', borderRadius: 3 },
+    { label: 'Gjöld', data: [290.2,143.1,152.4,76.0,62.2,45.9,91.6,11.3,9.9,10.7,4.5], backgroundColor: '#c9a84c', borderRadius: 3 }
+  ] },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { ticks: { font:{size:11}, maxRotation:35 } }, y: { ticks: { callback: v=>v+'m' } } } }
+});
+
+const eqLabels = ['Aðalstjórn','Knattspyrna mfl.','Fimleikur B&U','Knattspyrna B&U','Fimleikur mfl.','Körfuknattl. B&U','Sunddeild','Lyftingadeild','Almenningsíþróttad.','Handknattl. B&U','Handknattl. mfl.','Körfuknattl. mfl.'];
+const eqVals = [148.3,78.5,37.0,32.6,14.8,12.1,11.1,9.3,8.2,-2.2,-52.4,-92.7];
+new Chart(document.getElementById('equityChart'), {
+  type: 'bar', indexAxis: 'y',
+  data: { labels: eqLabels, datasets: [{ data: eqVals, backgroundColor: eqVals.map(v=>v>=0?'#4ecb87':'#e07070'), borderRadius: 3 }] },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend:{display:false} }, scales: { x:{ticks:{callback:v=>v+'m',font:{size:10}}}, y:{ticks:{font:{size:10}}} } }
+});
+
+new Chart(document.getElementById('yoyChart'), {
+  type: 'bar',
+  data: { labels: ['Heildartekjur','Heildarkostn.','Rekstrarniðurstaða','Handbært fé','Eigið fé'],
+    datasets: [
+      { label:'2024', data:[1234,1194.2,56.4,219.5,204.6], backgroundColor:'#4a90d9', borderRadius:3 },
+      { label:'2023', data:[1015.4,1038.6,-12.6,133.7,148.3], backgroundColor:'rgba(248,247,244,0.2)', borderRadius:3 }
+    ]
+  },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{x:{ticks:{font:{size:11}}},y:{ticks:{callback:v=>v+'m'}}} }
+});
+
+const debtLabels = ['Körfuknattl. mfl.','Aðalstjórn','Handknattl. mfl.','Knattspyrna B&U','Körfuknattl. B&U','Handknattl. B&U','Knattspyrna mfl.','Fimleikur B&U','Lyftingadeild','Almenningsíþróttad.','Sunddeild','Fimleikur mfl.'];
+new Chart(document.getElementById('debtStack'), {
+  type: 'bar', indexAxis: 'y',
+  data: { labels: debtLabels, datasets: [
+    { label:'Skuldir við Aðalstjórn', data:[95.3,0,60.0,0,0,0,0,0,0,0,0,0], backgroundColor:'#c0392b' },
+    { label:'Inneign hjá Aðalstjórn', data:[0,65.2,0,0,0,0,0,0,0,0,0,0], backgroundColor:'#e07b39' },
+    { label:'Fyrirframinnheimt æfingagjöld', data:[0,0,0,47.1,17.7,13.4,0,0,0,0,0,0], backgroundColor:'#4a90d9' },
+    { label:'Ógreiddur kostnaður', data:[0.7,19.6,1.8,0.6,1.2,0.7,3.2,0.1,0,0.2,0.1,0], backgroundColor:'#7f77dd' },
+    { label:'Ýmsar aðrar skuldir', data:[0.1,1.5,1.2,0,0,0,6.5,0.6,0.4,0,0,0], backgroundColor:'rgba(248,247,244,0.25)' }
+  ] },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{x:{stacked:true,ticks:{callback:v=>v+'m',font:{size:11}}},y:{stacked:true,ticks:{font:{size:11}}}} }
+});
+
+const aefData = [
+  { deild: 'Fimleikur B&U',       aef: 128.2, laun: 140.4 },
+  { deild: 'Knattspyrna B&U',     aef: 122.4, laun: 127.2 },
+  { deild: 'Aðalstjórn',          aef: 0,     laun: 124.1 },
+  { deild: 'Knattspyrna mfl.',    aef: 0,     laun: 180.2 },
+  { deild: 'Körfuknattl. B&U',    aef: 53.1,  laun: 51.6  },
+  { deild: 'Handknattl. B&U',     aef: 34.0,  laun: 42.0  },
+  { deild: 'Körfuknattl. mfl.',   aef: 0,     laun: 60.6  },
+  { deild: 'Handknattl. mfl.',    aef: 0,     laun: 52.9  },
+  { deild: 'Lyftingadeild',       aef: 7.5,   laun: 8.9   },
+  { deild: 'Sunddeild',           aef: 7.9,   laun: 8.4   },
+  { deild: 'Almenningsíþróttad.', aef: 2.6,   laun: 2.9   },
+  { deild: 'Fimleikur mfl.',      aef: 0.4,   laun: 9.9   },
+];
+aefData.sort((a,b) => b.laun - a.laun);
+
+new Chart(document.getElementById('aefLaunChart'), {
+  type: 'bar',
+  data: {
+    labels: aefData.map(d => d.deild),
+    datasets: [
+      { label: 'Æfingagjöld', data: aefData.map(d => d.aef), backgroundColor: '#4a90d9', borderRadius: 3 },
+      { label: 'Launakostnaður', data: aefData.map(d => d.laun), backgroundColor: '#c9a84c', borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { x: { ticks: { font: { size: 11 }, maxRotation: 35, autoSkip: false } }, y: { ticks: { callback: v => v + 'm' } } }
+  }
+});
+
+const coverData = aefData.map(d => ({ deild: d.deild, ratio: d.laun > 0 ? Math.round((d.aef / d.laun) * 100) : 0 })).sort((a,b) => b.ratio - a.ratio);
+new Chart(document.getElementById('coverChart'), {
+  type: 'bar', indexAxis: 'y',
+  data: {
+    labels: coverData.map(d => d.deild),
+    datasets: [{
+      data: coverData.map(d => d.ratio),
+      backgroundColor: coverData.map(d => d.ratio >= 100 ? '#4ecb87' : d.ratio >= 70 ? '#c9a84c' : '#e07070'),
+      borderRadius: 3
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.raw + '% þekja' } } },
+    scales: { x: { ticks: { callback: v => v + '%', font: { size: 11 } }, max: 120 }, y: { ticks: { font: { size: 11 } } } }
+  }
+});
+
+const tbody = document.getElementById('aefTbody');
+aefData.forEach(d => {
+  const diff = d.aef - d.laun;
+  const ratio = d.laun > 0 ? Math.round((d.aef / d.laun) * 100) : 0;
+  const diffColor = diff >= 0 ? '#4ecb87' : '#e07070';
+  const ratioColor = ratio >= 100 ? '#4ecb87' : ratio >= 70 ? '#e8a83a' : '#e07070';
+  tbody.innerHTML += `<tr>
+    <td>${d.deild}</td>
+    <td style="text-align:right;color:#4a90d9;font-weight:500">${d.aef.toFixed(1)}m</td>
+    <td style="text-align:right;color:#c9a84c;font-weight:500">${d.laun.toFixed(1)}m</td>
+    <td style="text-align:right;color:${diffColor};font-weight:600">${diff >= 0 ? '+' : ''}${diff.toFixed(1)}m</td>
+    <td style="text-align:right;color:${ratioColor};font-weight:600">${ratio}%</td>
+  </tr>`;
+});
+
+const styrkData = [
+  { deild: 'Fimleikur mfl.',      styrkir: 13.8,  tekjur: 14.5  },
+  { deild: 'Handknattleikur mfl.',styrkir: 75.3,  tekjur: 79.1  },
+  { deild: 'Körfuknattleikur mfl.',styrkir: 46.9, tekjur: 53.0  },
+  { deild: 'Aðalstjórn',          styrkir: 179.8, tekjur: 377.3 },
+  { deild: 'Almenningsíþróttad.', styrkir: 2.9,   tekjur: 6.5   },
+  { deild: 'Knattspyrna mfl.',    styrkir: 115.4, tekjur: 355.9 },
+  { deild: 'Sunddeild',           styrkir: 0.4,   tekjur: 10.6  },
+  { deild: 'Knattspyrna B&U',     styrkir: 19.2,  tekjur: 145.7 },
+  { deild: 'Körfuknattl. B&U',    styrkir: 2.8,   tekjur: 60.3  },
+  { deild: 'Handknattl. B&U',     styrkir: 1.3,   tekjur: 41.9  },
+  { deild: 'Fimleikur B&U',       styrkir: 2.3,   tekjur: 146.8 },
+  { deild: 'Lyftingadeild',       styrkir: 0,     tekjur: 8.2   },
+].map(d => ({ ...d, pct: Math.round((d.styrkir / d.tekjur) * 100) }))
+ .sort((a, b) => b.pct - a.pct);
+
+const styrkColors = styrkData.map(d => d.pct >= 80 ? '#e07070' : d.pct >= 40 ? '#c9a84c' : '#4ecb87');
+new Chart(document.getElementById('styrkChart'), {
+  type: 'bar', indexAxis: 'y',
+  data: { labels: styrkData.map(d => d.deild), datasets: [{ data: styrkData.map(d => d.pct), backgroundColor: styrkColors, borderRadius: 3 }] },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.raw + '% af heildartekjum' } } },
+    scales: { x: { max: 110, ticks: { callback: v => v + '%', font: { size: 11 } } }, y: { ticks: { font: { size: 11 } } } }
+  }
+});
+
+new Chart(document.getElementById('styrkComp'), {
+  type: 'bar',
+  data: {
+    labels: ['Knattspyrna', 'Handknattleikur', 'Körfuknattleikur', 'Fimleikur'],
+    datasets: [
+      { label: 'Meistarar (mfl.)', data: [32, 95, 88, 95], backgroundColor: '#e07070', borderRadius: 3 },
+      { label: 'Börn og unglingar (B&U)', data: [13, 3, 5, 2], backgroundColor: '#4ecb87', borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { x: { ticks: { font: { size: 11 } } }, y: { max: 110, ticks: { callback: v => v + '%', font: { size: 11 } } } }
+  }
+});
+
+const styrkTbody = document.getElementById('styrkTbody');
+styrkData.forEach(d => {
+  const c = d.pct >= 80 ? '#e07070' : d.pct >= 40 ? '#e8a83a' : '#4ecb87';
+  styrkTbody.innerHTML += `<tr>
+    <td>${d.deild}</td>
+    <td style="text-align:right;color:rgba(248,247,244,0.75)">${d.styrkir.toFixed(1)}m</td>
+    <td style="text-align:right;color:rgba(248,247,244,0.75)">${d.tekjur.toFixed(1)}m</td>
+    <td style="text-align:right;font-weight:600;color:${c}">${d.pct}%</td>
+  </tr>`;
+});
+
+new Chart(document.getElementById('gbChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Rekstur knattspyrnuvalla','Afrekssjóður','Reiknuð afnot mannvirkja','Aðrar tekjur (utan Garðabæjar)'],
+    datasets: [{ data:[61,60,122.3,990.7], backgroundColor:['#4ecb87','#4a90d9','#c9a84c','rgba(248,247,244,0.1)'], borderWidth:0 }]
+  },
+  options: { responsive:true, maintainAspectRatio:false, cutout:'60%', plugins:{legend:{display:false}} }
+});
+</script>
+</body>
+</html>
