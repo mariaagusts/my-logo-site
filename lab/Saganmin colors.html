@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sagan mín — Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:   #faf6f0;
+      --warm:    #f5ece0;
+      --gold:    #c49a6c;
+      --gold-lt: #e8d5b7;
+      --brown:   #8b5e3c;
+      --dark:    #2c1a0e;
+      --mid:     #6b4226;
+      --card:    #fffdf8;
+      --border:  #e2ceb0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.8;
+      padding: 48px 24px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page { max-width: 900px; margin: 0 auto; }
+
+    /* —— Header —— */
+    .guide-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .guide-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2.8rem;
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+    .guide-header .ornament {
+      color: var(--gold);
+      letter-spacing: 12px;
+      font-size: 14px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .guide-header p {
+      color: var(--mid);
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    /* —— Section —— */
+    .section { margin-bottom: 56px; }
+    .section-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--mid);
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.02em;
+    }
+
+    /* —— Color swatches —— */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+    }
+    .swatch {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(44,26,14,0.08);
+      background: var(--card);
+    }
+    .swatch-color { height: 80px; width: 100%; }
+    .swatch-info { padding: 10px 12px; }
+    .swatch-name { font-weight: 700; font-size: 0.85rem; color: var(--dark); }
+    .swatch-hex { font-size: 0.78rem; color: var(--mid); font-family: monospace; }
+    .swatch-use { margin-top: 2px; font-size: 0.72rem; color: var(--brown); }
+
+    /* —— Typography —— */
+    .type-row {
+      background: var(--card);
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(44,26,14,0.08);
+      padding: 24px 32px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+    }
+    .type-label {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      min-width: 80px;
+    }
+    .t-h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; color: var(--dark); }
+    .t-h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--dark); }
+    .t-h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--brown); }
+    .t-body { font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 400; color: var(--dark); }
+    .t-small { font-family: 'Lato', sans-serif; font-size: 0.88rem; color: var(--mid); }
+    .t-label { font-family: 'Lato', sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--brown); letter-spacing: 0.1em; text-transform: uppercase; }
+    .t-ornament { color: var(--gold); font-size: 14px; letter-spacing: 10px; }
+
+    /* —— Buttons —— */
+    .button-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+    .btn-primary {
+      background: var(--dark); color: var(--cream);
+      border: none; padding: 15px 40px;
+      font-size: 14px; font-family: 'Lato', sans-serif;
+      font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      cursor: pointer; border-radius: 12px; transition: all 0.25s;
+    }
+    .btn-primary:hover { background: var(--brown); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(44,26,14,0.2); }
+
+    .btn-outline {
+      background: var(--cream); border: 2px solid var(--border);
+      color: var(--brown); padding: 13px 32px;
+      font-size: 14px; font-family: 'Lato', sans-serif;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; border-radius: 12px; transition: all 0.25s;
+      box-shadow: 0 2px 8px rgba(44,26,14,0.08);
+    }
+    .btn-outline:hover { border-color: var(--brown); background: var(--warm); transform: translateY(-2px); }
+
+    .btn-back {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--brown); padding: 8px 18px;
+      font-size: 13px; font-family: 'Lato', sans-serif;
+      letter-spacing: 0.05em; cursor: pointer; border-radius: 3px; transition: all 0.2s;
+    }
+    .btn-back:hover { background: var(--warm); border-color: var(--brown); }
+
+    .btn-signout {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--mid); padding: 6px 14px;
+      font-size: 12px; font-family: 'Lato', sans-serif;
+      letter-spacing: 0.06em; cursor: pointer; border-radius: 3px; transition: all 0.2s;
+    }
+    .btn-signout:hover { background: var(--warm); }
+
+    /* —— Cards —— */
+    .cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(44,26,14,0.08);
+      padding: 28px;
+    }
+    .card-ornament { color: var(--gold); font-size: 22px; margin-bottom: 12px; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--dark); margin-bottom: 6px; }
+    .card p { font-size: 0.9rem; color: var(--mid); line-height: 1.6; }
+    .card-warm { background: var(--warm); }
+    .card-gold-lt { background: var(--gold-lt); }
+
+    /* —— Ornament divider —— */
+    .ornament-divider {
+      text-align: center;
+      color: var(--gold);
+      letter-spacing: 10px;
+      font-size: 13px;
+      margin: 32px 0;
+      opacity: 0.7;
+    }
+
+    /* —— Input —— */
+    .input-row { display: flex; flex-direction: column; gap: 14px; max-width: 480px; }
+    .field-label {
+      font-weight: 700; font-size: 0.82rem;
+      color: var(--mid); margin-bottom: 4px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      display: block;
+    }
+    input[type="text"], textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid var(--border); border-radius: 6px;
+      font-family: 'Lato', sans-serif; font-size: 0.95rem;
+      background: var(--card); color: var(--dark);
+      outline: none; transition: border-color 0.2s;
+    }
+    input[type="text"]:focus, textarea:focus { border-color: var(--gold); }
+    textarea { resize: vertical; min-height: 80px; }
+
+    /* —— Progress bar (used in loading screens) —— */
+    .progress-demo {
+      background: var(--border); border-radius: 99px; height: 6px;
+      overflow: hidden; width: 280px;
+    }
+    .progress-fill {
+      height: 100%; background: var(--gold);
+      border-radius: 99px; width: 60%;
+    }
+
+    /* —— Spinner —— */
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .spinner-demo { font-size: 36px; color: var(--brown); animation: spin 2s linear infinite; display: inline-block; }
+
+    /* —— Divider —— */
+    .divider { height: 1px; background: var(--border); margin: 40px 0; border: none; opacity: 0.5; }
+
+    /* —— Footer —— */
+    .guide-footer { text-align: center; font-size: 0.8rem; color: var(--gold); margin-top: 60px; letter-spacing: 0.06em; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="guide-header">
+    <span class="ornament">✦ ✦ ✦</span>
+    <h1>Sagan mín</h1>
+    <p>Style Guide &amp; Colour Reference — updated whenever you change things</p>
+  </header>
+
+  <!-- COLOURS -->
+  <section class="section">
+    <div class="section-label">Core Palette</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#c49a6c; height:100px"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gold</div>
+          <div class="swatch-hex">#c49a6c · --gold</div>
+          <div class="swatch-use">Primary accent · ornaments · progress</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#8b5e3c; height:100px"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brown</div>
+          <div class="swatch-hex">#8b5e3c · --brown</div>
+          <div class="swatch-use">Logo · headings · outline buttons</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2c1a0e; height:100px"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Dark</div>
+          <div class="swatch-hex">#2c1a0e · --dark</div>
+          <div class="swatch-use">Primary button · body text</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#faf6f0; height:100px; border: 1px solid #e2ceb0"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cream</div>
+          <div class="swatch-hex">#faf6f0 · --cream</div>
+          <div class="swatch-use">Page background</div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="section-label" style="font-size:1rem">Tints &amp; Backgrounds</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#f5ece0"></div>
+        <div class="swatch-info"><div class="swatch-name">warm</div><div class="swatch-hex">#f5ece0</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e8d5b7"></div>
+        <div class="swatch-info"><div class="swatch-name">gold-lt</div><div class="swatch-hex">#e8d5b7</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#e2ceb0"></div>
+        <div class="swatch-info"><div class="swatch-name">border</div><div class="swatch-hex">#e2ceb0</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#fffdf8; border: 1px solid #e2ceb0"></div>
+        <div class="swatch-info"><div class="swatch-name">card</div><div class="swatch-hex">#fffdf8</div></div>
+      </div>
+    </div>
+
+    <br>
+    <div class="section-label" style="font-size:1rem">Text Tones</div>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2c1a0e"></div>
+        <div class="swatch-info"><div class="swatch-name">dark</div><div class="swatch-hex">#2c1a0e</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6b4226"></div>
+        <div class="swatch-info"><div class="swatch-name">mid</div><div class="swatch-hex">#6b4226</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#8b5e3c"></div>
+        <div class="swatch-info"><div class="swatch-name">brown</div><div class="swatch-hex">#8b5e3c</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#c49a6c"></div>
+        <div class="swatch-info"><div class="swatch-name">gold</div><div class="swatch-hex">#c49a6c</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPOGRAPHY -->
+  <section class="section">
+    <div class="section-label">Typography</div>
+    <div class="type-row">
+      <span class="type-label">H1 italic</span>
+      <span class="t-h1">Sagan mín</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">H2</span>
+      <span class="t-h2">Segðu frá lífi þínu</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">H3</span>
+      <span class="t-h3">Kafli I — Upphafið</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Body</span>
+      <span class="t-body">Lato 400 — warm, readable, understated. Used for all body copy and UI text.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Small</span>
+      <span class="t-small">Secondary text, helper notes, nav links — still easy to read.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Label</span>
+      <span class="t-label">Chapter · Progress · Meta</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Ornament</span>
+      <span class="t-ornament">✦ ✦ ✦</span>
+    </div>
+  </section>
+
+  <!-- BUTTONS -->
+  <section class="section">
+    <div class="section-label">Buttons</div>
+    <div class="button-row">
+      <button class="btn-primary">Byrja frítt</button>
+      <button class="btn-outline">Sjá dæmi</button>
+      <button class="btn-back">← Til baka</button>
+      <button class="btn-signout">Skrá út</button>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="section">
+    <div class="section-label">Cards</div>
+    <div class="cards-row">
+      <div class="card">
+        <div class="card-ornament">✦</div>
+        <h3>White card</h3>
+        <p>Default card — used for chapter cards, answer boxes, modals.</p>
+      </div>
+      <div class="card card-warm">
+        <div class="card-ornament">✦</div>
+        <h3>Warm card</h3>
+        <p>Warm tint — used for hero sections and soft backgrounds.</p>
+      </div>
+      <div class="card card-gold-lt">
+        <div class="card-ornament">✦</div>
+        <h3>Gold tint card</h3>
+        <p>Light gold — used for highlights, completed chapter badges.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOADING / PROGRESS -->
+  <section class="section">
+    <div class="section-label">Loading &amp; Progress</div>
+    <div class="card" style="text-align:center; padding: 48px;">
+      <div class="spinner-demo" style="margin-bottom:20px;">✧</div>
+      <p style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--mid);margin-bottom:8px;">Við erum að leggja lokahönd á frásögnina þína...</p>
+      <p style="font-size:13px;font-style:italic;color:var(--gold);margin-bottom:28px;opacity:0.8;">Söfnum saman minningum þínum...</p>
+      <div style="width:280px;margin:0 auto;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:12px;color:var(--brown);">
+          <span>✍️ Skrifa</span>
+          <span style="opacity:0.4;">🖋 Móta</span>
+          <span style="opacity:0.4;">✨ Fínpússa</span>
+        </div>
+        <div class="progress-demo"><div class="progress-fill"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM ELEMENTS -->
+  <section class="section">
+    <div class="section-label">Form Elements</div>
+    <div class="input-row">
+      <div>
+        <label class="field-label">Nafnið þitt</label>
+        <input type="text" placeholder="t.d. Sigríður">
+      </div>
+      <div>
+        <label class="field-label">Svar þitt</label>
+        <textarea placeholder="Skrifaðu hér..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPACING & RADIUS -->
+  <section class="section">
+    <div class="section-label">Radius</div>
+    <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-end;">
+      <div style="text-align:center">
+        <div style="width:40px;height:40px;border-radius:3px;background:var(--gold-lt);border:1px solid var(--border);margin:0 auto 6px"></div>
+        <span class="t-small">3px · nav btns</span>
+      </div>
+      <div style="text-align:center">
+        <div style="width:40px;height:40px;border-radius:6px;background:var(--gold-lt);border:1px solid var(--border);margin:0 auto 6px"></div>
+        <span class="t-small">6px · inputs</span>
+      </div>
+      <div style="text-align:center">
+        <div style="width:40px;height:40px;border-radius:8px;background:var(--gold);margin:0 auto 6px"></div>
+        <span class="t-small">8px · cards</span>
+      </div>
+      <div style="text-align:center">
+        <div style="width:40px;height:40px;border-radius:12px;background:var(--brown);margin:0 auto 6px"></div>
+        <span class="t-small">12px · buttons</span>
+      </div>
+      <div style="text-align:center">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--dark);margin:0 auto 6px"></div>
+        <span class="t-small">50% · close btns</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+  <div class="ornament-divider">✦ ✦ ✦</div>
+
+  <footer class="guide-footer">
+    Sagan mín · Multa Bene Agere ehf. · colors.html · open this file anytime to check the palette
+  </footer>
+
+</div>
+</body>
+</html>
