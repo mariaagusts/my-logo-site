@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 mínútna þrif</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Þrif">
+<meta name="theme-color" content="#FF4E2A">
+<link id="favicon" rel="icon" type="image/png">
+<link id="apple-icon" rel="apple-touch-icon">
+<link id="manifest-link" rel="manifest">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #FFF5F0;
+  color: #1a1a1a;
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 90px;
+}
+.screen { display: none; }
+.screen.active { display: block; }
+.header {
+  display: flex; align-items: center;
+  justify-content: space-between; padding: 20px 0 16px;
+}
+.header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: #FF4E2A; }
+
+.suggestion-card {
+  background: #FF4E2A; color: white; border-radius: 22px;
+  padding: 22px; margin-bottom: 16px;
+  position: relative; overflow: hidden;
+}
+.suggestion-card::before {
+  content: ''; position: absolute; top: -30px; right: -30px;
+  width: 130px; height: 130px; background: rgba(255,255,255,0.1); border-radius: 50%;
+}
+.suggestion-card::after {
+  content: ''; position: absolute; bottom: -20px; right: 40px;
+  width: 80px; height: 80px; background: rgba(255,255,255,0.07); border-radius: 50%;
+}
+.suggestion-label {
+  font-size: 11px; opacity: 0.75; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 8px; font-weight: 600;
+}
+.suggestion-zone { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.suggestion-last { font-size: 13px; opacity: 0.8; margin-bottom: 20px; }
+.btn-start {
+  background: white; color: #FF4E2A; border: none; border-radius: 12px;
+  padding: 11px 22px; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: transform 0.1s; position: relative; z-index: 1;
+}
+.btn-start:hover { transform: scale(1.03); }
+.btn-start:active { transform: scale(0.97); }
+
+.legend {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  background: white; border-radius: 14px;
+  padding: 10px 14px; margin-bottom: 16px;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: #888; font-weight: 500; white-space: nowrap;
+}
+.legend-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+.legend-dot.ld-fresh  { background: #00C96B; }
+.legend-dot.ld-medium { background: #FF9500; }
+.legend-dot.ld-stale  { background: #FF3B30; }
+.legend-dot.ld-never  { background: #C8C8C8; }
+
+.section-label {
+  font-size: 11px; color: #aaa; font-weight: 600;
+  margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.8px;
+}
+.zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.zone-card {
+  border-radius: 18px; padding: 14px 14px 34px;
+  position: relative; cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.15s, transform 0.12s;
+}
+.zone-card:hover { transform: translateY(-2px); border-color: rgba(0,0,0,0.08); }
+.zone-card:active { transform: scale(0.97); }
+.freshness-dot {
+  position: absolute; top: 12px; right: 12px;
+  width: 13px; height: 13px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+.fresh  { background: #00C96B; }
+.medium { background: #FF9500; }
+.stale  { background: #FF3B30; }
+.never  { background: #C8C8C8; }
+.zone-icon { font-size: 26px; margin-bottom: 8px; line-height: 1; }
+.zone-name { font-size: 13px; font-weight: 600; line-height: 1.35; margin-bottom: 4px; color: #1a1a1a; }
+.zone-last { font-size: 11px; color: rgba(0,0,0,0.35); }
+.multiple-tag {
+  position: absolute; top: 10px; right: 28px;
+  font-size: 9px; color: rgba(0,0,0,0.28); font-weight: 600;
+  letter-spacing: 0.4px; text-transform: uppercase;
+}
+.reset-btn {
+  position: absolute; bottom: 8px; right: 10px;
+  font-size: 15px; color: rgba(0,0,0,0.18); cursor: pointer;
+  padding: 4px 6px; border-radius: 6px;
+  transition: color 0.15s, background 0.15s; line-height: 1; border: none; background: none;
+}
+.reset-btn:hover { color: #FF3B30; background: rgba(255,59,48,0.1); }
+.delete-zone-btn {
+  position: absolute; bottom: 8px; left: 10px;
+  font-size: 13px; color: rgba(0,0,0,0.15); cursor: pointer;
+  padding: 4px 6px; border-radius: 6px;
+  transition: color 0.15s, background 0.15s; line-height: 1; border: none; background: none;
+}
+.delete-zone-btn:hover { color: #FF3B30; background: rgba(255,59,48,0.1); }
+
+.add-zone-box {
+  background: white; border-radius: 18px; padding: 16px;
+  margin-top: 14px; border: 2px dashed #FFD0C4;
+}
+.add-zone-title {
+  font-size: 11px; font-weight: 700; color: #FF4E2A;
+  text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px;
+}
+.add-zone-inputs { display: flex; gap: 8px; align-items: center; }
+.add-zone-emoji {
+  width: 48px; height: 40px; border: 1.5px solid #FFD0C4; border-radius: 10px;
+  background: #FFF5F0; font-size: 20px; text-align: center; cursor: pointer; outline: none;
+}
+.add-zone-name-input {
+  flex: 1; height: 40px; border: 1.5px solid #FFD0C4; border-radius: 10px;
+  background: #FFF5F0; padding: 0 12px; font-size: 14px; outline: none;
+  font-family: inherit; color: #1a1a1a;
+}
+.add-zone-name-input:focus { border-color: #FF4E2A; }
+.add-zone-btn {
+  height: 40px; padding: 0 16px; background: #FF4E2A; color: white;
+  border: none; border-radius: 10px; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: opacity 0.15s; white-space: nowrap;
+}
+.add-zone-btn:hover { opacity: 0.88; }
+.add-zone-hint { font-size: 11px; color: #ccc; margin-top: 8px; }
+
+.timer-wrap {
+  display: flex; flex-direction: column; align-items: center; padding-top: 32px;
+}
+.timer-zone-label {
+  font-size: 17px; font-weight: 600; color: #444; text-align: center;
+  margin-bottom: 36px; max-width: 260px; line-height: 1.4;
+}
+.ring-wrap { position: relative; width: 220px; height: 220px; margin-bottom: 40px; }
+.ring-wrap svg { transform: rotate(-90deg); display: block; }
+.ring-track { fill: none; stroke: #FFD8CC; stroke-width: 10; }
+.ring-prog  { fill: none; stroke: #FF4E2A; stroke-width: 10; stroke-linecap: round; }
+.timer-center {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); text-align: center; pointer-events: none;
+}
+.timer-time { font-size: 56px; font-weight: 200; letter-spacing: -2px; line-height: 1; color: #FF4E2A; }
+.timer-sublabel { font-size: 12px; color: #ccc; margin-top: 4px; }
+.timer-btns { display: flex; gap: 12px; }
+.btn-secondary {
+  border: 2px solid #eee; background: white; border-radius: 12px;
+  padding: 12px 28px; font-size: 15px; font-weight: 600; cursor: pointer; color: #888;
+}
+.btn-secondary:hover { background: #f5f5f5; }
+.btn-primary-outline {
+  border: 2px solid #FF4E2A; color: #FF4E2A; background: white;
+  border-radius: 12px; padding: 12px 28px; font-size: 15px; font-weight: 600; cursor: pointer;
+}
+.btn-primary-outline:hover { background: #FFF0EC; }
+.timer-done-early {
+  margin-top: 24px; font-size: 13px; color: #ccc;
+  cursor: pointer; border: none; background: none; padding: 8px; font-weight: 500;
+}
+.timer-done-early:hover { color: #999; }
+
+.done-wrap {
+  display: flex; flex-direction: column;
+  align-items: center; padding-top: 60px; text-align: center;
+}
+.done-circle {
+  width: 100px; height: 100px; background: #FF4E2A; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; margin-bottom: 24px; color: white;
+  animation: pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+.done-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #FF4E2A; }
+.done-zone-name { font-size: 15px; color: #aaa; margin-bottom: 44px; font-weight: 500; }
+.btn-log {
+  background: #FF4E2A; color: white; border: none; border-radius: 14px;
+  padding: 16px 0; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%;
+  margin-bottom: 12px; transition: transform 0.1s, opacity 0.15s;
+}
+.btn-log:hover { opacity: 0.9; transform: scale(1.01); }
+.btn-skip-log {
+  background: none; border: none; color: #ccc;
+  font-size: 14px; cursor: pointer; padding: 8px; font-weight: 500;
+}
+.btn-skip-log:hover { color: #999; }
+
+.cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.cal-month-label { font-size: 16px; font-weight: 700; }
+.cal-nav-btn {
+  background: #FFE8E2; border: none; font-size: 18px; color: #FF4E2A;
+  cursor: pointer; padding: 6px 12px; border-radius: 10px; font-weight: 700;
+}
+.cal-nav-btn:hover { background: #FFD8CC; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; margin-bottom: 28px; }
+.cal-day-hdr { text-align: center; font-size: 11px; color: #ccc; padding: 4px 0; font-weight: 600; }
+.cal-day {
+  aspect-ratio: 1; display: flex; align-items: center;
+  justify-content: center; font-size: 13px; color: #999; border-radius: 50%;
+}
+.cal-day.today { font-weight: 800; color: #1a1a1a; }
+.cal-day.has-sessions { background: #FF4E2A; color: white; font-weight: 700; }
+.cal-day.today.has-sessions { background: #D93D1F; }
+.cal-day.empty { pointer-events: none; }
+.history-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 0; border-bottom: 1px solid #FFE8E2;
+}
+.h-dot { width: 8px; height: 8px; border-radius: 50%; background: #FF4E2A; flex-shrink: 0; }
+.h-icon { font-size: 16px; flex-shrink: 0; }
+.h-zone { font-size: 14px; font-weight: 600; flex: 1; }
+.h-date { font-size: 11px; color: #bbb; white-space: nowrap; }
+.h-del { font-size: 13px; color: #ddd; cursor: pointer; padding: 4px 6px; border: none; background: none; border-radius: 6px; }
+.h-del:hover { color: #FF3B30; background: rgba(255,59,48,0.1); }
+.empty-history { color: #ccc; font-size: 14px; padding: 20px 0; text-align: center; font-weight: 500; }
+
+.main-nav {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px;
+  background: rgba(255,252,250,0.96);
+  border-top: 1px solid #FFE0D8;
+  backdrop-filter: blur(10px);
+  display: flex; justify-content: space-around;
+  padding: 10px 0 env(safe-area-inset-bottom, 16px); z-index: 100;
+}
+.nav-btn {
+  background: none; border: none; font-size: 11px; color: #ddd; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 4px 24px; transition: color 0.15s; font-weight: 600;
+}
+.nav-btn.active { color: #FF4E2A; }
+.nav-icon { font-size: 20px; line-height: 1; }
+.today-badge {
+  background: #FF4E2A; color: white; border-radius: 20px;
+  padding: 4px 12px; font-size: 12px; font-weight: 700;
+}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div id="screen-home" class="screen active">
+  <div class="header">
+    <h1>10 mínútna þrif</h1>
+    <span id="today-badge" style="display:none" class="today-badge"></span>
+  </div>
+  <div class="suggestion-card">
+    <div class="suggestion-label">Tillaga næst</div>
+    <div class="suggestion-zone" id="sug-name">—</div>
+    <div class="suggestion-last" id="sug-last">—</div>
+    <button class="btn-start" id="btn-sug-start">Byrja 10 mín tímamæli →</button>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot ld-fresh"></div> Gert í dag</div>
+    <div class="legend-item"><div class="legend-dot ld-medium"></div> Síðustu 3 dagar</div>
+    <div class="legend-item"><div class="legend-dot ld-stale"></div> Úrelt</div>
+    <div class="legend-item"><div class="legend-dot ld-never"></div> Aldrei gert</div>
+  </div>
+  <div class="section-label">Eða veldu svæði</div>
+  <div class="zone-grid" id="zone-grid"></div>
+  <div class="add-zone-box">
+    <div class="add-zone-title">Bæta við svæði</div>
+    <div class="add-zone-inputs">
+      <input class="add-zone-emoji" id="new-zone-emoji" type="text" maxlength="2" placeholder="🏠" />
+      <input class="add-zone-name-input" id="new-zone-name" type="text" maxlength="40" placeholder="Nafn á svæði..." />
+      <button class="add-zone-btn" id="btn-add-zone">Bæta við</button>
+    </div>
+    <div class="add-zone-hint">Þín svæði eru vistuð í þessum vafra.</div>
+  </div>
+</div>
+
+<!-- TIMER -->
+<div id="screen-timer" class="screen">
+  <div class="header"><h1>10 mínútna þrif</h1></div>
+  <div class="timer-wrap">
+    <div class="timer-zone-label" id="timer-zone-label">—</div>
+    <div class="ring-wrap">
+      <svg width="220" height="220" viewBox="0 0 220 220">
+        <circle class="ring-track" cx="110" cy="110" r="98"/>
+        <circle class="ring-prog" id="ring-prog" cx="110" cy="110" r="98"/>
+      </svg>
+      <div class="timer-center">
+        <div class="timer-time" id="timer-display">10:00</div>
+        <div class="timer-sublabel">eftir</div>
+      </div>
+    </div>
+    <div class="timer-btns">
+      <button class="btn-primary-outline" id="btn-pause">Hlé</button>
+      <button class="btn-secondary" id="btn-cancel">Hætta við</button>
+    </div>
+    <button class="timer-done-early" id="btn-done-early">Lokið snemma? Merkja sem lokið →</button>
+  </div>
+</div>
+
+<!-- DONE -->
+<div id="screen-done" class="screen">
+  <div class="header"><h1>10 mínútna þrif</h1></div>
+  <div class="done-wrap">
+    <div class="done-circle">✓</div>
+    <div class="done-title">Lota lokið!</div>
+    <div class="done-zone-name" id="done-zone-label">—</div>
+    <button class="btn-log" id="btn-log">Skrá þessa lotu</button>
+    <button class="btn-skip-log" id="btn-skip">Sleppa skráningu</button>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<div id="screen-history" class="screen">
+  <div class="header"><h1>Saga</h1></div>
+  <div class="cal-header">
+    <button class="cal-nav-btn" id="cal-prev">‹</button>
+    <div class="cal-month-label" id="cal-month-label">—</div>
+    <button class="cal-nav-btn" id="cal-next">›</button>
+  </div>
+  <div class="cal-grid" id="cal-grid"></div>
+  <div class="section-label">Nýlegar lotur</div>
+  <div id="history-list"></div>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav" id="main-nav">
+  <button class="nav-btn active" id="nav-home" onclick="showScreen('home')">
+    <span class="nav-icon">⊟</span><span>Svæði</span>
+  </button>
+  <button class="nav-btn" id="nav-history" onclick="showScreen('history')">
+    <span class="nav-icon">◷</span><span>Saga</span>
+  </button>
+</nav>
+
+<script>
+const BUILT_IN = [
+  { id:'kitchen',       name:'Eldhúsborð og uppþvottur', icon:'🍽️',  multiple:false, bg:'#FFF3CD' },
+  { id:'fridge',        name:'Ísskápur',                  icon:'❄️',   multiple:false, bg:'#D6EEF8' },
+  { id:'freezer',       name:'Frystir',                   icon:'🧊',   multiple:false, bg:'#CCE9FF' },
+  { id:'laundry_fold',  name:'Þvottur — brjóta saman',   icon:'👕',   multiple:false, bg:'#E8DCFF' },
+  { id:'laundry_room',  name:'Þvottaherbergi',            icon:'🧺',   multiple:false, bg:'#F8D7F0' },
+  { id:'cupboard',      name:'Skápur eða skúffa',         icon:'🗄️',   multiple:true,  bg:'#FFE4C4' },
+  { id:'bathroom',      name:'Baðherbergi / klósett',     icon:'🚿',   multiple:false, bg:'#C8F5E0' },
+  { id:'entrance',      name:'Forstofa og töskur',        icon:'🎒',   multiple:false, bg:'#FFD9D9' },
+  { id:'living',        name:'Stofuyfirborð',             icon:'🛋️',   multiple:false, bg:'#FFF0C4' },
+  { id:'kids',          name:'Barnasvæði',                icon:'🧸',   multiple:false, bg:'#DDFAD4' },
+  { id:'bedroom',       name:'Svefnherbergi',             icon:'🛏️',   multiple:false, bg:'#E0DCFF' },
+  { id:'paperwork',     name:'Pappírar og póstur',        icon:'📬',   multiple:false, bg:'#FFEAB0' },
+  { id:'paper_plastic', name:'Pappír og plast',           icon:'♻️',   multiple:false, bg:'#C5F5C5' },
+  { id:'vacuum',        name:'Ryksuga allt',              icon:'🌀',   multiple:false, bg:'#DDE8FF' },
+];
+const EXTRA_BGS = ['#FFE8D6','#D6F5E8','#E8D6FF','#FFD6E8','#D6E8FF','#F5FFD6','#FFD6D6','#D6F0FF'];
+const CIRC = 2 * Math.PI * 98;
+const TOTAL = 600;
+
+function getSessions()    { try { return JSON.parse(localStorage.getItem('reset_v1')||'[]'); } catch(e){return[];} }
+function saveSessions(s)  { localStorage.setItem('reset_v1', JSON.stringify(s)); }
+function addSession(zid)  { const s=getSessions(); s.push({zoneId:zid,ts:Date.now()}); saveSessions(s); }
+function delSession(i)    { const s=getSessions(); s.splice(i,1); saveSessions(s); }
+function resetZone(zid)   { const s=getSessions(); for(let i=s.length-1;i>=0;i--){if(s[i].zoneId===zid){s.splice(i,1);break;}} saveSessions(s); }
+
+function getCustom()      { try { return JSON.parse(localStorage.getItem('custom_v1')||'[]'); } catch(e){return[];} }
+function saveCustom(z)    { localStorage.setItem('custom_v1', JSON.stringify(z)); }
+function addCustom(name, icon) {
+  const c=getCustom();
+  c.push({ id:'c_'+Date.now(), name, icon, multiple:false, bg:EXTRA_BGS[c.length%EXTRA_BGS.length], custom:true });
+  saveCustom(c);
+}
+function delCustom(id)    { saveCustom(getCustom().filter(z=>z.id!==id)); }
+function allZones()       { return [...BUILT_IN, ...getCustom()]; }
+
+function lastDone(zid)    { const s=getSessions().filter(x=>x.zoneId===zid); return s.length?Math.max(...s.map(x=>x.ts)):null; }
+function doneLabel(zid)   {
+  const ts=lastDone(zid); if(!ts) return 'Aldrei gert';
+  const d=Math.floor((Date.now()-ts)/86400000);
+  if(d===0) return 'Gert í dag'; if(d===1) return 'Gert í gær'; return `Fyrir ${d} dögum`;
+}
+function fresh(zid) {
+  const ts=lastDone(zid); if(!ts) return 'never';
+  const d=Math.floor((Date.now()-ts)/86400000);
+  return d===0?'fresh':d<=3?'medium':'stale';
+}
+function suggest() {
+  let best=null,bestTs=Infinity;
+  for(const z of allZones()){const ts=lastDone(z.id)||0; if(ts<bestTs){bestTs=ts;best=z;}}
+  return best;
+}
+
+let activeZone=null, timerSecs=TOTAL, running=false, ticker=null, calY, calM;
+
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+  document.getElementById('main-nav').style.display=(name==='timer'||name==='done')?'none':'flex';
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  if(name==='home'){document.getElementById('nav-home').classList.add('active');renderHome();}
+  if(name==='history'){document.getElementById('nav-history').classList.add('active');renderHistory();}
+}
+
+function renderHome() {
+  const sug=suggest();
+  if(sug){
+    document.getElementById('sug-name').textContent=sug.icon+'  '+sug.name;
+    document.getElementById('sug-last').textContent=doneLabel(sug.id);
+    document.getElementById('btn-sug-start').dataset.zid=sug.id;
+  }
+  const today=new Date().toDateString();
+  const n=getSessions().filter(s=>new Date(s.ts).toDateString()===today).length;
+  const b=document.getElementById('today-badge');
+  if(n>0){b.textContent=`${n} ${n===1?'lota':'lotur'} í dag`;b.style.display='inline-block';}
+  else{b.style.display='none';}
+
+  const grid=document.getElementById('zone-grid'); grid.innerHTML='';
+  for(const z of allZones()){
+    const card=document.createElement('div');
+    card.className='zone-card'; card.style.background=z.bg;
+    card.innerHTML=`
+      <div class="freshness-dot ${fresh(z.id)}"></div>
+      ${z.multiple?'<div class="multiple-tag">endurtekið</div>':''}
+      <div class="zone-icon">${z.icon}</div>
+      <div class="zone-name">${z.name}</div>
+      <div class="zone-last">${doneLabel(z.id)}</div>
+      ${z.custom?`<button class="delete-zone-btn" data-zid="${z.id}" title="Eyða svæði">🗑</button>`:''}
+      <button class="reset-btn" data-zid="${z.id}" title="Endurstilla síðustu lotu">↺</button>
+    `;
+    card.addEventListener('click',e=>{
+      if(e.target.closest('.reset-btn')||e.target.closest('.delete-zone-btn')) return;
+      startTimer(z.id);
+    });
+    card.querySelector('.reset-btn').addEventListener('click',e=>{
+      e.stopPropagation(); resetZone(z.id); renderHome();
+    });
+    if(z.custom){
+      card.querySelector('.delete-zone-btn').addEventListener('click',e=>{
+        e.stopPropagation();
+        if(confirm(`Eyða "${z.name}"?`)){delCustom(z.id);renderHome();}
+      });
+    }
+    grid.appendChild(card);
+  }
+}
+
+document.getElementById('btn-sug-start').addEventListener('click',function(){
+  if(this.dataset.zid) startTimer(this.dataset.zid);
+});
+document.getElementById('btn-add-zone').addEventListener('click',()=>{
+  const n=document.getElementById('new-zone-name');
+  const e=document.getElementById('new-zone-emoji');
+  if(!n.value.trim()){n.focus();return;}
+  addCustom(n.value.trim(), e.value.trim()||'🏠');
+  n.value=''; e.value=''; renderHome();
+});
+document.getElementById('new-zone-name').addEventListener('keydown',e=>{
+  if(e.key==='Enter') document.getElementById('btn-add-zone').click();
+});
+
+function startTimer(zid) {
+  activeZone=zid;
+  const z=allZones().find(x=>x.id===zid);
+  document.getElementById('timer-zone-label').textContent=z?z.icon+'  '+z.name:'—';
+  timerSecs=TOTAL; running=true; clearInterval(ticker); updateTimer();
+  showScreen('timer');
+  ticker=setInterval(()=>{
+    if(!running) return;
+    timerSecs--;updateTimer();
+    if(timerSecs<=0){clearInterval(ticker);showDone();}
+  },1000);
+}
+function updateTimer(){
+  const m=Math.floor(timerSecs/60),s=timerSecs%60;
+  document.getElementById('timer-display').textContent=`${m}:${String(s).padStart(2,'0')}`;
+  const off=CIRC*(1-timerSecs/TOTAL);
+  const arc=document.getElementById('ring-prog');
+  arc.style.strokeDasharray=CIRC; arc.style.strokeDashoffset=off;
+}
+document.getElementById('btn-pause').addEventListener('click',function(){
+  running=!running; this.textContent=running?'Hlé':'Halda áfram';
+});
+document.getElementById('btn-cancel').addEventListener('click',()=>{clearInterval(ticker);running=false;showScreen('home');});
+document.getElementById('btn-done-early').addEventListener('click',()=>{clearInterval(ticker);running=false;showDone();});
+
+function showDone(){
+  const z=allZones().find(x=>x.id===activeZone);
+  document.getElementById('done-zone-label').textContent=z?z.icon+'  '+z.name:'—';
+  showScreen('done');
+}
+document.getElementById('btn-log').addEventListener('click',()=>{if(activeZone)addSession(activeZone);activeZone=null;showScreen('home');});
+document.getElementById('btn-skip').addEventListener('click',()=>{activeZone=null;showScreen('home');});
+
+const IS_M=['Janúar','Febrúar','Mars','Apríl','Maí','Júní','Júlí','Ágúst','September','Október','Nóvember','Desember'];
+const IS_D=['Sun','Mán','Þri','Mið','Fim','Fös','Lau'];
+const IS_MS=['jan','feb','mar','apr','maí','jún','júl','ágú','sep','okt','nóv','des'];
+
+function renderHistory(){
+  const now=new Date();
+  if(calY===undefined){calY=now.getFullYear();calM=now.getMonth();}
+  renderCal(); renderList();
+}
+function renderCal(){
+  const sessions=getSessions();
+  const active=new Set(sessions.map(s=>new Date(s.ts).toDateString()));
+  const now=new Date(); const first=new Date(calY,calM,1);
+  const last=new Date(calY,calM+1,0).getDate();
+  document.getElementById('cal-month-label').textContent=IS_M[calM]+' '+calY;
+  const grid=document.getElementById('cal-grid'); grid.innerHTML='';
+  ['Mán','Þri','Mið','Fim','Fös','Lau','Sun'].forEach(d=>{
+    const el=document.createElement('div'); el.className='cal-day-hdr'; el.textContent=d; grid.appendChild(el);
+  });
+  let dow=(first.getDay()+6)%7;
+  for(let i=0;i<dow;i++){const el=document.createElement('div');el.className='cal-day empty';grid.appendChild(el);}
+  for(let d=1;d<=last;d++){
+    const date=new Date(calY,calM,d); const el=document.createElement('div');
+    const cls=['cal-day'];
+    if(date.toDateString()===now.toDateString()) cls.push('today');
+    if(active.has(date.toDateString())) cls.push('has-sessions');
+    el.className=cls.join(' '); el.textContent=d; grid.appendChild(el);
+  }
+}
+function renderList(){
+  const sessions=getSessions(); const list=document.getElementById('history-list'); list.innerHTML='';
+  if(!sessions.length){list.innerHTML='<div class="empty-history">Engar lotur enn — byrjaðu þína fyrstu!</div>';return;}
+  const rev=[...sessions].map((s,i)=>({...s,origIdx:i})).reverse().slice(0,30);
+  for(const s of rev){
+    const z=allZones().find(x=>x.id===s.zoneId);
+    const el=document.createElement('div'); el.className='history-item';
+    const d=new Date(s.ts);
+    const lbl=IS_D[d.getDay()]+' '+d.getDate()+'. '+IS_MS[d.getMonth()]+' · '+
+      d.toLocaleTimeString('is-IS',{hour:'2-digit',minute:'2-digit'});
+    el.innerHTML=`<div class="h-dot"></div><div class="h-icon">${z?z.icon:'?'}</div><div class="h-zone">${z?z.name:s.zoneId}</div><div class="h-date">${lbl}</div><button class="h-del" data-idx="${s.origIdx}" title="Eyða færslu">✕</button>`;
+    el.querySelector('.h-del').addEventListener('click',function(){delSession(parseInt(this.dataset.idx));renderHistory();});
+    list.appendChild(el);
+  }
+}
+document.getElementById('cal-prev').addEventListener('click',()=>{calM--;if(calM<0){calM=11;calY--;}renderCal();});
+document.getElementById('cal-next').addEventListener('click',()=>{calM++;if(calM>11){calM=0;calY++;}renderCal();});
+
+// --- PWA icon & manifest (self-contained, no external files needed) ---
+(function(){
+  function makeIcon(size) {
+    const cv = document.createElement('canvas');
+    cv.width = cv.height = size;
+    const c = cv.getContext('2d');
+    const s = size / 100;
+
+    // Rounded square background
+    const rad = size * 0.22;
+    c.beginPath();
+    c.moveTo(rad,0); c.lineTo(size-rad,0);
+    c.quadraticCurveTo(size,0,size,rad);
+    c.lineTo(size,size-rad);
+    c.quadraticCurveTo(size,size,size-rad,size);
+    c.lineTo(rad,size);
+    c.quadraticCurveTo(0,size,0,size-rad);
+    c.lineTo(0,rad);
+    c.quadraticCurveTo(0,0,rad,0);
+    c.closePath();
+    c.fillStyle = '#FF4E2A';
+    c.fill();
+
+    // Broom handle
+    c.save();
+    c.strokeStyle = 'white'; c.lineWidth = 7*s; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(68*s,14*s); c.lineTo(40*s,62*s); c.stroke();
+    c.restore();
+
+    // Broom head
+    c.save();
+    c.translate(36*s, 70*s); c.rotate(-0.25);
+    c.fillStyle = 'white';
+    c.beginPath();
+    c.roundRect(-22*s,-10*s,44*s,22*s,5*s);
+    c.fill();
+    c.strokeStyle = '#FF6B48'; c.lineWidth = 2*s; c.lineCap = 'round';
+    [-14,-7,0,7,14].forEach(i => {
+      c.beginPath(); c.moveTo(i*s,2*s); c.lineTo(i*s,9*s); c.stroke();
+    });
+    c.restore();
+
+    // Sparkles
+    function star(cx,cy,r1,r2) {
+      c.beginPath();
+      for(let i=0;i<8;i++){
+        const a=(i*Math.PI/4)-Math.PI/2;
+        const r=i%2===0?r1:r2;
+        i===0?c.moveTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r)
+             :c.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r);
+      }
+      c.closePath(); c.fill();
+    }
+    c.fillStyle='rgba(255,255,255,0.92)'; star(76*s,22*s,7*s,3*s);
+    c.fillStyle='rgba(255,255,255,0.65)'; star(86*s,38*s,4*s,1.8*s);
+    c.fillStyle='rgba(255,255,255,0.55)'; star(62*s,15*s,3*s,1.2*s);
+
+    return cv.toDataURL('image/png');
+  }
+
+  const i32  = makeIcon(32);
+  const i192 = makeIcon(192);
+  const i512 = makeIcon(512);
+
+  document.getElementById('favicon').href    = i32;
+  document.getElementById('apple-icon').href = i192;
+
+  const mf = { name:'10 mínútna þrif', short_name:'Þrif', start_url:'.', display:'standalone',
+    background_color:'#FFF5F0', theme_color:'#FF4E2A',
+    icons:[{src:i192,sizes:'192x192',type:'image/png'},{src:i512,sizes:'512x512',type:'image/png'}] };
+  const blob = new Blob([JSON.stringify(mf)],{type:'application/json'});
+  document.getElementById('manifest-link').href = URL.createObjectURL(blob);
+})();
+
+renderHome();
+</script>
+</body>
+</html>
