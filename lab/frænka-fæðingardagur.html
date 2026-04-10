@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velkomin í heiminn, litla stjarna! 🌼</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5e8e4;
+    --deep: #fdf4f0;
+    --gold: #9a6a5a;
+    --gold-light: #b87860;
+    --silver: #7a5e54;
+    --cream: #2e1a14;
+    --rose: #c06878;
+    --amber: #a87848;
+    --sage: #6a8860;
+    --topaz: #4878a0;
+    --citrine: #a07830;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  #petals { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+  .petal {
+    position: absolute; top: -40px;
+    opacity: 0; animation: fallPetal linear infinite;
+  }
+  @keyframes fallPetal {
+    0%   { opacity: 0; transform: translateY(-20px) rotate(0deg); }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.3; }
+    100% { opacity: 0; transform: translateY(110vh) rotate(540deg); }
+  }
+
+  .glow-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 40% at 20% 10%, rgba(220,170,160,0.25), transparent),
+      radial-gradient(ellipse 60% 50% at 80% 5%,  rgba(210,180,160,0.2), transparent),
+      radial-gradient(ellipse 50% 60% at 50% 90%, rgba(230,190,185,0.18), transparent);
+  }
+
+  .page {
+    position: relative; z-index: 1;
+    max-width: 920px; margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  .hero {
+    text-align: center; padding: 50px 0 32px;
+    animation: fadeUp 1.2s ease both;
+  }
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.32em;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 22px; opacity: 0.85;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 8vw, 5.2rem);
+    font-weight: 300; line-height: 1.08;
+    color: var(--cream); margin-bottom: 14px;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero .subtitle {
+    font-size: 1.35rem; font-weight: 300;
+    color: var(--silver); font-style: italic; margin-bottom: 36px;
+  }
+  .birth-badge {
+    display: inline-flex; align-items: center; gap: 12px;
+    border: 1px solid rgba(201,130,60,0.35); border-radius: 3px;
+    padding: 10px 28px;
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.2em; color: var(--gold);
+    background: rgba(201,130,60,0.06);
+  }
+
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    margin: 44px 0; opacity: 0.55;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .divider span {
+    font-size: 0.6rem; letter-spacing: 0.38em;
+    color: var(--gold); font-family: 'DM Mono', monospace;
+    text-transform: uppercase; white-space: nowrap;
+  }
+
+  .emblems {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin: 40px 0;
+    animation: fadeUp 1.2s 0.2s ease both;
+  }
+  @media (max-width: 560px) { .emblems { grid-template-columns: 1fr; } }
+
+  .emblem {
+    background: rgba(245,228,220,0.6);
+    border: 1px solid rgba(154,106,90,0.25);
+    border-radius: 6px; padding: 36px 28px;
+    text-align: center; position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .emblem:hover { border-color: rgba(154,106,90,0.55); transform: translateY(-4px); }
+  .emblem::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(154,106,90,0.5), transparent);
+  }
+  .emblem-icon {
+    font-size: 3.5rem; display: block; margin-bottom: 16px;
+    filter: drop-shadow(0 4px 16px rgba(201,130,60,0.35));
+    animation: float 4s ease-in-out infinite;
+  }
+  .emblem:nth-child(2) .emblem-icon { animation-delay: -2s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+  .emblem-label {
+    font-family: 'DM Mono', monospace; font-size: 0.6rem;
+    letter-spacing: 0.3em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 8px; opacity: 0.75;
+  }
+  .emblem-name {
+    font-size: 1.65rem; font-weight: 300;
+    color: var(--cream); margin-bottom: 4px; line-height: 1.2;
+  }
+  .emblem-name em { font-style: italic; color: var(--gold-light); }
+  .emblem-latin {
+    font-size: 0.85rem; color: var(--silver);
+    font-style: italic; margin-bottom: 18px;
+  }
+  .pills {
+    display: flex; flex-wrap: wrap;
+    gap: 8px; justify-content: center; margin-top: 16px;
+  }
+  .pill {
+    font-size: 0.68rem; font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em; padding: 4px 12px;
+    border-radius: 20px; border: 1px solid;
+    color: var(--cream); opacity: 0.85;
+  }
+  .pill-rose    { border-color: rgba(180,80,100,0.45); background: rgba(220,140,150,0.15); }
+  .pill-amber   { border-color: rgba(160,100,50,0.45); background: rgba(200,150,80,0.15); }
+  .pill-sage    { border-color: rgba(80,120,70,0.45);  background: rgba(120,160,110,0.15); }
+  .pill-topaz   { border-color: rgba(50,110,160,0.45); background: rgba(80,140,190,0.15); }
+  .pill-citrine { border-color: rgba(140,100,20,0.45); background: rgba(180,140,40,0.15); }
+
+  .section-title {
+    font-family: 'DM Mono', monospace; font-size: 0.63rem;
+    letter-spacing: 0.35em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 20px; opacity: 0.8;
+  }
+
+  .meaning-block {
+    background: rgba(240,220,210,0.45);
+    border: 1px solid rgba(154,106,90,0.2);
+    border-radius: 4px; padding: 28px 28px 24px;
+    margin-bottom: 18px;
+    animation: fadeUp 1.2s ease both;
+    transition: background 0.3s;
+  }
+  .meaning-block:hover { background: rgba(235,210,198,0.65); }
+  .mb-header {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+  }
+  .mb-icon { font-size: 1.6rem; }
+  .mb-title { font-size: 1.22rem; font-weight: 600; color: var(--cream); }
+  .mb-sub {
+    font-family: 'DM Mono', monospace; font-size: 0.58rem;
+    letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; opacity: 0.7;
+  }
+  .mb-body {
+    font-size: 1.04rem; line-height: 1.74;
+    color: var(--silver); font-weight: 300;
+  }
+  .mb-body strong { color: var(--cream); font-weight: 600; }
+  .mb-body em { color: var(--gold-light); font-style: italic; }
+
+  .weather-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 16px; margin: 32px 0;
+  }
+  .w-card {
+    background: rgba(240,220,210,0.45);
+    border: 1px solid rgba(154,106,90,0.2);
+    border-radius: 4px; padding: 22px 18px;
+    text-align: center;
+    animation: fadeUp 1.2s ease both;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .w-card:hover { border-color: rgba(154,106,90,0.5); transform: translateY(-3px); }
+  .w-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+  .w-label {
+    font-family: 'DM Mono', monospace; font-size: 0.57rem;
+    letter-spacing: 0.28em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 6px; opacity: 0.75;
+  }
+  .w-value {
+    font-size: 1.38rem; font-weight: 600; color: var(--cream);
+    line-height: 1.2; margin-bottom: 4px;
+  }
+  .w-sub { font-size: 0.8rem; color: var(--silver); font-style: italic; }
+
+  .day-ribbon {
+    display: flex; align-items: center; justify-content: center;
+    gap: 24px; flex-wrap: wrap;
+    padding: 22px 28px;
+    border: 1px solid rgba(154,106,90,0.25);
+    border-radius: 4px; background: rgba(235,210,200,0.35);
+    margin: 32px 0; font-family: 'DM Mono', monospace;
+  }
+  .day-pill { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .day-pill-label {
+    font-size: 0.55rem; letter-spacing: 0.3em;
+    color: var(--gold); text-transform: uppercase; opacity: 0.7;
+  }
+  .day-pill-val { font-size: 0.88rem; color: var(--cream); letter-spacing: 0.12em; }
+  .day-sep { color: rgba(154,106,90,0.35); font-size: 1.2rem; }
+
+  .quote-box {
+    border: 1px solid rgba(154,106,90,0.25); border-radius: 4px;
+    padding: 36px; text-align: center; margin: 40px 0;
+    background: rgba(245,225,215,0.5); position: relative;
+  }
+  .qb-corner {
+    position: absolute; width: 12px; height: 12px;
+    border-color: var(--gold); border-style: solid; opacity: 0.45;
+  }
+  .qb-corner.tl { top:-1px;    left:-1px;  border-width:1px 0 0 1px; }
+  .qb-corner.tr { top:-1px;    right:-1px; border-width:1px 1px 0 0; }
+  .qb-corner.bl { bottom:-1px; left:-1px;  border-width:0 0 1px 1px; }
+  .qb-corner.br { bottom:-1px; right:-1px; border-width:0 1px 1px 0; }
+  .quote-box h2 { font-size: 1.6rem; font-weight: 300; margin-bottom: 12px; }
+  .quote-box h2 em { color: var(--gold-light); font-style: italic; }
+  .quote-box p {
+    font-size: 1.0rem; color: var(--silver); font-weight: 300;
+    line-height: 1.78; max-width: 580px; margin: 0 auto;
+  }
+
+  .age-wrap { text-align: center; margin: 36px 0; }
+  .age-counter {
+    font-family: 'DM Mono', monospace; font-size: 0.78rem;
+    letter-spacing: 0.15em; color: var(--silver);
+    background: rgba(235,210,200,0.4);
+    border: 1px solid rgba(154,106,90,0.22);
+    border-radius: 4px; padding: 16px 24px; display: inline-block;
+  }
+  .age-counter span { color: var(--gold-light); }
+
+  .footer {
+    text-align: center; padding-top: 48px;
+    border-top: 1px solid rgba(154,106,90,0.2);
+  }
+  .footer p {
+    font-size: 0.98rem; color: var(--silver);
+    font-style: italic; font-weight: 300; line-height: 1.85;
+  }
+  .heart { color: var(--rose); font-style: normal; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .meaning-block:nth-child(1) { animation-delay: 0.1s; }
+  .meaning-block:nth-child(2) { animation-delay: 0.2s; }
+  .meaning-block:nth-child(3) { animation-delay: 0.3s; }
+  .w-card:nth-child(1) { animation-delay: 0.1s; }
+  .w-card:nth-child(2) { animation-delay: 0.2s; }
+  .w-card:nth-child(3) { animation-delay: 0.3s; }
+  .w-card:nth-child(4) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div class="glow-bg"></div>
+<div id="petals"></div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">🌼 Fæðingarblóm · Fæðingarsteinn · Dagurinn 🌼</div>
+    <h1>Velkomin í<br><em>heiminn</em></h1>
+    <p class="subtitle">litla frænka okkar</p>
+    <div class="birth-badge">
+      <span>🗓</span>
+      <span>Sunnudagur · 30. nóvember 2025</span>
+    </div>
+  </div>
+
+  <div class="divider"><span>Táknrænt &amp; fallegt</span></div>
+
+  <!-- EMBLEMS -->
+  <div class="emblems">
+    <div class="emblem">
+      <span class="emblem-icon">🌼</span>
+      <div class="emblem-label">Fæðingarblóm</div>
+      <div class="emblem-name"><em>Chrysanthemum</em></div>
+      <div class="emblem-latin">Krysantemum · nóvember</div>
+      <div class="pills">
+        <span class="pill pill-rose">Ást &amp; hlýja</span>
+        <span class="pill pill-amber">Gleði</span>
+        <span class="pill pill-sage">Langlífi</span>
+        <span class="pill pill-citrine">Hamingja</span>
+        <span class="pill pill-rose">Trúfesti</span>
+      </div>
+    </div>
+    <div class="emblem">
+      <span class="emblem-icon">💎</span>
+      <div class="emblem-label">Fæðingarsteinar</div>
+      <div class="emblem-name"><em>Topaz</em> &amp; Citrine</div>
+      <div class="emblem-latin">nóvember · tvöfaldur steinn</div>
+      <div class="pills">
+        <span class="pill pill-topaz">Friður</span>
+        <span class="pill pill-citrine">Gæfa</span>
+        <span class="pill pill-amber">Styrkur</span>
+        <span class="pill pill-rose">Heilbrigði</span>
+        <span class="pill pill-sage">Gleði</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEANINGS -->
+  <div class="section-title">✦ Merking tákna þinna</div>
+
+  <div class="meaning-block">
+    <div class="mb-header">
+      <span class="mb-icon">🌼</span>
+      <div>
+        <div class="mb-title">Chrysanthemum — blóm konunga</div>
+        <div class="mb-sub">Fæðingarblóm nóvember</div>
+      </div>
+    </div>
+    <div class="mb-body">
+      Krysantemum er eitt <strong>elsta ræktaða blóm í heimi</strong> — þekkt í Kína í yfir 2.500 ár. Í Japan er það heilagt blóm keisaranna og táknar <em>eilíft líf og endurnýjun</em>. Í víðara samhengi táknar það <strong>ást, hlýju og trúfesti</strong> — sem eru nákvæmlega þau gjöf sem þú færðir okkur öllum með komu þinni. Blómið opnast hægt og vandlega, blað fyrir blað — rétt eins og þú munt blómstra.
+    </div>
+  </div>
+
+  <div class="meaning-block">
+    <div class="mb-header">
+      <span class="mb-icon">🔵</span>
+      <div>
+        <div class="mb-title">Topaz — steinn sólarinnar</div>
+        <div class="mb-sub">Fæðingarsteinn nóvember · blátt gull</div>
+      </div>
+    </div>
+    <div class="mb-body">
+      Fornir Egyptar trúðu að topaz væri litaður af <em>gullnum geislum sólarguðsins Ra</em>. Rómverjar tengdu hann við Jupiter og töldu hann gefa handhafanum <strong>styrk, heilbrigði og friðsæld</strong>. Bláar afbrigði toppaz eru einkum tengd <em>skýrri hugsun, sannleika og samskiptum</em> — hann er steinn þeirra sem hafa fagurt og hreint hjarta.
+    </div>
+  </div>
+
+  <div class="meaning-block">
+    <div class="mb-header">
+      <span class="mb-icon">💛</span>
+      <div>
+        <div class="mb-title">Citrine — gleðisteinninn</div>
+        <div class="mb-sub">Fæðingarsteinn nóvember · gullt ljós</div>
+      </div>
+    </div>
+    <div class="mb-body">
+      Citrine er gullinn kvarts — <strong>steinn sólar og hamingju</strong>. Hann er kallaður „gleðisteinninn" þar sem þjóðtrúnaður segir að hann laði að sér <em>gæfu, velgengni og gleði</em>. Litinn fær hann af járnsameindum inni í kristalnum — rétt eins og sólroðinn við sólsetur. Hann táknar <strong>hlýju, lífsorku og bjartsýni</strong> — sem við höfum allar vonir til að verði til marks um persónu þína!
+    </div>
+  </div>
+
+  <div class="divider"><span>Dagurinn sjálfur · 30. nóvember 2025</span></div>
+
+  <div class="section-title">🌦️ Veðrið og ljósið þann dag</div>
+
+  <div class="weather-strip">
+    <div class="w-card">
+      <span class="w-icon">🌡️</span>
+      <div class="w-label">Hiti á daginn</div>
+      <div class="w-value">~2°C</div>
+      <div class="w-sub">kalt og þétt</div>
+    </div>
+    <div class="w-card">
+      <span class="w-icon">🌫️</span>
+      <div class="w-label">Veðurlag</div>
+      <div class="w-value">Skýjað</div>
+      <div class="w-sub">þykkt skýjafar, hægur vindur</div>
+    </div>
+    <div class="w-card">
+      <span class="w-icon">🌅</span>
+      <div class="w-label">Sólarupprás</div>
+      <div class="w-value">10:19</div>
+      <div class="w-sub">Reykjavík · UTC+0</div>
+    </div>
+    <div class="w-card">
+      <span class="w-icon">🌇</span>
+      <div class="w-label">Sólsetur</div>
+      <div class="w-value">15:49</div>
+      <div class="w-sub">aðeins 5½ klst. dagsljós</div>
+    </div>
+  </div>
+
+  <div class="day-ribbon">
+    <div class="day-pill">
+      <span class="day-pill-label">Vikudagur</span>
+      <span class="day-pill-val">🌞 Sunnudagur</span>
+    </div>
+    <span class="day-sep">·</span>
+    <div class="day-pill">
+      <span class="day-pill-label">Dagur ársins</span>
+      <span class="day-pill-val">334 / 365</span>
+    </div>
+    <span class="day-sep">·</span>
+    <div class="day-pill">
+      <span class="day-pill-label">Dagsljós</span>
+      <span class="day-pill-val">5 klst 30 mín</span>
+    </div>
+    <span class="day-sep">·</span>
+    <div class="day-pill">
+      <span class="day-pill-label">Tungl</span>
+      <span class="day-pill-val">🌙 Vaxandi</span>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <div class="qb-corner tl"></div>
+    <div class="qb-corner tr"></div>
+    <div class="qb-corner bl"></div>
+    <div class="qb-corner br"></div>
+    <h2>Þú fæddist á <em>sunnudegi</em></h2>
+    <p>
+      Á sunnudegi fæðist sá sem skín eins og sólin sjálf — hlýr, ljómandi og fullur af lífsgleði. Gömul ensk vísa segir: <em>„Sunday's child is full of grace"</em> — barn sunnudagsins er fullt af náð og yndisæti. Þetta þýðir að þú berð náttúrulegt ljós í hjarta sem nær til allra í kringum þig.
+    </p>
+  </div>
+
+
+
+  <div class="footer">
+    <p>
+      Með ást frá okkur <span class="heart">♥</span><br>
+      <em>Heimurinn varð hlýrri og bjartari daginn sem þú fæddist.</em>
+    </p>
+  </div>
+
+</div>
+
+<script>
+// Petals
+(function() {
+  const c = document.getElementById('petals');
+  const emojis = ['🌼','🌸','✨','🍂','🌿','💛'];
+  for (let i = 0; i < 28; i++) {
+    const el = document.createElement('div');
+    el.className = 'petal';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.fontSize = (0.8 + Math.random() * 1.0) + 'rem';
+    el.style.animationDuration = (12 + Math.random() * 18) + 's';
+    el.style.animationDelay    = (-Math.random() * 30) + 's';
+    c.appendChild(el);
+  }
+})();
+
+// Age counter
+(function() {
+  const birth = new Date('2025-11-30T00:00:00Z');
+  const el = document.getElementById('ageCounter');
+  function update() {
+    const diff = new Date() - birth;
+    if (diff < 0) { el.innerHTML = 'Mun fæðast bráðlega…'; return; }
+    const td = Math.floor(diff / 86400000);
+    const y  = Math.floor(td / 365.25);
+    const m  = Math.floor((td % 365.25) / 30.44);
+    const d  = Math.floor(td % 30.44);
+    const h  = Math.floor((diff % 86400000) / 3600000);
+    const mi = Math.floor((diff % 3600000)  / 60000);
+    const s  = Math.floor((diff % 60000)    / 1000);
+    el.innerHTML =
+      `<span>${y}</span> ár &nbsp;·&nbsp; ` +
+      `<span>${m}</span> mán &nbsp;·&nbsp; ` +
+      `<span>${d}</span> dagar &nbsp;·&nbsp; ` +
+      `<span>${String(h).padStart(2,'0')}:${String(mi).padStart(2,'0')}:${String(s).padStart(2,'0')}</span>`;
+  }
+  update(); setInterval(update, 1000);
+})();
+</script>
+</body>
+</html>
