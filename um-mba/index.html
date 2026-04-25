@@ -1,387 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="is">
 <head>
-  <link rel="icon" type="image/x-icon" href="https://www.multabene.is/favicon.ico?v=2">
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Operations and execution support for small businesses: clearer workflows, roles and ownership, and decision materials (one-pagers, decks, briefs) that drive follow-through. Icelandic and English support available." />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Um María Björg Ágústsdóttir, stofnanda og ráðgjafa Multa Bene Agere. Rekstrarráðgjöf og stuðningur við framkvæmd fyrir lítil og meðalstór fyrirtæki.">
   <title>Um mig — Multa Bene Agere</title>
+
+  <link rel="icon" type="image/x-icon" href="https://www.multabene.is/favicon.ico?v=2">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg: #f6f4f0;
-      --text: #111111;
-      --muted: #111111;
-      --rule: rgba(0,0,0,.12);
-    }
-
-    body{
-      font-family:'Playfair Display', serif;
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      display:block;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .wrap{
-      position:relative; /* NEW: makes absolute children align to the content column */
-      max-width:820px;
-      margin:0 auto;
-      padding:56px 24px 72px;
-    }
-
-    /* Language switch (aligned to the wrap, not the browser corner) */
-    .lang-switch{
-      position:absolute;  /* CHANGED: was fixed */
-      top:18px;
-      right:24px;         /* matches wrap padding */
-      z-index:9999;
-      font-family:inherit;
-      font-size:14px;
-      letter-spacing:0.02em;
-      user-select:none;
-    }
-
-    .lang-switch .lang{
-      color:var(--text);
-      text-decoration:none;
-      opacity:0.75;
-    }
-
-    .lang-switch .lang:hover{
-      opacity:1;
-      text-decoration:underline;
-      text-underline-offset:0.12em;
-    }
-
-    .lang-switch .active{
-      opacity:1;
-      font-weight:700;
-      cursor:default;
-      text-decoration:none;
-    }
-
-    .lang-switch .sep{
-      margin:0 6px;
-      opacity:0.45;
-    }
-
-    @media (max-width: 640px){
-      .lang-switch{
-        top:14px;
-        right:18px;  /* a bit tighter on mobile */
-        font-size:13px;
-      }
-    }
-
-    /* Headers with fine rule under them */
-    h1{
-      margin:0 0 18px;
-      padding-bottom:10px;
-      border-bottom:1px solid var(--rule);
-      font-size:1.8rem;
-      font-weight:700;
-      text-align:center;
-      color:var(--text);
-    }
-
-    h2{
-      margin:36px 0 14px;
-      padding-bottom:10px;
-      border-bottom:1px solid var(--rule);
-      font-size:1.25rem;
-      font-weight:700;
-      text-align:center;
-      color:var(--text);
-    }
-
-    p{
-      line-height:1.8;
-      margin:0 0 14px;
-      text-align:left;
-      color:var(--muted);
-      font-size:1.02rem;
-    }
-
-    .about{ text-align:left; }
-    .about p{
-      text-align:left;
-      margin-bottom:12px;
-      hyphens:none;
-      -webkit-hyphens:none;
-      -ms-hyphens:none;
-      word-break:normal;
-      overflow-wrap:normal;
-    }
-
-    ul{
-      margin:12px 0 0;
-      padding-left:18px;
-      margin-bottom:8px;
-      color:var(--muted);
-      font-size:1.02rem;
-      line-height:1.8;
-    }
-
-    li{
-      margin:6px 0;
-      line-height:1.7;
-    }
-
-    .cta{
-      margin-top:18px;
-      padding-top:10px;
-      margin-bottom:28px;
-      font-style:normal;
-      color:var(--muted);
-    }
-
-    .cta-note{ font-style:normal; }
-
-    .cta a{
-      color:inherit;
-      font-weight:700;
-      text-decoration:underline;
-      text-underline-offset:0.12em;
-      font-style:normal;
-      cursor:pointer;
-    }
-
-    /* Sérstakur stíll fyrir www.saganmin.is linkinn */
-    a.saganmin-link {
-      color: #111111 !important;
-      text-decoration: underline;
-      font-weight: inherit;
-    }
-
-    .experience{ margin-top:10px; }
-
-    .role{ margin:16px 0 18px; }
-
-    .role .title{
-      font-weight:700;
-      margin:0 0 6px;
-      color:var(--text);
-    }
-
-    .role .meta{
-      font-style:italic;
-      font-weight:400;
-      margin:0 0 6px;
-      color:var(--muted);
-    }
-
-    .role p{
-      margin:0;
-      text-align:left;
-      color:var(--muted);
-    }
-
-    a.back{
-      display:inline-block;
-      margin-top:24px;
-      color:var(--text);
-      text-decoration:underline;
-      text-underline-offset:0.12em;
-      text-decoration-thickness:1px;
-      font-weight:700;
-    }
-
-    /* Education & Certifications */
-    .ec{
-      margin-top:36px;
-    }
-
-    .ec-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:48px;
-      max-width:760px;
-      margin: 0 auto;
-      padding-top:14px;
-    }
-
-    .ec-item{
-      margin:0 0 14px;
-    }
-
-    .ec-primary{
-      font-weight:700;
-      line-height:1.35;
-      font-size:1.02rem;
-      color:var(--text);
-      text-align:left;
-    }
-
-    .ec-secondary{
-      margin-top:2px;
-      line-height:1.35;
-      font-size:1.02rem;
-      color:rgba(0,0,0,.75);
-      text-align:left;
-    }
-
-    /* Only hide secondary lines if they are actually empty */
-    .ec-secondary:empty{ display:none; }
-
-    @media (max-width: 720px){
-      .ec-grid{
-        grid-template-columns: 1fr;
-        gap:28px;
-        padding-top:12px;
-      }
-    }
-
-    @media (max-width: 640px){
-      .wrap{
-        max-width:740px;
-        padding:40px 18px 56px;
-      }
-      p, ul{
-        font-size:1rem;
-      }
-      .about p{
-        text-align:left;
-        hyphens:none;
-        -webkit-hyphens:none;
-        -ms-hyphens:none;
-      }
-      .ec-primary, .ec-secondary{
-        font-size:1rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-  <main class="wrap">
+  <main class="shell">
 
-    <!-- Language switch (IS is active on this page) -->
-    <div class="lang-switch" aria-label="Language switch">
-      <span class="lang active">IS</span>
+    <div class="lang-switch" aria-label="Tungumálaval">
+      <a href="/about/">EN</a>
       <span class="sep">/</span>
-      <a class="lang" href="/about/">EN</a>
+      <span class="active">IS</span>
     </div>
 
-    <h1>Um mig</h1>
+    <header class="masthead">
+      <a class="wm" href="/" aria-label="Multa Bene Agere — heim">
+        <span class="wm-mba">MBA</span>
+        <span class="wm-dot" aria-hidden="true"></span>
+        <span class="wm-name">Multa Bene Agere</span>
+      </a>
+      <div class="masthead-meta">
+        <span>Reykjavík · Ísland</span>
+        <span class="dot-sep">·</span>
+        <span>Um mig</span>
+      </div>
+    </header>
 
-    <section class="about">
-      <p>
-        Ég heiti María Björg Ágústsdóttir og rek ráðgjafarfyrirtækið Multa Bene Agere. Ég aðstoða lítil og meðalstór fyrirtæki við að koma skipulagi á reksturinn og innleiða skýra og skilvirka vinnuferla. Árangurinn lýsir sér í einfaldara vinnulagi, skýrari ábyrgð og fastmótuðum venjum sem auðvelda eftirfylgni.
+    <div class="page-h">
+      <div class="roman">I</div>
+      <h1>Um mig.</h1>
+      <div class="meta">María Björg Ágústsdóttir · Stofnandi &amp; ráðgjafi</div>
+    </div>
+
+    <section class="prose">
+      <p class="lead">
+        Ég rek Multa Bene Agere, sjálfstætt ráðgjafarfyrirtæki. Ég aðstoða lítil
+        og meðalstór fyrirtæki við að koma skipulagi á reksturinn, einfaldara
+        vinnulag, skýrari ábyrgð og fastmótaðar venjur sem auðvelda eftirfylgni.
       </p>
 
       <p>
-        Ég er einnig stofnandi <a href="https://www.saganmin.is" target="_blank" class="saganmin-link">www.saganmin.is</a>, sem býður upp á persónulegar sagnaskráningar þar sem einstaklingar og fjölskyldur geta varðveitt og deilt eigin lífs- og fjölskyldusögum á einstakan hátt. Síðan leggur áherslu á að gera söguskráningu aðgengilega, skapandi og örugga fyrir alla aldurshópa.
+        Ég er einnig stofnandi þriggja vefvettvanga:
+        <a href="https://www.saganmin.is/" target="_blank" rel="noopener">www.saganmin.is</a>,
+        sem býður upp á persónulegar sagnaskráningar einstaklinga og fjölskyldna;
+        <a href="https://www.barnasagan.is/" target="_blank" rel="noopener">www.barnasagan.is</a>,
+        þar sem foreldrar búa til persónulega barnasögubók um fyrstu ár barnsins; og
+        <a href="https://www.kvedjur.is/" target="_blank" rel="noopener">www.kvedjur.is</a>,
+        þar sem vinir og fjölskylda koma saman til að skrásetja sameiginlegar
+        minningar og kveðjur á einum stað.
       </p>
 
       <p>
-        Bakgrunnur minn liggur í fjármálum, rekstri og viðskiptaþróun, þar á meðal í stjórnunarstöðum á eftirlitsskyldum mörkuðum. Ég nýt mín best þar sem krafa er um nákvæmni, góða skjalagerð og eftirfylgni. Ég hef gaman af því að greina flöskuhálsa, skýra hlutverk og byggja upp einfalda strúktúra sem virka í daglegum rekstri.
+        Bakgrunnur minn liggur í fjármálum, rekstri og viðskiptaþróun, þar á
+        meðal í stjórnunarstöðum á eftirlitsskyldum mörkuðum. Ég nýt mín best
+        þar sem krafa er um nákvæmni, góða skjalagerð og eftirfylgni. Ég hef
+        gaman af því að greina flöskuhálsa, skýra hlutverk og byggja upp einfalda
+        strúktúra sem virka í daglegum rekstri.
       </p>
 
       <p>
-        Samhliða þessu tek ég að mér þýðingar og ritstýringu á viðskiptatextum á íslensku og ensku þar sem blæbrigði og nákvæmni skipta máli, allt frá vefefni yfir í innri skjöl og skýrslur. Ég legg áherslu á að textinn sé ekki aðeins rétt þýddur heldur haldi sínum rétta tón og hljómi eðlilega á báðum tungumálum.
+        Samhliða þessu tek ég að mér þýðingar og ritstýringu á viðskiptatextum
+        á íslensku og ensku þar sem blæbrigði og nákvæmni skipta máli, allt
+        frá vefefni yfir í innri skjöl og skýrslur.
       </p>
 
       <p>
-        Ég er staðsett á Íslandi en vinn með viðskiptavinum bæði hér heima og erlendis. Ég tek að mér afmörkuð verkefni eða veiti áframhaldandi stuðning eftir þörfum.
-      </p>
-
-      <p class="cta">
-        Sendu póst á <a href="mailto:mba@multabene.is">mba@multabene.is</a>
-        <span class="cta-note">með upplýsingum um hvað mætti ganga betur, hverju þú vilt breyta og hver tímaramminn er.</span>
+        Ég er staðsett á Íslandi en vinn með viðskiptavinum bæði hér heima og
+        erlendis. Ég tek að mér afmörkuð verkefni eða veiti áframhaldandi
+        stuðning eftir þörfum.
       </p>
     </section>
 
-    <h2>Hvernig get ég aðstoðað</h2>
+    <div class="sec-h">
+      <div class="num">§ I</div>
+      <h2>Hvernig get ég aðstoðað.</h2>
+    </div>
 
-    <p>Hér eru nokkur dæmi um það sem ég get gert fyrir þig:</p>
+    <ol class="help-list">
+      <li><span class="hl-num">01</span><span class="hl-text">Útreikningar, töflureiknar og fjárhagslíkön sem eru skýr og auðvelt að uppfæra.</span></li>
+      <li><span class="hl-num">02</span><span class="hl-text">Stuðningur við framkvæmd: frá ákvörðun til eftirfylgni.</span></li>
+      <li><span class="hl-num">03</span><span class="hl-text">Ákvarðanagögn sem tryggja skýrleika: samantektir, kynningar og hnitmiðuð minnisblöð.</span></li>
+      <li><span class="hl-num">04</span><span class="hl-text">Hlutverk og ábyrgð: hver gerir hvað, og hvenær.</span></li>
+      <li><span class="hl-num">05</span><span class="hl-text">Einföldun vinnuferla og fastmótaðar rekstrarvenjur.</span></li>
+      <li><span class="hl-num">06</span><span class="hl-text">Úrvinnsla flókinna upplýsinga: skýr minnisblöð, kynningar og Excel-líkön.</span></li>
+      <li><span class="hl-num">07</span><span class="hl-text">Þýðingar og ritstýring milli íslensku og ensku þegar þess er þörf.</span></li>
+    </ol>
 
-    <ul>
-      <li>Útreikningar, töflureiknar og fjárhagslíkön sem eru skýr og auðvelt að uppfæra.</li>
-      <li>Stuðningur við framkvæmd: Frá ákvörðun til eftirfylgni.</li>
-      <li>Ákvarðanagögn sem tryggja skýrleika: Samantektir (one-pagers), kynningar og hnitmiðuð minnisblöð.</li>
-      <li>Hlutverk og ábyrgð: Hver gerir hvað, og hvenær.</li>
-      <li>Einföldun vinnuferla og fastmótaðar rekstrarvenjur.</li>
-      <li>Úrvinnsla flókinna upplýsinga: Skýr minnisblöð, kynningar og Excel-líkön.</li>
-      <li>Þýðingar og ritstýring: Milli íslensku og ensku þegar þess er þörf.</li>
-    </ul>
+    <div class="sec-h">
+      <div class="num">§ II</div>
+      <h2>Starfsreynsla.</h2>
+    </div>
 
-    <h2>Starfsreynsla</h2>
-
-    <div class="experience">
+    <div class="roles">
       <div class="role">
-        <div class="title">Stofnandi &amp; ráðgjafi</div>
-        <div class="meta">Multa Bene Agere, 2025 -</div>
-        <p>
-          Aðstoða lítil og meðalstór fyrirtæki við að skapa skýrleika í daglegum rekstri og framkvæmd. Ég umbreyti einnig flóknum upplýsingum í skýrar samantektir og kynningar sem auðvelda samstillingu og eftirfylgni.
-        </p>
+        <div class="role-year">2025 →</div>
+        <div class="role-body">
+          <p class="role-title">Stofnandi &amp; ráðgjafi</p>
+          <p class="role-org">Multa Bene Agere</p>
+          <p class="role-desc">Aðstoða lítil og meðalstór fyrirtæki við að skapa skýrleika í daglegum rekstri og framkvæmd. Ég umbreyti einnig flóknum upplýsingum í skýrar samantektir og kynningar sem auðvelda samstillingu og eftirfylgni.</p>
+        </div>
       </div>
 
       <div class="role">
-        <div class="title">Forstöðumaður viðskiptaþróunar</div>
-        <div class="meta">Íslandssjóðir, 2018 - 2024</div>
-        <p>
-          Leiddi verkefni á sviði viðskiptaþróunar, rekstrar sjóða, markaðsmála og sérhæfðra fjárfestinga hjá stærsta sjóðastýringarfyrirtæki landsins (eignir í stýringu um 349 ma.kr.).
-        </p>
+        <div class="role-year">2018–2024</div>
+        <div class="role-body">
+          <p class="role-title">Forstöðumaður viðskiptaþróunar</p>
+          <p class="role-org">Íslandssjóðir</p>
+          <p class="role-desc">Leiddi verkefni á sviði viðskiptaþróunar, rekstrar sjóða, markaðsmála og sérhæfðra fjárfestinga hjá stærsta sjóðastýringarfyrirtæki landsins (eignir í stýringu um 349 ma.kr.).</p>
+        </div>
       </div>
 
       <div class="role">
-        <div class="title">Framkvæmdastjóri (Executive Director)</div>
-        <div class="meta">Glitnir HoldCo ehf, 2008 - 2018</div>
-        <p>
-          Bar ábyrgð á fjárfestatengslum og rekstri fyrir 49 milljarða dollara þrotabú og samræmdi rekstrar-, fjármála- og regluvörsluferla undir ströngum tímamörkum. Sem framkvæmdastjóri og stjórnarmaður ISB Holding ehf. hafði ég jafnframt yfirumsjón með 95% eignarhlut búsins í Íslandsbanka og tryggði faglegt stjórnarfar þar á milli.
-        </p>
+        <div class="role-year">2008–2018</div>
+        <div class="role-body">
+          <p class="role-title">Framkvæmdastjóri</p>
+          <p class="role-org">Glitnir HoldCo ehf.</p>
+          <p class="role-desc">Bar ábyrgð á fjárfestatengslum og rekstri fyrir 49 milljarða dollara þrotabú og samræmdi rekstrar-, fjármála- og regluvörsluferla undir ströngum tímamörkum. Sem framkvæmdastjóri og stjórnarmaður ISB Holding ehf. hafði ég jafnframt yfirumsjón með 95% eignarhlut búsins í Íslandsbanka.</p>
+        </div>
       </div>
     </div>
 
-    <section class="ec">
-      <h2>Menntun &amp; réttindi</h2>
+    <div class="sec-h">
+      <div class="num">§ III</div>
+      <h2>Menntun &amp; réttindi.</h2>
+    </div>
 
-      <div class="ec-grid">
-        <div class="ec-col">
-          <div class="ec-item">
-            <div class="ec-primary">MSc, Management Research</div>
-            <div class="ec-secondary">University of Oxford</div>
-          </div>
-
-          <div class="ec-item">
-            <div class="ec-primary">BA, Economics</div>
-            <div class="ec-secondary">Harvard University</div>
-          </div>
-        </div>
-
-        <div class="ec-col">
-          <div class="ec-item">
-            <div class="ec-primary">CAIA Charterholder</div>
-            <div class="ec-secondary">Alþjóðleg vottun í sérhæfðum fjárfestingum</div>
-          </div>
-
-          <div class="ec-item">
-            <div class="ec-primary">Próf í verðbréfaviðskiptum</div>
-            <div class="ec-secondary">Fjármála- og efnahagsráðuneytið</div>
-          </div>
-        </div>
+    <div class="ec-grid">
+      <div class="ec-item">
+        <div class="ec-primary">MSc, Management Research</div>
+        <div class="ec-secondary">University of Oxford</div>
       </div>
+      <div class="ec-item">
+        <div class="ec-primary">CAIA Charterholder</div>
+        <div class="ec-secondary">Alþjóðleg vottun í sérhæfðum fjárfestingum</div>
+      </div>
+      <div class="ec-item">
+        <div class="ec-primary">BA, Economics</div>
+        <div class="ec-secondary">Harvard University</div>
+      </div>
+      <div class="ec-item">
+        <div class="ec-primary">Próf í verðbréfaviðskiptum</div>
+        <div class="ec-secondary">Fjármála- og efnahagsráðuneytið</div>
+      </div>
+    </div>
+
+    <div class="sec-h">
+      <div class="num">§ IV</div>
+      <h2>Tungumál &amp; íþróttir.</h2>
+    </div>
+
+    <section class="prose prose-sm prose-cols">
+      <p>Var landsliðsmarkvörður í knattspyrnu og lék sem atvinnumaður í sænsku úrvalsdeildinni (Damallsvenskan).</p>
+      <p>Íslenska sem móðurmál. Fullkomin tök á ensku í ræðu og riti. Grunnkunnátta í sænsku. Lestrarkunnátta í dönsku, norsku og þýsku.</p>
     </section>
 
-    <h2>Tungumál &amp; íþróttir</h2>
-    <p>
-      Var landsliðsmarkvörður í knattspyrnu og lék sem atvinnumaður í sænsku úrvalsdeildinni (Damallsvenskan).<br>
-    </p>
-    <p>
-      Íslenska sem móðurmál. Fullkomin tök á ensku í ræðu og riti. Hef grunnkunnáttu í sænsku og get bjargað mér við lestur á dönsku, norsku og þýsku.
-    </p>
+    <footer class="contact-block">
+      <div class="cb-l">
+        Sendu <em>tölvupóst</em> með upplýsingum um hvað mætti ganga betur,
+        hverju þú vilt breyta og hver tímaramminn er.
+      </div>
+      <div class="cb-r">
+        <a href="mailto:mba@multabene.is">mba@multabene.is</a>
+      </div>
+    </footer>
 
-    <a class="back" href="/">← Tilbaka</a>
   </main>
 </body>
 </html>

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Operations and execution support for small and mid-sized businesses. Clearer workflows, well-defined ownership, and decision materials that make follow-through easier.">
   <title>Multa Bene Agere</title>
 
   <link rel="icon" type="image/x-icon" href="https://www.multabene.is/favicon.ico?v=2">
@@ -10,61 +12,51 @@
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    body{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      min-height:100vh;
-      margin:0;
-      background:#f6f4f0;
-      font-family:'Playfair Display', serif;
-    }
-
-    img{
-      width:80%;
-      height:auto;
-      display:block;
-      margin:0 auto 8px auto;
-    }
-
-    .main-content{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      width:100%;
-    }
-
-    /* Subtle underline always, stronger on hover/focus */
-    .nav-link{
-      color:inherit;
-      font-family:'Playfair Display', serif;
-      text-decoration:underline;
-      text-decoration-thickness:1px;
-      text-underline-offset:0.18em;
-      text-decoration-color:rgba(0,0,0,.35);
-    }
-
-    .nav-link:hover,
-    .nav-link:focus-visible{
-      text-decoration-color:rgba(0,0,0,.75);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div class="main-content">
-    <a href="mailto:mba@multabene.is?subject=Hello from Multa Bene Agere website"
-       aria-label="Email us" title="Email us">
-      <img src="mbalogo.png" alt="Email us">
-    </a>
+  <div class="shell home-wrap">
 
-    <nav style="width:100%; text-align:center; padding:8px 0 0 0;">
-      <a class="nav-link" href="/about/">Enter</a>
-    </nav>
+    <header class="masthead">
+      <a class="wm" href="/" aria-label="Multa Bene Agere — home">
+        <span class="wm-mba">MBA</span>
+        <span class="wm-dot" aria-hidden="true"></span>
+        <span class="wm-name">Multa Bene Agere</span>
+      </a>
+      <div class="masthead-meta">
+        <span>Reykjavík · Iceland</span>
+        <span class="dot-sep">·</span>
+        <span>Est. MMXXV</span>
+      </div>
+    </header>
+
+    <section class="home-hero">
+      <div class="home-eyebrow">Independent consultancy</div>
+
+      <h1 class="home-headline">
+        Many things,<br>done <em>well.</em>
+      </h1>
+
+      <p class="home-sub">
+        Operations and execution support for small and mid-sized businesses.
+        Clearer workflows, well-defined ownership, and decision materials that
+        make follow-through easier, in English and Icelandic.
+      </p>
+
+      <nav class="home-cta-row" aria-label="Primary">
+        <a href="/about/">About<span class="arrow">→</span></a>
+        <a href="mailto:mba@multabene.is?subject=Hello%20from%20Multa%20Bene%20Agere">Email<span class="arrow">→</span></a>
+      </nav>
+    </section>
+
+    <footer class="home-foot">
+      <span><a href="mailto:mba@multabene.is">mba@multabene.is</a></span>
+    </footer>
+
   </div>
 </body>
 </html>
