@@ -2,138 +2,193 @@
 <html lang="is">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab — Multa Bene</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab — Multa Bene Agere</title>
 
-    body {
-      min-height: 100vh;
-      background: #f6f4f0;
-      font-family: 'Playfair Display', serif;
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    #lock {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      min-height: 55vh;
     }
-
-    /* --- PASSWORD SCREEN --- */
-    #lock {
-      text-align: center;
-    }
-    #lock h1 {
-      font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 2rem;
-      color: #1a1a1a;
-      letter-spacing: 0.02em;
+    #lock .lock-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 32px;
     }
     #lock input {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
       border: none;
-      border-bottom: 1px solid rgba(0,0,0,0.35);
+      border-bottom: 1px solid var(--rule-strong);
       background: transparent;
       padding: 0.4rem 0.2rem;
       outline: none;
-      width: 180px;
+      width: 200px;
       text-align: center;
-      color: #1a1a1a;
+      color: var(--ink);
     }
-    #lock input::placeholder { color: rgba(0,0,0,0.3); }
+    #lock input::placeholder { color: var(--ash); }
     #lock button {
       display: block;
       margin: 1.5rem auto 0;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       background: none;
       border: none;
       cursor: pointer;
-      color: #1a1a1a;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.18em;
-      text-decoration-color: rgba(0,0,0,0.35);
+      color: var(--ink);
+      border-bottom: 1px solid var(--copper);
+      padding-bottom: 2px;
+      transition: color 120ms ease;
     }
-    #lock button:hover { text-decoration-color: rgba(0,0,0,0.75); }
+    #lock button:hover { color: var(--copper); }
     #lock .err {
-      font-size: 0.8rem;
-      color: #a00;
-      margin-top: 0.8rem;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9a2020;
+      margin-top: 1.2rem;
       min-height: 1.2em;
     }
 
-    /* --- FILE LIST --- */
-    #vault { display: none; width: 100%; max-width: 560px; }
-    #vault h1 {
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #1a1a1a;
-      margin-bottom: 0.3rem;
+    #vault { display: none; }
+
+    .file-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    #vault .sub {
-      font-size: 0.8rem;
-      color: rgba(0,0,0,0.4);
-      margin-bottom: 2.5rem;
-      font-family: sans-serif;
+    .file-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--rule);
     }
-    #file-list { list-style: none; }
-    #file-list li {
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-      padding: 1rem 0;
-    }
-    #file-list li:first-child { border-top: 1px solid rgba(0,0,0,0.1); }
-    #file-list a {
-      color: #1a1a1a;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.18em;
-      text-decoration-color: rgba(0,0,0,0.35);
-      font-size: 1rem;
-    }
-    #file-list a:hover { text-decoration-color: rgba(0,0,0,0.75); }
-    #file-list .date {
-      font-size: 0.75rem;
-      color: rgba(0,0,0,0.35);
-      font-family: sans-serif;
-      margin-top: 0.25rem;
-    }
-    .back {
-      margin-top: 3rem;
-      font-size: 0.8rem;
-      color: rgba(0,0,0,0.35);
-      font-family: sans-serif;
+    .file-list li:first-child { border-top: 1px solid var(--rule); }
+    .file-list a {
+      font-family: var(--serif);
+      font-size: 17px;
+      color: var(--ink);
       text-decoration: none;
+      border-bottom: 1px solid var(--copper);
+      padding-bottom: 1px;
+      transition: color 120ms ease;
     }
-    .back:hover { color: rgba(0,0,0,0.6); }
+    .file-list a:hover { color: var(--copper); }
+    .file-list .fl-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--ash);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .private-notice {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule-strong);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .private-notice em { font-style: italic; color: var(--ink); }
+    .private-notice a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--copper);
+      padding-bottom: 1px;
+    }
+    .private-notice a:hover { color: var(--copper); }
+    .private-notice .pn-r {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ash);
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .private-notice { grid-template-columns: 1fr; gap: 16px; }
+      .private-notice .pn-r { text-align: left; }
+    }
   </style>
 </head>
 <body>
+  <main class="shell">
 
-  <!-- PASSWORD -->
-  <div id="lock">
-    <h1>Lab</h1>
-    <input type="password" id="pw" placeholder="lykilorð" autocomplete="off">
-    <button onclick="unlock()">Opna</button>
-    <div class="err" id="err"></div>
-  </div>
+    <header class="masthead">
+      <a class="wm" href="/" aria-label="Multa Bene Agere — home">
+        <span class="wm-mba">MBA</span>
+        <span class="wm-dot" aria-hidden="true"></span>
+        <span class="wm-name">Multa Bene Agere</span>
+      </a>
+      <div class="masthead-meta">
+        <span>Reykjavík · Ísland</span>
+        <span class="dot-sep">·</span>
+        <span>Lab</span>
+      </div>
+    </header>
 
-  <!-- VAULT -->
-  <div id="vault">
-    <h1>Lab</h1>
-    <div class="sub">skrár búnar til með Claude</div>
-    <ul id="file-list"></ul>
-    <a class="back" href="/">← multabene.is</a>
-  </div>
+    <div id="lock">
+      <div class="lock-label">Lab — einkasvæði</div>
+      <input type="password" id="pw" placeholder="lykilorð" autocomplete="off">
+      <button onclick="unlock()">Opna</button>
+      <div class="err" id="err"></div>
+    </div>
+
+    <div id="vault">
+      <div class="page-h">
+        <div class="roman">§</div>
+        <h1>Lab.</h1>
+        <div class="meta">– Skrár búnar til með Claude · File wallet –</div>
+      </div>
+
+      <ul class="file-list" id="file-list"></ul>
+
+      <div class="private-notice">
+        <div><em>Private workspace.</em> If you reached this page by accident, the front door is <a href="/">one click away</a>.</div>
+        <div class="pn-r">
+          Multabene.is<br>
+          Multa Bene Agere ehf.
+        </div>
+      </div>
+    </div>
+
+  </main>
 
   <script>
-    const HASH = '7a98a0a0a5e3f1f7c7b0e6d7e9c2f4b3d5a1e8c6f0b2d4a9e7c1f3b5d0a2e4c8';
-
     async function sha256(str) {
       const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
     async function unlock() {
@@ -152,6 +207,10 @@
       if (e.key === 'Enter') unlock();
     });
 
+    function formatDate(d) {
+      return d.replace(/-/g, ' · ');
+    }
+
     function showVault() {
       document.getElementById('lock').style.display = 'none';
       document.getElementById('vault').style.display = 'block';
@@ -161,7 +220,7 @@
           const ul = document.getElementById('file-list');
           files.forEach(f => {
             const li = document.createElement('li');
-            li.innerHTML = `<a href="${f.file}" target="_blank">${f.name}</a><div class="date">${f.date}</div>`;
+            li.innerHTML = `<a href="${f.file}" target="_blank">${f.name}</a><div class="fl-date">${formatDate(f.date)}</div>`;
             ul.appendChild(li);
           });
         });
