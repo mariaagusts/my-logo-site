@@ -29,6 +29,121 @@ body {
   justify-content: space-between; padding: 20px 0 16px;
 }
 .header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: #FF4E2A; }
+.header-right { display: flex; align-items: center; gap: 8px; }
+
+.sync-btn {
+  background: none; border: none; cursor: pointer;
+  font-size: 17px; padding: 5px 7px; border-radius: 9px;
+  transition: background 0.15s; color: #ccc; line-height: 1;
+}
+.sync-btn:hover { background: #FFE8E2; color: #FF4E2A; }
+.sync-btn.syncing { animation: pulse 1.2s ease-in-out infinite; color: #FF9500; }
+.sync-btn.synced { color: #00C96B; }
+.sync-btn.error { color: #FF3B30; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+  display: flex; align-items: flex-end; justify-content: center;
+  z-index: 200; opacity: 0; pointer-events: none;
+  transition: opacity 0.22s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-sheet {
+  background: white; border-radius: 24px 24px 0 0;
+  padding: 20px 20px 44px; width: 100%; max-width: 480px;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.34,1.15,0.64,1);
+}
+.modal-overlay.open .modal-sheet { transform: translateY(0); }
+.modal-handle {
+  width: 36px; height: 4px; background: #eee; border-radius: 2px;
+  margin: 0 auto 20px;
+}
+.modal-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.modal-sub { font-size: 13px; color: #888; margin-bottom: 20px; line-height: 1.5; }
+.sync-code-display {
+  background: #FFF5F0; border-radius: 14px; padding: 18px 16px 14px;
+  text-align: center; margin-bottom: 14px;
+}
+.sync-code-value {
+  font-size: 38px; font-weight: 800; letter-spacing: 7px;
+  color: #FF4E2A; font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+}
+.sync-code-label { font-size: 11px; color: #aaa; margin-top: 6px; font-weight: 500; }
+.btn-copy-code {
+  width: 100%; padding: 13px; background: #FF4E2A; color: white;
+  border: none; border-radius: 12px; font-size: 15px; font-weight: 700;
+  cursor: pointer; margin-bottom: 20px; transition: opacity 0.15s;
+}
+.btn-copy-code:hover { opacity: 0.9; }
+.sync-divider {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px; color: #ccc; margin-bottom: 16px;
+}
+.sync-divider::before, .sync-divider::after {
+  content: ''; flex: 1; height: 1px; background: #eee;
+}
+.sync-enter-wrap { display: flex; gap: 8px; }
+.sync-enter-input {
+  flex: 1; height: 46px; border: 2px solid #FFD0C4; border-radius: 12px;
+  background: #FFF5F0; padding: 0 14px; font-size: 20px; font-weight: 700;
+  text-align: center; letter-spacing: 5px; text-transform: uppercase;
+  font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+  outline: none; color: #1a1a1a;
+}
+.sync-enter-input:focus { border-color: #FF4E2A; }
+.btn-link-code {
+  height: 46px; padding: 0 18px; background: white; color: #FF4E2A;
+  border: 2px solid #FF4E2A; border-radius: 12px; font-size: 14px;
+  font-weight: 700; cursor: pointer; white-space: nowrap; transition: background 0.15s;
+}
+.btn-link-code:hover { background: #FFF0EC; }
+.sync-msg { font-size: 12px; color: #888; margin-top: 10px; min-height: 16px; }
+.sync-msg.ok { color: #00C96B; }
+.sync-msg.err { color: #FF3B30; }
+.sync-setup-warn {
+  background: #FFF3CD; border-radius: 12px; padding: 12px 14px;
+  font-size: 12px; color: #856404; line-height: 1.5; margin-top: 16px;
+}
+
+/* Help button & floating box */
+.help-btn {
+  background: none; border: 1.5px solid #FFD0C4; cursor: pointer;
+  font-size: 12px; font-weight: 700; color: #FF9080;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s, color 0.15s; flex-shrink: 0;
+}
+.help-btn:hover, .help-btn.open { background: #FFE8E2; color: #FF4E2A; border-color: #FF4E2A; }
+.help-box {
+  position: fixed; top: 68px; right: 16px; left: 16px;
+  max-width: 420px; margin: 0 auto;
+  background: white; border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(255,78,42,0.13), 0 2px 8px rgba(0,0,0,0.08);
+  padding: 18px 18px 16px; z-index: 150;
+  opacity: 0; pointer-events: none;
+  transform: translateY(-8px) scale(0.97);
+  transition: opacity 0.18s, transform 0.18s;
+  border: 1.5px solid #FFE0D8;
+}
+.help-box.open { opacity: 1; pointer-events: all; transform: translateY(0) scale(1); }
+.help-box-title {
+  font-size: 13px; font-weight: 700; color: #FF4E2A;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+}
+.help-step {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13px; color: #444; line-height: 1.45;
+  margin-bottom: 9px;
+}
+.help-step:last-child { margin-bottom: 0; }
+.help-num {
+  background: #FFF0EC; color: #FF4E2A; font-size: 11px; font-weight: 800;
+  width: 20px; height: 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
 
 .suggestion-card {
   background: #FF4E2A; color: white; border-radius: 22px;
@@ -259,11 +374,47 @@ body {
 </head>
 <body>
 
+<!-- SYNC MODAL -->
+<div class="modal-overlay" id="sync-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Samstilling milli tækja</div>
+    <div class="modal-sub">Notaðu sama kóðann á öðru tæki til að gögn þín samstillist sjálfkrafa — engin innskráning.</div>
+    <div class="sync-code-display">
+      <div class="sync-code-value" id="modal-sync-code">——————</div>
+      <div class="sync-code-label">Kóðinn þinn</div>
+    </div>
+    <button class="btn-copy-code" id="btn-copy-code">Afrita kóða</button>
+    <div class="sync-divider">tengstu öðru tæki</div>
+    <div class="sync-enter-wrap">
+      <input class="sync-enter-input" id="sync-enter-input"
+             type="text" maxlength="6" placeholder="ABC123"
+             autocomplete="off" spellcheck="false" />
+      <button class="btn-link-code" id="btn-link-code">Tengja</button>
+    </div>
+    <div class="sync-msg" id="sync-link-msg"></div>
+    <div class="sync-setup-warn" id="sync-setup-warn" style="display:none">
+      ⚠️ Firebase er ekki stillt. Sjá leiðbeiningar í kóðanum (Firebase CONFIG).
+    </div>
+  </div>
+</div>
+
 <!-- HOME -->
 <div id="screen-home" class="screen active">
   <div class="header">
     <h1>10 mínútna þrif</h1>
-    <span id="today-badge" style="display:none" class="today-badge"></span>
+    <div class="header-right">
+      <span id="today-badge" style="display:none" class="today-badge"></span>
+      <button class="sync-btn" id="sync-btn" title="Samstilling">☁</button>
+      <button class="help-btn" id="help-btn" title="Hjálp">?</button>
+    </div>
+  </div>
+  <div class="help-box" id="help-box">
+    <div class="help-box-title">☁ Samstilling milli tækja</div>
+    <div class="help-step"><div class="help-num">1</div><span>Þegar þú opnar appið í fyrsta sinn fær það sjálfkrafa einkvæman 6-stafa kóða.</span></div>
+    <div class="help-step"><div class="help-num">2</div><span>Smelltu á <strong>☁</strong> táknið efst til hægri til að sjá kóðann þinn og afrita hann.</span></div>
+    <div class="help-step"><div class="help-num">3</div><span>Á hinu tækinu: smelltu á <strong>☁</strong> → sláðu inn kóðann → <strong>Tengja</strong>.</span></div>
+    <div class="help-step"><div class="help-num">4</div><span>Þaðan af eru gögn samstillt sjálfkrafa á milli tækja — engin innskráning.</span></div>
   </div>
   <div class="suggestion-card">
     <div class="suggestion-label">Tillaga næst</div>
@@ -286,7 +437,7 @@ body {
       <input class="add-zone-name-input" id="new-zone-name" type="text" maxlength="40" placeholder="Nafn á svæði..." />
       <button class="add-zone-btn" id="btn-add-zone">Bæta við</button>
     </div>
-    <div class="add-zone-hint">Þín svæði eru vistuð í þessum vafra.</div>
+    <div class="add-zone-hint">Gögn eru samstillt á milli tækja með sync-kóðanum þínum.</div>
   </div>
 </div>
 
@@ -349,6 +500,20 @@ body {
 </nav>
 
 <script>
+// ═══════════════════════════════════════════════════
+// FIREBASE CONFIG
+// ═══════════════════════════════════════════════════
+// 1. Farðu á https://console.firebase.google.com
+// 2. "Add project" → gefðu því nafn (t.d. "thrif-app")
+// 3. Build → Realtime Database → Create database → Start in test mode
+// 4. Afritaðu Database URL (lítur svona út):
+//    https://thrif-app-default-rtdb.firebaseio.com
+// 5. Límdu hana hér að neðan:
+const FB_URL = 'https://min-timer-multabeneis-default-rtdb.europe-west1.firebasedatabase.app';
+// ═══════════════════════════════════════════════════
+
+const FB_ON = FB_URL && !FB_URL.includes('YOUR-PROJECT');
+
 const BUILT_IN = [
   { id:'kitchen',       name:'Eldhúsborð og uppþvottur', icon:'🍽️',  multiple:false, bg:'#FFF3CD' },
   { id:'fridge',        name:'Ísskápur',                  icon:'❄️',   multiple:false, bg:'#D6EEF8' },
@@ -369,24 +534,95 @@ const EXTRA_BGS = ['#FFE8D6','#D6F5E8','#E8D6FF','#FFD6E8','#D6E8FF','#F5FFD6','
 const CIRC = 2 * Math.PI * 98;
 const TOTAL = 600;
 
-function getSessions()    { try { return JSON.parse(localStorage.getItem('reset_v1')||'[]'); } catch(e){return[];} }
-function saveSessions(s)  { localStorage.setItem('reset_v1', JSON.stringify(s)); }
-function addSession(zid)  { const s=getSessions(); s.push({zoneId:zid,ts:Date.now()}); saveSessions(s); }
-function delSession(i)    { const s=getSessions(); s.splice(i,1); saveSessions(s); }
-function resetZone(zid)   { const s=getSessions(); for(let i=s.length-1;i>=0;i--){if(s[i].zoneId===zid){s.splice(i,1);break;}} saveSessions(s); }
+// ── Data (localStorage) ──────────────────────────────
+function getSessions()         { try { return JSON.parse(localStorage.getItem('reset_v1')||'[]'); } catch(e){return[];} }
+function saveSessions(s, raw)  { localStorage.setItem('reset_v1', JSON.stringify(s)); if(!raw) queueSave(); }
+function addSession(zid)       { const s=getSessions(); s.push({zoneId:zid,ts:Date.now()}); saveSessions(s); }
+function delSession(i)         { const s=getSessions(); s.splice(i,1); saveSessions(s); }
+function resetZone(zid)        { const s=getSessions(); for(let i=s.length-1;i>=0;i--){if(s[i].zoneId===zid){s.splice(i,1);break;}} saveSessions(s); }
 
-function getCustom()      { try { return JSON.parse(localStorage.getItem('custom_v1')||'[]'); } catch(e){return[];} }
-function saveCustom(z)    { localStorage.setItem('custom_v1', JSON.stringify(z)); }
+function getCustom()           { try { return JSON.parse(localStorage.getItem('custom_v1')||'[]'); } catch(e){return[];} }
+function saveCustom(z, raw)    { localStorage.setItem('custom_v1', JSON.stringify(z)); if(!raw) queueSave(); }
 function addCustom(name, icon) {
   const c=getCustom();
   c.push({ id:'c_'+Date.now(), name, icon, multiple:false, bg:EXTRA_BGS[c.length%EXTRA_BGS.length], custom:true });
   saveCustom(c);
 }
-function delCustom(id)    { saveCustom(getCustom().filter(z=>z.id!==id)); }
-function allZones()       { return [...BUILT_IN, ...getCustom()]; }
+function delCustom(id)         { saveCustom(getCustom().filter(z=>z.id!==id)); }
+function allZones()            { return [...BUILT_IN, ...getCustom()]; }
 
-function lastDone(zid)    { const s=getSessions().filter(x=>x.zoneId===zid); return s.length?Math.max(...s.map(x=>x.ts)):null; }
-function doneLabel(zid)   {
+// ── Firebase sync ────────────────────────────────────
+function getSyncCode() {
+  let c = localStorage.getItem('syncCode');
+  if (!c) {
+    const ch = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    c = Array.from({length:6}, () => ch[Math.floor(Math.random()*ch.length)]).join('');
+    localStorage.setItem('syncCode', c);
+  }
+  return c;
+}
+
+function setSyncUI(state) {
+  const btn = document.getElementById('sync-btn');
+  if (!btn) return;
+  btn.classList.remove('syncing','synced','error');
+  if (state === 'saving')  { btn.textContent = '☁'; btn.classList.add('syncing'); }
+  else if (state === 'ok') { btn.textContent = '✓'; btn.classList.add('synced'); }
+  else if (state === 'err'){ btn.textContent = '!'; btn.classList.add('error'); }
+  else                     { btn.textContent = '☁'; }
+}
+
+function getBundle() {
+  return { sessions: getSessions(), custom: getCustom(), ts: Date.now() };
+}
+function applyBundle(b) {
+  if (!b || !b.sessions) return false;
+  saveSessions(b.sessions, true);
+  if (b.custom) saveCustom(b.custom, true);
+  return true;
+}
+
+async function fbGet(code) {
+  try {
+    const r = await fetch(`${FB_URL}/data/${code}.json`);
+    if (!r.ok) return null;
+    const d = await r.json();
+    return d;
+  } catch { return null; }
+}
+async function fbPut(bundle) {
+  try {
+    const r = await fetch(`${FB_URL}/data/${getSyncCode()}.json`, {
+      method: 'PUT',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(bundle)
+    });
+    setSyncUI(r.ok ? 'ok' : 'err');
+  } catch { setSyncUI('err'); }
+}
+
+let saveTimer;
+function queueSave() {
+  if (!FB_ON) return;
+  setSyncUI('saving');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => fbPut(getBundle()), 1500);
+}
+
+async function initSync() {
+  if (!FB_ON) { setSyncUI('idle'); return; }
+  setSyncUI('saving');
+  const data = await fbGet(getSyncCode());
+  if (data && data.sessions && data.sessions.length >= getSessions().length) {
+    applyBundle(data);
+    renderHome();
+  }
+  setSyncUI('ok');
+}
+
+// ── Freshness helpers ─────────────────────────────────
+function lastDone(zid)  { const s=getSessions().filter(x=>x.zoneId===zid); return s.length?Math.max(...s.map(x=>x.ts)):null; }
+function doneLabel(zid) {
   const ts=lastDone(zid); if(!ts) return 'Aldrei gert';
   const d=Math.floor((Date.now()-ts)/86400000);
   if(d===0) return 'Gert í dag'; if(d===1) return 'Gert í gær'; return `Fyrir ${d} dögum`;
@@ -402,6 +638,7 @@ function suggest() {
   return best;
 }
 
+// ── Screens ───────────────────────────────────────────
 let activeZone=null, timerSecs=TOTAL, running=false, ticker=null, calY, calM;
 
 function showScreen(name) {
@@ -470,6 +707,7 @@ document.getElementById('new-zone-name').addEventListener('keydown',e=>{
   if(e.key==='Enter') document.getElementById('btn-add-zone').click();
 });
 
+// ── Timer ─────────────────────────────────────────────
 function startTimer(zid) {
   activeZone=zid;
   const z=allZones().find(x=>x.id===zid);
@@ -503,6 +741,7 @@ function showDone(){
 document.getElementById('btn-log').addEventListener('click',()=>{if(activeZone)addSession(activeZone);activeZone=null;showScreen('home');});
 document.getElementById('btn-skip').addEventListener('click',()=>{activeZone=null;showScreen('home');});
 
+// ── History / Calendar ────────────────────────────────
 const IS_M=['Janúar','Febrúar','Mars','Apríl','Maí','Júní','Júlí','Ágúst','September','Október','Nóvember','Desember'];
 const IS_D=['Sun','Mán','Þri','Mið','Fim','Fös','Lau'];
 const IS_MS=['jan','feb','mar','apr','maí','jún','júl','ágú','sep','okt','nóv','des'];
@@ -550,15 +789,89 @@ function renderList(){
 document.getElementById('cal-prev').addEventListener('click',()=>{calM--;if(calM<0){calM=11;calY--;}renderCal();});
 document.getElementById('cal-next').addEventListener('click',()=>{calM++;if(calM>11){calM=0;calY++;}renderCal();});
 
-// --- PWA icon & manifest (self-contained, no external files needed) ---
+// ── Sync modal ────────────────────────────────────────
+document.getElementById('sync-btn').addEventListener('click', () => {
+  document.getElementById('modal-sync-code').textContent = getSyncCode();
+  document.getElementById('sync-link-msg').textContent = '';
+  document.getElementById('sync-link-msg').className = 'sync-msg';
+  document.getElementById('sync-enter-input').value = '';
+  document.getElementById('sync-setup-warn').style.display = FB_ON ? 'none' : 'block';
+  document.getElementById('sync-modal').classList.add('open');
+});
+document.getElementById('sync-modal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+document.getElementById('btn-copy-code').addEventListener('click', function() {
+  navigator.clipboard.writeText(getSyncCode()).then(() => {
+    this.textContent = 'Afritað! ✓';
+    setTimeout(() => { this.textContent = 'Afrita kóða'; }, 2000);
+  }).catch(() => {
+    prompt('Afritaðu kóðann:', getSyncCode());
+  });
+});
+document.getElementById('btn-link-code').addEventListener('click', async () => {
+  const input  = document.getElementById('sync-enter-input');
+  const msgEl  = document.getElementById('sync-link-msg');
+  const code   = input.value.trim().toUpperCase();
+
+  const setMsg = (txt, cls='') => { msgEl.textContent = txt; msgEl.className = 'sync-msg ' + cls; };
+
+  if (code.length !== 6)           { setMsg('Kóðinn þarf að vera 6 stafir.', 'err'); return; }
+  if (code === getSyncCode())      { setMsg('Þetta er þegar kóðinn þinn.', 'err'); return; }
+  if (!FB_ON)                      { setMsg('Firebase er ekki stillt — sjá leiðbeiningar í kóðanum.', 'err'); return; }
+
+  setMsg('Tengist...');
+  const data = await fbGet(code);
+
+  if (data && data.sessions) {
+    const cur = getSessions().length;
+    const msg = cur > 0
+      ? `Þetta mun skipta út ${cur} lotum þínum með ${data.sessions.length} lotum frá hinu tækinu. Halda áfram?`
+      : `Sækja ${data.sessions.length} lotur frá hinu tækinu?`;
+    if (!confirm(msg)) { setMsg(''); return; }
+    localStorage.setItem('syncCode', code);
+    applyBundle(data);
+    renderHome();
+    document.getElementById('modal-sync-code').textContent = code;
+    setMsg('Tengt! Gögn hlaðin.', 'ok');
+    input.value = '';
+  } else {
+    if (!confirm(`Enginn gögn fundust á kóða ${code}.\nViltu nota þennan kóða og yfirfæra þín gögn þangað?`)) {
+      setMsg(''); return;
+    }
+    localStorage.setItem('syncCode', code);
+    document.getElementById('modal-sync-code').textContent = code;
+    queueSave();
+    setMsg('Kóða breytt! Gögn send.', 'ok');
+    input.value = '';
+  }
+});
+document.getElementById('sync-enter-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('btn-link-code').click();
+});
+
+// Help box toggle
+const helpBtn = document.getElementById('help-btn');
+const helpBox = document.getElementById('help-box');
+helpBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  const open = helpBox.classList.toggle('open');
+  helpBtn.classList.toggle('open', open);
+});
+document.addEventListener('click', e => {
+  if (!helpBox.contains(e.target) && e.target !== helpBtn) {
+    helpBox.classList.remove('open');
+    helpBtn.classList.remove('open');
+  }
+});
+
+// ── PWA icon & manifest (self-contained) ─────────────
 (function(){
   function makeIcon(size) {
     const cv = document.createElement('canvas');
     cv.width = cv.height = size;
     const c = cv.getContext('2d');
     const s = size / 100;
-
-    // Rounded square background
     const rad = size * 0.22;
     c.beginPath();
     c.moveTo(rad,0); c.lineTo(size-rad,0);
@@ -570,53 +883,37 @@ document.getElementById('cal-next').addEventListener('click',()=>{calM++;if(calM
     c.lineTo(0,rad);
     c.quadraticCurveTo(0,0,rad,0);
     c.closePath();
-    c.fillStyle = '#FF4E2A';
-    c.fill();
-
-    // Broom handle
+    c.fillStyle = '#FF4E2A'; c.fill();
     c.save();
     c.strokeStyle = 'white'; c.lineWidth = 7*s; c.lineCap = 'round';
     c.beginPath(); c.moveTo(68*s,14*s); c.lineTo(40*s,62*s); c.stroke();
     c.restore();
-
-    // Broom head
     c.save();
     c.translate(36*s, 70*s); c.rotate(-0.25);
     c.fillStyle = 'white';
-    c.beginPath();
-    c.roundRect(-22*s,-10*s,44*s,22*s,5*s);
-    c.fill();
+    c.beginPath(); c.roundRect(-22*s,-10*s,44*s,22*s,5*s); c.fill();
     c.strokeStyle = '#FF6B48'; c.lineWidth = 2*s; c.lineCap = 'round';
     [-14,-7,0,7,14].forEach(i => {
       c.beginPath(); c.moveTo(i*s,2*s); c.lineTo(i*s,9*s); c.stroke();
     });
     c.restore();
-
-    // Sparkles
     function star(cx,cy,r1,r2) {
       c.beginPath();
       for(let i=0;i<8;i++){
         const a=(i*Math.PI/4)-Math.PI/2;
         const r=i%2===0?r1:r2;
-        i===0?c.moveTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r)
-             :c.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r);
+        i===0?c.moveTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r):c.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r);
       }
       c.closePath(); c.fill();
     }
     c.fillStyle='rgba(255,255,255,0.92)'; star(76*s,22*s,7*s,3*s);
     c.fillStyle='rgba(255,255,255,0.65)'; star(86*s,38*s,4*s,1.8*s);
     c.fillStyle='rgba(255,255,255,0.55)'; star(62*s,15*s,3*s,1.2*s);
-
     return cv.toDataURL('image/png');
   }
-
-  const i32  = makeIcon(32);
-  const i192 = makeIcon(192);
-  const i512 = makeIcon(512);
-
+  const i32=makeIcon(32), i192=makeIcon(192), i512=makeIcon(512);
   document.getElementById('favicon').href    = i32;
   document.getElementById('apple-icon').href = i192;
-
   const mf = { name:'10 mínútna þrif', short_name:'Þrif', start_url:'.', display:'standalone',
     background_color:'#FFF5F0', theme_color:'#FF4E2A',
     icons:[{src:i192,sizes:'192x192',type:'image/png'},{src:i512,sizes:'512x512',type:'image/png'}] };
@@ -625,6 +922,7 @@ document.getElementById('cal-next').addEventListener('click',()=>{calM++;if(calM
 })();
 
 renderHome();
+initSync();
 </script>
 </body>
 </html>
