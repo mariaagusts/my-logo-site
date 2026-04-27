@@ -549,7 +549,14 @@ function addCustom(name, icon) {
   saveCustom(c);
 }
 function delCustom(id)         { saveCustom(getCustom().filter(z=>z.id!==id)); }
-function allZones()            { return [...BUILT_IN, ...getCustom()]; }
+
+function getHidden()           { try { return new Set(JSON.parse(localStorage.getItem('hidden_v1')||'[]')); } catch(e){return new Set();} }
+function saveHidden(s)         { localStorage.setItem('hidden_v1', JSON.stringify([...s])); }
+function hideZone(id)          { const h=getHidden(); h.add(id); saveHidden(h); }
+function restoreAll()          { saveHidden(new Set()); }
+
+function allZones()            { const h=getHidden(); return [...BUILT_IN.filter(z=>!h.has(z.id)), ...getCustom()]; }
+function hiddenCount()         { return getHidden().size; }
 
 // ── Firebase sync ────────────────────────────────────
 function getSyncCode() {
@@ -673,7 +680,7 @@ function renderHome() {
       <div class="zone-icon">${z.icon}</div>
       <div class="zone-name">${z.name}</div>
       <div class="zone-last">${doneLabel(z.id)}</div>
-      ${z.custom?`<button class="delete-zone-btn" data-zid="${z.id}" title="Eyða svæði">🗑</button>`:''}
+      <button class="delete-zone-btn" data-zid="${z.id}" data-custom="${z.custom||false}" title="Fjarlægja svæði">✕</button>
       <button class="reset-btn" data-zid="${z.id}" title="Endurstilla síðustu lotu">↺</button>
     `;
     card.addEventListener('click',e=>{
@@ -683,13 +690,29 @@ function renderHome() {
     card.querySelector('.reset-btn').addEventListener('click',e=>{
       e.stopPropagation(); resetZone(z.id); renderHome();
     });
-    if(z.custom){
-      card.querySelector('.delete-zone-btn').addEventListener('click',e=>{
-        e.stopPropagation();
+    card.querySelector('.delete-zone-btn').addEventListener('click',e=>{
+      e.stopPropagation();
+      if(z.custom){
         if(confirm(`Eyða "${z.name}"?`)){delCustom(z.id);renderHome();}
-      });
-    }
+      } else {
+        if(confirm(`Fela "${z.name}"?\n(Hægt að endurheimta neðst á síðunni)`)){hideZone(z.id);renderHome();}
+      }
+    });
     grid.appendChild(card);
+  }
+
+  const hc=hiddenCount();
+  let restoreRow=document.getElementById('restore-row');
+  if(!restoreRow){
+    restoreRow=document.createElement('div');
+    restoreRow.id='restore-row';
+    restoreRow.style.cssText='text-align:center;margin-top:8px;';
+    document.getElementById('zone-grid').after(restoreRow);
+  }
+  if(hc>0){
+    restoreRow.innerHTML=`<button onclick="restoreAll();renderHome();" style="background:none;border:none;color:#ccc;font-size:12px;cursor:pointer;padding:6px 8px;font-weight:500;">${hc} svæði falin — endurheimta öll</button>`;
+  } else {
+    restoreRow.innerHTML='';
   }
 }
 
