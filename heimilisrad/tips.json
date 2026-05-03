@@ -72,7 +72,7 @@
     "id": "handfang-sturta",
     "titill": "Laus handföng á innbyggðum sturtu-/blöndunartækjum",
     "flokkur": "badherbegi",
-    "dagsetning": "2026-05-03",
+    "dagsetning": "2025-04-29",
     "texti": "Það er óskaplega einfalt að festa laus handföng á innbyggðum blöndunartækjum ef maður veit hvernig á að fara að því. (Tók mig alltof langan tíma að hafa mig í þetta viðhald, enda sést á handfanginu hversu oft það hefur dottið á flísarnar. 🙂)\n\nÞið þurfið mjög lítinn sexkant (2mm?) til að komast að skrúfu sem skrúfar sig fasta í hringlaga rifflaða \"stykkið\" sem stýrir sturtunni. Skrúfan er neðan (undir) á handfanginu. Bara muna að losa skrúfuna aðeins innávið svo handfangið komist örugglega á stykkið áður en þið herðið.\n\nErfitt að lýsa þessu í orðum en vonandi duga myndirnar til útskýringar.\n\nSvona skrúfur er oft líka að finna á klósettpappírshöldurum sem festir eru á vegg. Þeas undir og ekki sýnilegar.",
     "myndir": [
       { "skra": "handfang1.jpg", "lysing": "" },
@@ -86,8 +86,8 @@
   {
     "id": "verdbolga",
     "titill": "Verðbólga",
-    "flokkur": "fjarmál",
-    "dagsetning": "2026-05-03",
+    "flokkur": "fjármál",
+    "dagsetning": "2025-03-10",
     "texti": "Það er oft mikill misskilningur í kringum verðbólgutölur. Þær eiga alltaf við um sl 12 mánuði því við getum aldrei vitað hver verðbólga framtíðar verður.\n\nÞað er því margt snúið gagnvart því að taka ákvarðanir um húsnæðislán.\n\nStýrivaxtaákvarðanir Seðlabankans (sú næsta verður tekin 19 mars n.k.) hafa aldrei \"bein\" áhrif á verðtryggða vexti en hinsvegar hafa þær ákvarðanir áhrif á hlutfallið/muninn á milli verðtryggðra og óverðtryggðra vaxta á markaði og þannig getur stýrivaxtalækkun (td í undanförnu vaxtalækkunarferli) haft þau áhrif á að bankar hækki verðtryggða vexti ef raunvextir (í einföldu máli mismunur á milli nafnvaxta/óverðtryggðra og svo verðtryggðra vaxta) eru hærri en verðbólga.\n\nBankarnir birta reglulega verðbólguspár sem hægt er að horfa til þegar ákvarðanir eru teknar en það er þó aldrei hægt að treysta spám fyllilega. Alþjóðlegar breytur, ótengdar Íslandi að mestu, geta haft þar mikil áhrif.",
     "myndir": [
       { "skra": "verdbolga.jpg", "lysing": "" }
@@ -97,7 +97,7 @@
     "id": "velfac-gluggar",
     "titill": "Velfac í gluggunum",
     "flokkur": "gluggar",
-    "dagsetning": "2026-05-03",
+    "dagsetning": "2025-01-16",
     "texti": "Góð áminning til þeirra sem eru með svona fídus í gluggunum sínum eða hjá svalahurðum. Varðar útloftun heimila.",
     "myndir": [
       { "skra": "velfac.jpg", "lysing": "" },
