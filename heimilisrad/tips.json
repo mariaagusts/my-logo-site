@@ -118,5 +118,19 @@
       { "titill": "YouTube shorts - Tire repair demo", "url": "https://www.youtube.com/shorts/d-ojcstnEvQ" },
       { "titill": "Amazon product", "url": "https://www.amazon.com/dp/B08SBFGMDB" }
     ]
+  },
+  {
+    "id": "limbyssa",
+    "titill": "Límbyssur",
+    "flokkur": "vidhald",
+    "dagsetning": "2024-12-05",
+    "texti": "Nú þegar aðventan er gengin í garð er rétt að minna á notagildi límbyssa. Fást í öllum helstu byggingavöruverslunum en oft líka í Tiger eða Söstrene Gröne. Ekki langt síðan ég vissi hvers þær væru megnugar. (Basic límbyssur kosta u.þ.b. 1.000kr). Þær geta nýst vel til að hengja upp jólaskraut sem þarf svo að taka aftur niður, t.d. í gluggakistum. En þar að auki geta þær verið hentugar fyrir mjög margt nytsamlegt á heimilinu. (Límið situr ekki eftir ef maður þarf að breyta til.)\n\nLeyfi video-um að fylgja. Það þarf sem sagt ekki alltaf að negla eða bora fyrir ýmis smáverkefni. Það er m.a.s. hægt að stækka skrúfuhaus ef skrúfan er of lítil fyrir gatið eða til að losa skrúfu sem er forskrúfuð.\n\n(Mæli með að horfa á hraðanum 2x til að fá tipsin án þess að þurfa að leiðast of lengi...)",
+    "myndir": [
+      { "skra": "limbyssa.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "YouTube - Adhesive strip uses", "url": "https://www.youtube.com/watch?v=RWPZ3ILFOWY" },
+      { "titill": "YouTube - More adhesive strip tips", "url": "https://www.youtube.com/watch?v=mNjjHNAmroM" }
+    ]
   }
 ]
