@@ -1,12 +1,12 @@
 [
   {
     "id": "wd40-undratol",
-    "titill": "WD40 - undratól",
+    "titill": "WD-40 — undratól",
     "flokkur": "verkfaeri",
     "dagsetning": "2025-06-27",
-    "texti": "Ef þið eigið ekki WD40 mæli ég með að kaupa til að eiga. Frábært til að losa ryð eða verja gegn ryði og losna við ískur í td svala- og bílhurðum. En að auki er hægt að nota það til að:\n\n* Losa rennilása sem eru fastir\n* Losa lím af flötum\n* Losa fasta Lego-kubba!\n* Leysa upp fasta bletti á gólfum\n* Losa varalit af fötum\n* Leysa upp fluguklessur af bílum\n* Mýkja upp gamla málningarbursta\n* Losa tyggjó úr flestu sem og vaxliti (crayons)\n* Losa sápuskán af sturtusvæðum\n* Losa tjöru af skóm\n* Osfrv…\n\nSem sagt margnota undratól.\n\nEinnig hægt að nota á td hjólakeðjur til skamms tíma en gallinn við WD40 er að það þornar fljótt upp. Betra að nota rétta olíu í sum verk en vissulega gott að vita af skammtímalausnum.\n\nÞað þarf að hafa í huga að WD40 er eldfimt svo ekki spreyja nálægt opnum eldi. Einnig getur það skemmt einhvern fatnað svo betra að prófa á smærri fleti fyrst.",
+    "texti": "Ef þið eigið ekki WD-40 mæli ég með að kaupa til að eiga. Frábært til að losa ryð eða verja gegn ryði og losna við ískur í t.d. svala- og bílhurðum. En að auki er hægt að nota það til að:\n\n• Losa rennilása sem eru fastir\n• Losa lím af flötum\n• Losa fasta Lego-kubba\n• Leysa upp fasta bletti á gólfum\n• Losa varalit af fötum\n• Leysa upp fluguklessur af bílum\n• Mýkja upp gamla málningarbursta\n• Losa tyggjó úr flestu sem og vaxliti (crayons)\n• Losa sápuskán af sturtusvæðum\n• Losa tjöru af skóm\n• Osfrv…\n\nSem sagt margnota undratól.\n\nEinnig hægt að nota á td hjólakeðjur til skamms tíma en gallinn við WD-40 er að það þornar fljótt upp. Betra að nota rétta olíu í sum verk en vissulega gott að vita af skammtímalausnum.\n\nÞað þarf að hafa í huga að WD-40 er eldfimt svo ekki spreyja nálægt opnum eldi. Einnig getur það skemmt einhvern fatnað svo betra að prófa á smærri fleti fyrst.",
     "myndir": [
-      { "skra": "wd40.jpg", "lysing": "WD40 brúsi" }
+      { "skra": "wd40.jpg", "lysing": "WD-40 brúsi" }
     ]
   },
   {
@@ -14,10 +14,11 @@
     "titill": "Fastir blettir í blástursofnum",
     "flokkur": "eldhus",
     "dagsetning": "2025-06-10",
-    "texti": "Blástursofninn hjá mér er self-cleaning svokallaður, notar allt að 500°C til að breyta matarleyfum í ösku. Hinsvegar vilja oft festast einskonar „glerfitublettir\" á botninum. Ég hef reynt hina ýmsu ofnahreinsa (vel eitraðir flestir) á þessa bletti og það þarf margar umferðir til að vinna eitthvað á blettunum og aldrei leysast þeir alveg upp. Hinsvegar reynist mjög vel að nota glersköfu til að skafa blettina í burtu.",
+    "texti": "Blástursofninn hjá mér er self-cleaning svokallaður, notar allt að 500°C til að breyta matarleyfum í ösku. Hinsvegar vilja oft festast einskonar „glerfitublettir\" á botninum. Ég hef reynt hina ýmsu ofnahreinsa (vel eitraðir flestir) á þessa bletti og það þarf margar umferðir til að vinna eitthvað á blettunum og aldrei leysast þeir alveg upp. Hinsvegar reynist mjög vel að nota glersköfu til að skafa blettina í burtu.\n\nGott að hafa sköfuna smá blauta og passa að nota hana þannig að hún rispi ekki ofninn.",
     "myndir": [
       { "skra": "ofn-fyrir.jpg", "lysing": "Botninn fyrir þrif" },
-      { "skra": "ofn-eftir.jpg", "lysing": "Eftir glerskafa" }
+      { "skra": "ofn-eftir.jpg", "lysing": "Eftir glerskafa" },
+      { "skra": "glerskafa.jpg", "lysing": "Glerskafa af einföldustu gerð" }
     ]
   },
   {
@@ -36,7 +37,7 @@
     "titill": "Bíllinn rafmagnslaus?",
     "flokkur": "bill",
     "dagsetning": "2025-06-09",
-    "texti": "Ef bíllinn verður rafmagnslaus þá eru þetta skrefin:\n\n• Rauður í dautt +battery\n• Rauður í gott +battery\n• Svartur í gott -battery\n• Svartur klemma á málmflöt á dauða bílnum (ekki á battery)\n• Ræsa góða bílinn",
+    "texti": "Ef bíllinn verður rafmagnslaus þá eru þetta skrefin:\n\n• Rauður í dautt +battery\n• Rauður í gott +battery\n• Svartur í gott -battery\n• Svartur klemma á málmflöt á dauða bílnum (ekki á battery)\n• Ræsa góða bílinn\n\nEftir þessi skref kveikið þið á bílnum sem er með rafmagn og leyfið honum að ganga í 2-5mínútur. Kveikið svo á bílnum sem er rafmagnslaus. Leyfið svo fyrrum rafmagnslausa bílnum að vera í gangi í 15-30mínútur áður en þið taka kaplana í burtu í öfugum skrefum.",
     "myndir": [
       { "skra": "jump-start.jpg", "lysing": "Tengja startkapal" },
       { "skra": "jump-start-leidbeiningar.jpg", "lysing": "Skrefin myndrænt" }
@@ -53,6 +54,54 @@
     ],
     "tenglar": [
       { "titill": "EFLA — Grætur húsið þitt?", "url": "https://efla.is/" }
+    ]
+  },
+  {
+    "id": "sparsl-blettir",
+    "titill": "Sparslvinna á blettum",
+    "flokkur": "vidhald",
+    "dagsetning": "2025-06-10",
+    "texti": "Fyrir í dag að kaupa sparsl fyrir bletti sem komu upp við rakaskemmdir í múr. Keypti tvær týpur. Gott að vita að önnur virkar alls ekki á stærri fleti en er mjög fín og auðveld fyrir litlar sprungur og litil göt. Annars þarf að kaupa almenilegt múrsparsl (sjá mynd). Nýtti þó \"léttværga\" sparslið á litinn blett á veggnum sem varð til eftir að jólasökk var henglur á vegginn og tekinn niður.\n\n(Á meðfylgjandi myndum er bara búið að fara eina umferð og ekki þessa niður og enski pússa niður.)\n\nSem sagt, bæði spárslin eru góð, en nothæf á mismunandi verkefni. Múrsparslið er blautara og pekur vel en \"léttværga\" sparslið er mun þurrara, virkar ekki á stærri fleti. Múrsparslið þornar á ca sólarhring en \"léttværga\" sparslið á um klukkutíma.",
+    "myndir": [
+      { "skra": "sparsl1.jpg", "lysing": "Letvægt sparsl fyrir litla bletti" },
+      { "skra": "sparsl2.jpg", "lysing": "Sparsl fyrir stærri svæði" },
+      { "skra": "sparsl3.jpg", "lysing": "Múrsparsl fyrir vegginn" }
+    ]
+  },
+  {
+    "id": "handfang-sturta",
+    "titill": "Laus handföng á innbyggðum sturtu-/blöndunartækjum",
+    "flokkur": "badherbegi",
+    "dagsetning": "2026-05-03",
+    "texti": "Það er óskaplega einfalt að festa laus handföng á innbyggðum blöndunartækjum ef maður veit hvernig á að fara að því. (Tók mig alltof langan tíma að hafa mig í þetta viðhald, enda sést á handfanginu hversu oft það hefur dottið á flísarnar. 🙂)\n\nÞið þurfið mjög lítinn sexkant (2mm?) til að komast að skrúfu sem skrúfar sig fasta í hringlaga rifflaða \"stykkið\" sem stýrir sturtunni. Skrúfan er neðan (undir) á handfanginu. Bara muna að losa skrúfuna aðeins innávið svo handfangið komist örugglega á stykkið áður en þið herðið.\n\nErfitt að lýsa þessu í orðum en vonandi duga myndirnar til útskýringar.\n\nSvona skrúfur er oft líka að finna á klósettpappírshöldurum sem festir eru á vegg. Þeas undir og ekki sýnilegar.",
+    "myndir": [
+      { "skra": "handfang1.jpg", "lysing": "" },
+      { "skra": "handfang2.jpg", "lysing": "" },
+      { "skra": "handfang3.jpg", "lysing": "" },
+      { "skra": "handfang4.jpg", "lysing": "" },
+      { "skra": "handfang5.jpg", "lysing": "" },
+      { "skra": "handfang6.jpg", "lysing": "" }
+    ]
+  },
+  {
+    "id": "verdbolga",
+    "titill": "Verðbólga",
+    "flokkur": "fjarmál",
+    "dagsetning": "2026-05-03",
+    "texti": "Það er oft mikill misskilningur í kringum verðbólgutölur. Þær eiga alltaf við um sl 12 mánuði því við getum aldrei vitað hver verðbólga framtíðar verður.\n\nÞað er því margt snúið gagnvart því að taka ákvarðanir um húsnæðislán.\n\nStýrivaxtaákvarðanir Seðlabankans (sú næsta verður tekin 19 mars n.k.) hafa aldrei \"bein\" áhrif á verðtryggða vexti en hinsvegar hafa þær ákvarðanir áhrif á hlutfallið/muninn á milli verðtryggðra og óverðtryggðra vaxta á markaði og þannig getur stýrivaxtalækkun (td í undanförnu vaxtalækkunarferli) haft þau áhrif á að bankar hækki verðtryggða vexti ef raunvextir (í einföldu máli mismunur á milli nafnvaxta/óverðtryggðra og svo verðtryggðra vaxta) eru hærri en verðbólga.\n\nBankarnir birta reglulega verðbólguspár sem hægt er að horfa til þegar ákvarðanir eru teknar en það er þó aldrei hægt að treysta spám fyllilega. Alþjóðlegar breytur, ótengdar Íslandi að mestu, geta haft þar mikil áhrif.",
+    "myndir": [
+      { "skra": "verdbolga.jpg", "lysing": "" }
+    ]
+  },
+  {
+    "id": "velfac-gluggar",
+    "titill": "Velfac í gluggunum",
+    "flokkur": "gluggar",
+    "dagsetning": "2026-05-03",
+    "texti": "Góð áminning til þeirra sem eru með svona fídus í gluggunum sínum eða hjá svalahurðum. Varðar útloftun heimila.",
+    "myndir": [
+      { "skra": "velfac.jpg", "lysing": "" },
+      { "skra": "velfac2.jpg", "lysing": "" }
     ]
   }
 ]
