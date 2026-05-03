@@ -132,5 +132,18 @@
       { "titill": "YouTube - Adhesive strip uses", "url": "https://www.youtube.com/watch?v=RWPZ3ILFOWY" },
       { "titill": "YouTube - More adhesive strip tips", "url": "https://www.youtube.com/watch?v=mNjjHNAmroM" }
     ]
+  },
+  {
+    "id": "dyson-harthurrka",
+    "titill": "Dyson hárþurrka og aðrar hárþurrkur?",
+    "flokkur": "badherbegi",
+    "dagsetning": "2024-11-21",
+    "texti": "Einhverjar konur í þessum hópi eiga eflaust Dyson hárþurrku. Mögulega vita einhverjar þeirra ekki að það er nauðsynlegt að þrífa filterinn á hárþurrkunni reglulega, annars gefur hún upp öndina að lokum. 🙁\n\nÞetta má líka heimfæra á aðrar hárþurrkur. Best að tékka hvort það er filter á hárþurrkunni og þá hreinsa hana reglulega. Svipað og með þurrkara; virkar verr ef filterinn er fullur og einnig íkveikjuhætta.",
+    "myndir": [
+      { "skra": "dysonharthurrka.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "YouTube - How to clean Dyson hair dryer filter", "url": "https://www.youtube.com/watch?v=OyL6b8O2U9c" }
+    ]
   }
 ]
