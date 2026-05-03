@@ -103,5 +103,20 @@
       { "skra": "velfac.jpg", "lysing": "" },
       { "skra": "velfac2.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "vidgerdarsett-dekk",
+    "titill": "Viðgerðarsett fyrir bíldekk",
+    "flokkur": "bill",
+    "dagsetning": "2026-05-03",
+    "texti": "Í dag koma færri bílar en fleiri með varadekki í skottinu. Í mörgum tilfellum er hægt að lagfæra lítil göt með viðgerðarsetti sem fer lítið fyrir í skottinu. Þetta á þó ekki við ef dekkið nuddast utan í oddhvassan hlut (t.d. kant eða stein) og tekur á sig stóra sprungu. En fyrir lítil göt eins og t.d. eftir nagla eða skrúfu þá nýtist slíkt viðgerðarsett vel. Mæli með að eiga slíkt kit í bílnum.",
+    "myndir": [
+      { "skra": "vidgerdarsettbill.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "Amazon tire repair kits", "url": "https://www.amazon.com/s?k=tire+repair+kit&crid=12KAEQJ58D5HK&sprefix=tire+repair%2Caps%2C283&ref=nb_sb_ss_ts-doa-p_1_11" },
+      { "titill": "YouTube shorts - Tire repair demo", "url": "https://www.youtube.com/shorts/d-ojcstnEvQ" },
+      { "titill": "Amazon product", "url": "https://www.amazon.com/dp/B08SBFGMDB" }
+    ]
   }
 ]
