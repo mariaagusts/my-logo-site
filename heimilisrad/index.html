@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hagnýt heimilisráð — safn af ráðum úr daglegu lífi, mörg úr Facebook-hópnum Handlagnar heimilismæður.">
+  <title>Heimilisráð — Multa Bene Agere</title>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .intro-lead {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0 0 40px;
+      max-width: 60ch;
+    }
+
+    .filter-bar {
+      display: flex; flex-direction: column; gap: 18px;
+      margin-bottom: 8px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .search-input {
+      width: 100%;
+      font-family: var(--serif);
+      font-size: 16px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--rule-strong);
+      padding: 10px 0 10px 26px;
+      color: var(--ink);
+      outline: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236B6E72' stroke-width='1.6' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.5' y2='16.5'/></svg>");
+      background-repeat: no-repeat;
+      background-position: 0 50%;
+      background-size: 16px 16px;
+      transition: border-color 120ms ease;
+    }
+    .search-input:focus { border-bottom-color: var(--copper); }
+    .search-input::placeholder { color: var(--ash); font-style: italic; }
+
+    .filter-chips {
+      display: flex; flex-wrap: wrap; gap: 4px 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .chip {
+      background: none; border: none; padding: 4px 0;
+      cursor: pointer;
+      color: var(--ash);
+      font-family: inherit; font-size: inherit;
+      letter-spacing: inherit; text-transform: inherit;
+      border-bottom: 1px solid transparent;
+      transition: color 120ms ease, border-color 120ms ease;
+    }
+    .chip:hover { color: var(--ink); }
+    .chip.active { color: var(--ink); border-bottom-color: var(--copper); }
+    .chip .count {
+      color: var(--copper);
+      margin-left: 5px;
+      font-weight: 500;
+    }
+
+    .tips-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 16px;
+    }
+    .tip {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 32px;
+      padding: 36px 0;
+      border-top: 1px solid var(--rule);
+      scroll-margin-top: 24px;
+    }
+    .tip:last-child { border-bottom: 1px solid var(--rule); }
+    .tip:target {
+      background: color-mix(in oklab, var(--copper) 6%, transparent);
+      padding-left: 16px;
+      padding-right: 16px;
+      margin-left: -16px;
+      margin-right: -16px;
+    }
+
+    .tip-side {
+      display: flex; flex-direction: column; gap: 4px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ash);
+      padding-top: 8px;
+    }
+    .tip-side .tip-date { color: var(--copper); }
+
+    .tip-body h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 26px;
+      letter-spacing: -0.012em;
+      line-height: 1.18;
+      margin: 0 0 14px;
+      text-wrap: balance;
+    }
+    .tip-body h2 a {
+      text-decoration: none;
+      color: inherit;
+      border-bottom: none;
+    }
+    .tip-body h2 a:hover { color: var(--copper); }
+    .tip-body h2 .anchor {
+      opacity: 0;
+      color: var(--copper);
+      font-style: italic;
+      margin-left: 10px;
+      transition: opacity 120ms ease;
+      font-size: 0.7em;
+    }
+    .tip-body h2:hover .anchor { opacity: 1; }
+
+    .tip-text {
+      font-family: var(--serif);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink);
+      margin: 0;
+    }
+    .tip-text p { margin: 0 0 0.9em; text-wrap: pretty; }
+    .tip-text p:last-child { margin-bottom: 0; }
+    .tip-text ul {
+      margin: 0 0 0.9em;
+      padding-left: 0;
+      list-style: none;
+    }
+    .tip-text ul:last-child { margin-bottom: 0; }
+    .tip-text li {
+      padding-left: 22px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .tip-text li::before {
+      content: "·";
+      color: var(--copper);
+      position: absolute;
+      left: 8px;
+      font-weight: 700;
+      font-size: 1.4em;
+      line-height: 1;
+      top: 0.05em;
+    }
+    .tip-text strong { font-weight: 500; }
+
+    .tip-images {
+      margin-top: 22px;
+      display: grid;
+      gap: 10px;
+    }
+    .tip-images.count-1 { grid-template-columns: 1fr; max-width: 520px; }
+    .tip-images.count-2 { grid-template-columns: 1fr 1fr; }
+    .tip-images.count-3 { grid-template-columns: repeat(3, 1fr); }
+    .tip-images.count-4,
+    .tip-images.count-many { grid-template-columns: 1fr 1fr; }
+
+    .tip-img-cell { display: flex; flex-direction: column; gap: 6px; }
+    .tip-img-wrap {
+      position: relative;
+      cursor: zoom-in;
+      overflow: hidden;
+      background: var(--linen);
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--rule);
+    }
+    .tip-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 220ms ease;
+    }
+    .tip-img-wrap:hover img { transform: scale(1.02); }
+    .tip-img-wrap.missing {
+      display: flex; align-items: center; justify-content: center;
+      cursor: default;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+    .tip-img-wrap.missing::before { content: 'Mynd vantar'; }
+    .tip-img-caption {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ash);
+    }
+
+    .tip-links {
+      margin-top: 18px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    .tip-links a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--copper);
+      padding-bottom: 1px;
+    }
+    .tip-links a:hover { color: var(--copper); }
+    .tip-links .arrow { color: var(--copper); margin-left: 6px; }
+
+    .empty-state {
+      padding: 64px 0;
+      text-align: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17px;
+      color: var(--muted);
+    }
+
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(27, 36, 48, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 32px;
+      z-index: 1000;
+      opacity: 0; pointer-events: none;
+      transition: opacity 200ms ease;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 22px; right: 28px;
+      background: none; border: 1px solid rgba(244, 241, 234, 0.3);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 8px 14px;
+      transition: background 120ms ease;
+    }
+    .lightbox-close:hover { background: rgba(244, 241, 234, 0.1); }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 22px; left: 50%;
+      transform: translateX(-50%);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      max-width: 80%;
+      text-align: center;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 640px) {
+      .tip {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 28px 0;
+      }
+      .tip:target {
+        padding-left: 12px;
+        padding-right: 12px;
+        margin-left: -12px;
+        margin-right: -12px;
+      }
+      .tip-side {
+        flex-direction: row;
+        gap: 18px;
+        padding-top: 0;
+      }
+      .tip-body h2 { font-size: 22px; }
+      .tip-images.count-3 { grid-template-columns: 1fr 1fr; }
+      .filter-chips { gap: 4px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+
+    <div class="page-h">
+      <div class="roman">§</div>
+      <h1>Heimilisráð.</h1>
+      <div class="meta">Handlagnar heimilismæður · Safn af hagnýtum ráðum</div>
+    </div>
+
+    <p class="intro-lead">
+      Allskonar ráð úr daglegu lífi sem mig hefur langað að halda til haga á einum stað.
+      Mörg þeirra eiga uppruna sinn í Facebook-hópnum
+      <em>Handlagnar heimilismæður</em>.
+    </p>
+
+    <div class="filter-bar">
+      <input id="search" class="search-input" type="search" placeholder="Leita í ráðum..." autocomplete="off" />
+      <div id="chips" class="filter-chips"></div>
+    </div>
+
+    <div id="tips-list" class="tips-list"></div>
+    <div id="empty" class="empty-state" style="display:none;">Engin ráð fundust.</div>
+
+    <div class="contact-block">
+      <div class="cb-l">
+        Áttu ráð sem ætti heima hér? Sendu mér línu og ég bæti því við safnið.
+      </div>
+      <div class="cb-r">
+        <a href="mailto:mba@multabene.is?subject=Heimilisráð">mba@multabene.is</a>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lb-close">Loka ✕</button>
+    <img id="lb-img" alt="" />
+    <div class="lightbox-caption" id="lb-cap"></div>
+  </div>
+
+  <script>
+    const CATEGORIES = [
+      { id: 'all',       name: 'Allt' },
+      { id: 'eldhus',    name: 'Eldhús' },
+      { id: 'thrif',     name: 'Þrif' },
+      { id: 'bill',      name: 'Bíll' },
+      { id: 'verkfaeri', name: 'Verkfæri' },
+      { id: 'raki',      name: 'Raki & útloftun' },
+      { id: 'thvottur',  name: 'Þvottur' },
+      { id: 'gardur',    name: 'Garður' },
+      { id: 'annad',     name: 'Annað' },
+    ];
+    const MONTHS = ['jan','feb','mar','apr','maí','jún','júl','ágú','sep','okt','nóv','des'];
+
+    let TIPS = [];
+    let activeCat = 'all';
+    let query = '';
+
+    function fmtDate(iso) {
+      const d = new Date(iso);
+      if (isNaN(d)) return '';
+      return `${d.getDate()}. ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function formatInline(s) {
+      return escapeHtml(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    function renderText(s) {
+      const paras = String(s).split(/\n\n+/);
+      return paras.map(p => {
+        const lines = p.split('\n').map(l => l.trim()).filter(Boolean);
+        if (!lines.length) return '';
+        const isList = lines.every(l => /^[•*]\s+/.test(l));
+        if (isList) {
+          return `<ul>${lines.map(l => `<li>${formatInline(l.replace(/^[•*]\s+/,''))}</li>`).join('')}</ul>`;
+        }
+        const introLines = [];
+        const bulletLines = [];
+        for (const l of lines) {
+          if (/^[•*]\s+/.test(l)) bulletLines.push(l.replace(/^[•*]\s+/,''));
+          else introLines.push(l);
+        }
+        let out = '';
+        if (introLines.length) out += `<p>${formatInline(introLines.join(' '))}</p>`;
+        if (bulletLines.length) out += `<ul>${bulletLines.map(l => `<li>${formatInline(l)}</li>`).join('')}</ul>`;
+        return out;
+      }).join('');
+    }
+
+    function catName(id) {
+      const c = CATEGORIES.find(x => x.id === id);
+      return c ? c.name : id;
+    }
+
+    function renderChips() {
+      const counts = {};
+      TIPS.forEach(t => { counts[t.flokkur] = (counts[t.flokkur] || 0) + 1; });
+      counts.all = TIPS.length;
+
+      const chips = document.getElementById('chips');
+      chips.innerHTML = CATEGORIES
+        .filter(c => c.id === 'all' || counts[c.id] > 0)
+        .map(c => `
+          <button class="chip ${c.id === activeCat ? 'active' : ''}" data-cat="${c.id}">
+            ${c.name}<span class="count">${counts[c.id] || 0}</span>
+          </button>
+        `).join('');
+
+      chips.querySelectorAll('.chip').forEach(ch => {
+        ch.addEventListener('click', () => {
+          activeCat = ch.dataset.cat;
+          renderChips();
+          renderList();
+        });
+      });
+    }
+
+    function tipMatches(t) {
+      if (activeCat !== 'all' && t.flokkur !== activeCat) return false;
+      if (!query) return true;
+      const hay = (t.titill + ' ' + t.texti).toLowerCase();
+      return hay.includes(query.toLowerCase());
+    }
+
+    function imgClassFor(n) {
+      if (n <= 0) return '';
+      if (n === 1) return 'count-1';
+      if (n === 2) return 'count-2';
+      if (n === 3) return 'count-3';
+      if (n === 4) return 'count-4';
+      return 'count-many';
+    }
+
+    function renderList() {
+      const list = document.getElementById('tips-list');
+      const empty = document.getElementById('empty');
+      const visible = TIPS.filter(tipMatches);
+
+      if (visible.length === 0) {
+        list.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+
+      list.innerHTML = visible.map(t => {
+        const imgs = t.myndir || [];
+        const imgsHtml = imgs.length ? `
+          <div class="tip-images ${imgClassFor(imgs.length)}">
+            ${imgs.map((m, i) => `
+              <div class="tip-img-cell">
+                <div class="tip-img-wrap" data-tip="${t.id}" data-idx="${i}">
+                  <img src="img/${escapeHtml(m.skra)}" alt="${escapeHtml(m.lysing || t.titill)}" loading="lazy"
+                       onerror="this.parentElement.classList.add('missing'); this.remove();" />
+                </div>
+                ${m.lysing ? `<div class="tip-img-caption">${escapeHtml(m.lysing)}</div>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        ` : '';
+
+        const linksHtml = (t.tenglar && t.tenglar.length) ? `
+          <div class="tip-links">
+            ${t.tenglar.map(l => `<a href="${escapeHtml(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.titill)}<span class="arrow">→</span></a>`).join('')}
+          </div>
+        ` : '';
+
+        return `
+          <article class="tip" id="${escapeHtml(t.id)}">
+            <div class="tip-side">
+              <span class="tip-date">${fmtDate(t.dagsetning)}</span>
+              <span class="tip-cat">${escapeHtml(catName(t.flokkur))}</span>
+            </div>
+            <div class="tip-body">
+              <h2><a href="#${escapeHtml(t.id)}">${escapeHtml(t.titill)}<span class="anchor">§</span></a></h2>
+              <div class="tip-text">${renderText(t.texti)}</div>
+              ${imgsHtml}
+              ${linksHtml}
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      list.querySelectorAll('.tip-img-wrap').forEach(el => {
+        el.addEventListener('click', () => {
+          if (el.classList.contains('missing')) return;
+          const tip = TIPS.find(x => x.id === el.dataset.tip);
+          if (!tip) return;
+          const m = tip.myndir[+el.dataset.idx];
+          openLightbox(`img/${m.skra}`, m.lysing || tip.titill);
+        });
+      });
+
+      if (location.hash && document.querySelector(location.hash)) {
+        document.querySelector(location.hash).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function openLightbox(src, cap) {
+      document.getElementById('lb-img').src = src;
+      document.getElementById('lb-cap').textContent = cap || '';
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lb-img').src = '';
+    }
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target.id === 'lightbox') closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    document.getElementById('search').addEventListener('input', e => {
+      query = e.target.value.trim();
+      renderList();
+    });
+
+    fetch('tips.json', { cache: 'no-cache' })
+      .then(r => r.json())
+      .then(data => {
+        TIPS = data.sort((a,b) => (b.dagsetning || '').localeCompare(a.dagsetning || ''));
+        renderChips();
+        renderList();
+      })
+      .catch(() => {
+        document.getElementById('tips-list').innerHTML =
+          `<div class="empty-state">Gat ekki hlaðið ráðum.</div>`;
+      });
+  </script>
+</body>
+</html>

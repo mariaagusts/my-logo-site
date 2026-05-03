@@ -1,0 +1,58 @@
+[
+  {
+    "id": "wd40-undratol",
+    "titill": "WD-40 — undratól",
+    "flokkur": "verkfaeri",
+    "dagsetning": "2025-06-27",
+    "texti": "Ef þið eigið ekki WD-40 mæli ég með að kaupa til að eiga. Frábært til að losa ryð eða verja gegn ryði og losna við ískur í t.d. svala- og bílhurðum. En að auki er hægt að nota það til að:\n\n• Losa rennilása sem eru fastir\n• Losa lím af flötum\n• Losa fasta Lego-kubba\n• Leysa upp fasta bletti á gólfum",
+    "myndir": [
+      { "skra": "wd40.jpg", "lysing": "WD-40 brúsi" }
+    ]
+  },
+  {
+    "id": "blasturssofn-blettir",
+    "titill": "Fastir blettir í blástursofnum",
+    "flokkur": "eldhus",
+    "dagsetning": "2025-06-10",
+    "texti": "Blástursofninn hjá mér er self-cleaning svokallaður, notar allt að 500°C til að breyta matarleyfum í ösku. Hinsvegar vilja oft festast einskonar „glerfitublettir\" á botninum. Ég hef reynt hina ýmsu ofnahreinsa (vel eitraðir flestir) á þessa bletti og það þarf margar umferðir til að vinna eitthvað á blettunum og aldrei leysast þeir alveg upp. Hinsvegar reynist mjög vel að nota glersköfu til að skafa blettina í burtu.",
+    "myndir": [
+      { "skra": "ofn-fyrir.jpg", "lysing": "Botninn fyrir þrif" },
+      { "skra": "ofn-eftir.jpg", "lysing": "Eftir glerskafa" }
+    ]
+  },
+  {
+    "id": "skrufur-segull",
+    "titill": "Tips varðandi skrúfur",
+    "flokkur": "verkfaeri",
+    "dagsetning": "2025-06-10",
+    "texti": "Ryðfríar skrúfur festast **ekki** við segul („inniskrúfur\" gera það hinsvegar). Ef þið eruð að bora eitthvað upp utanhúss passið upp á að nota ryðfríar skrúfur. Gott að eiga einn segul í verkfæratöskunni.",
+    "myndir": [
+      { "skra": "skrufur.jpg", "lysing": "Ryðguð og ryðfrí skrúfa" },
+      { "skra": "segull.jpg", "lysing": "Segull" }
+    ]
+  },
+  {
+    "id": "billinn-rafmagnslaus",
+    "titill": "Bíllinn rafmagnslaus?",
+    "flokkur": "bill",
+    "dagsetning": "2025-06-09",
+    "texti": "Ef bíllinn verður rafmagnslaus þá eru þetta skrefin:\n\n• Rauður í dautt +battery\n• Rauður í gott +battery\n• Svartur í gott -battery\n• Svartur klemma á málmflöt á dauða bílnum (ekki á battery)\n• Ræsa góða bílinn",
+    "myndir": [
+      { "skra": "jump-start.jpg", "lysing": "Tengja startkapal" },
+      { "skra": "jump-start-leidbeiningar.jpg", "lysing": "Skrefin myndrænt" }
+    ]
+  },
+  {
+    "id": "utloftun-svefnherbergja",
+    "titill": "Útloftun svefnherbergja",
+    "flokkur": "raki",
+    "dagsetning": "2025-02-12",
+    "texti": "Í spjalli við vinkonu í vikunni kom í ljós að eftirfarandi þekking er ekki endilega almenn. Á morgnana er, sérstaklega í ákveðnum svefnherbergjum, mjög mikilvægt að draga upp gardínur svo „næturdöggin\" sem safnast fyrir í gluggunum fái rými til að leysast upp ásamt því að opna glugga. Sé rakinn mikill þarf að reyna að þurrka upp sem oftast. Útloftun svefnherbergja er mjög mikilvæg til að fyrirbyggja myglu í gluggakörmum.",
+    "myndir": [
+      { "skra": "naeturdoggin.jpg", "lysing": "Næturdöggin í glugga" }
+    ],
+    "tenglar": [
+      { "titill": "EFLA — Grætur húsið þitt?", "url": "https://efla.is/" }
+    ]
+  }
+]
