@@ -380,5 +380,24 @@
       { "skra": "uppthvottavel7.jpg", "lysing": "" },
       { "skra": "uppthvottavel8.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "opnanlegar-gluggar-vandamál",
+    "titill": "Vandamál með opnanlega glugga (nýjar týpur)",
+    "flokkur": "gluggar",
+    "dagsetning": "2024-09-03",
+    "texti": "1. Í fyrri glugganum var handfangið hætt að snúast. Gat ekki lokað (\"læst\") glugganum svo þegar það var hvasst þá opnaðist hann. Mér datt fyrst í hug að læsingin inni í handfanginu væri brotin. Ákvað að fikta og fann tvær skrúfur á bakvið plaststykki í handfanginu. Losaði þær og þá varð handfangið laust. Ég setti handfangið svo aftur inn í gatið (án þess að festa skrúfur) og juggaði því rétt fram og tilbaka til að athuga hvort ég fyndi vandamálið. Eftir smá tíma náði ég að snúa því og læsingin poppaði niður. Sá þá að krókarnir voru haugryðgaðir. Smellti WD40 á þá, setti fangið aftur inn og festi skrúfurnar. Glugginn virkar eins og hann sé nýkominn úr kassanum! Sparaði þar útkall í smið! 🙌\n\n2. Í seinni glugganum var ekki vandamál að krækja honum lokuðum, hinsvegar gapti hann töluvert þannig að það hvein í honum í vindi. Ekki hægt að sofa vel í því ástandi. Var ekki viss hvað væri hægt að gera en aftur snerist þetta um fikt. Í rammanum eru skrúfur sem færa til gluggann ef maður losar aðeins um þær. Til að þétta þurfti ég að skrúfa örlítið í átt að herberginu báðum megin. En ef þið lendið í vandræðum með að glugginn sé of þéttur (nær kannski ekki að læsa sig) þá skrúfið þið skrúfuna aðeins frá ykkur. Aftur, eins og nýr! 🙌\n\n3. Endilega lærið á, og kennið börnum ykkar og öðrum, að opna gluggana upp á gátt í neyðartilvikum. Bara einn flipi sem þarf að ýta upp.",
+    "myndir": [
+      { "skra": "gluggar1.jpg", "lysing": "" },
+      { "skra": "gluggar2.jpg", "lysing": "" },
+      { "skra": "gluggar3.jpg", "lysing": "" },
+      { "skra": "gluggar4.jpg", "lysing": "" },
+      { "skra": "gluggar5.jpg", "lysing": "" },
+      { "skra": "gluggar6.jpg", "lysing": "" },
+      { "skra": "gluggar7.jpg", "lysing": "" },
+      { "skra": "gluggar8.jpg", "lysing": "" },
+      { "skra": "gluggar9.jpg", "lysing": "" },
+      { "skra": "gluggar10.jpg", "lysing": "" }
+    ]
   }
 ]
