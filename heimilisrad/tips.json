@@ -208,5 +208,37 @@
     "myndir": [
       { "skra": "sturtuhaus.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "rafmagn",
+    "titill": "Rafmagn - hvað þarf ég að vita og hvað get ég gert sjálf?",
+    "flokkur": "rafmagn",
+    "dagsetning": "2024-10-07",
+    "texti": "Wött = Volt x Amper\n\nVarúð, langur og ítarlegur þriggja til sex kaffibolla texti. (Mæli sérstaklega með 3.d)\n\nUm helgina skipti ég um mína fyrstu rafmagnskló (loksins!). Ég mun framvegis halda upp á þennan dag jafn oft og fermingardaginn minn 1996…sem er líklega aldrei, er dagurinn var samt stór! Ég segi nú bara svona, en það hefur verið furðu löng fæðing að ná taki á þessum skilningi í kringum rafmagn (þessu einfalda sem varðar heimilið).\n\nEg hef oft leitað í \"Pabbatips\" og get hreinlega ekki giskað á hversu oft ég hef reynt að ná fram einhverjum skilningi í kringum rafmagnið í samtali við hann, en þrátt fyrir mikinn vilja til að skilja þá vildi þekkingin ekki festast hjá mér. Að þessu sinni \"bókaði\" ég fund með pabba með fyrirfram ákveðnum spurningum og miklum vilja til að glósa vel allt sem hann sagði mér, skref fyrir skref, svo ég gæti lesið textann yfir aftur og aftur. Og svei mér ef ég er ekki bara komin á þann stað sem mig langaði á varðandi basic grunnskilning.\n\nLeyfi pabba að eiga inngangsorðin 😊\n\"Rafmagnið er allt um kring á heimilum okkar. Við erum með alls kyns tæki, stór og smá, sem ganga fyrir rafmagni. Rafmagnið er því vinur okkar, en getur verið mjög hættulegt ef við umgöngumst það ekki rétt. Þess vegna er gott að vita dálítið um það.\"\n\n**1. Skipta um kló:** Á meðfylgjandi myndum má sjá skrefin sem ég tók þegar ég skipti úr UK kló í EU kló, en ég keypti viðbótarklær sem gerðar eru til þess að skipta út öðrum klóm í Byko. Prufutækið sem ég notaði var \"snow cone\" vél sem ég pantaði erlendis frá (UK). Ég var búin að fullvissa mig um að tækið þyldi 230v sem er spennan sem íslenskt heimilisrafmagn gengur fyrir.\n\na. Ég klippti tengið af eins neðarlega og ég gat og sá þá að snúran var tveggja víra sem kom á óvart því stóri langi þriðji pinninn/\"hlussutengillinn\" í UK klóm er notaður fyrir jarðtengingu, þ.e. hlífðarjörð. Ástæðan fyrir því að framleiðendur í þessu tilviki hafa samt leyft sér tveggja víra tengi er að hús ísvélarinnar er gert úr plasti, þ.e. ekkert snertanlegt sem leiðir rafmagn áfram.\n\nb. Hefði snúran verið með þremur leiðurum/vírum þá hefði það þýtt að raftækið þyrfti á jarðvír (græn/gulum) að halda. Hefði svo verið fékk ég þá leiðsögn að best sé að tengja jarðvírinn þannig að hann sé með örlítinn slaka í sér umfram bláa eða brúna þannig að ef snúrunni er kippt óvarlega/harkalega úr innstungu þá aftengist blái vírinn (núll) og brúni vírinn (spenna) fyrst áður en til þess kemur að jarðvírinn kippist óvart út.\n\nc. Í mörgum tilfellum er það svo að jarðvírinn fer í miðjuna á klónni (ekki algilt) en brúni og blái fara í tengingu þar sem \"pinnarnir\" sem tengjast innstungunni liggja í klónni, en það skiptir ekki máli í hvaða stæði brúni eða blái fara, bara að það séu eins stæði og ekki gerð fyrir \"jörð\", sem réttara er að kalla hlífðarjörð.\n\nd. Þegar búið er að klippa \"erlendu\" klónna af þarf að taka ca. 1cm framan af plasteinangruninni á grængulu/bláu/brúnu vírunum svo það sjáist í koparvírana. Hér þarf að passa að skera ekki í örþunnu koparvírana sjálfa.\n\ne. Þegar skrefin eru búin sem fylgja með á myndum þá þarf að passa að tosa aðeins í vírana til að sjá hvort þeir séu ekki örugglega fastir í stæðinu sínu.\n\n**2. Varðandi álag á innstungur:** Þá þarf að passa upp á að álagið henti innstungunni sem stungið er inn í. Þeir tenglar sem eru gefnir upp fyrir 16amp notkun geta oft ekki þolað meira en 13amp notkun.\n\n**3. Hallelúja móment:** Wött (afl) = Volt (spenna) x Amper (straumur).\n\na. Í raundæminu sé ég fyrir mér 2000watta rafmagnsblástursofn (hræódýrir rafmagnsofnar sem fást í Byko og á fleiri stöðum til að hita loftið í rýminu).\n\nb. Ísland og flest lönd í Evrópu notast við 230volt í heimilisrafmagni. Þegar þið lesið ykkur til um raftæki sem þið viljið kaupa erlendis eða t.d. á Amazon þá þurfið þið að passa að þau gildi fyrir 230v.\n\nc. Amperin er lykillinn. Það ætti, amk í nýjum rafmagnstöflum, að vera gefið upp á hverri \"grein\" í rafmagnstöflu hvað hún þolir mörg amper.\n\nd. Wött (afl) = Volt (spenna) x Amper (straumur): Þegar þetta þrennt er vitað hér að ofan þá er t.d. hægt að reikna út að t.d. 2000w / 230v = 8.69amp. Það þýðir að, ef við gefum okkur að raunverulegt þol 16amp innstungu sé ekki nema 13amp í rafmagnstöflunni sjálfri, þá er t.d. ekki hægt að nota 2 x 2000w rafmagnsblástursofna.\n\nÉg hvet ykkur til að kíkja sem fyrst inn í ykkar rafmagnstöflu og skoða og ath hvort ykkar tafla sýni (hún ætti að gera það) það ampera öryggi sem viðkomandi grein þolir og lesa svo aftur textann hér fyrir ofan til að reyna að skilja.\n\n**4. Fjöltengi:** Það er einnig mikilvægt að vita að straumþol í fjöltengjum (framlengingarsnúrum) er mjög mismunandi.\n\n**5. Mikilvægt!** Það er aldrei of varlega farið þegar kemur að rafmagni! Eins og kom fram í færslu um að tengja loftljós þá þarf alltaf að slökkva á viðkomandi grein í rafmagnstöflu en helst að slá niður lekaliðnum/bilanastraumsrofanum fyrir allt húsið.\n\n**6. Í lokin:** Hús eru ýmist með einfasa heimtaug (gömul hús) eða þriggja fasa heimtaug (flest ný hús), eitthvað sem skiptir máli þegar það þarf t.d. að tengja hleðslustöð vegna rafbíls.",
+    "myndir": [
+      { "skra": "rafmagn01.jpg", "lysing": "" },
+      { "skra": "rafmagn02.jpg", "lysing": "" },
+      { "skra": "rafmagn03.jpg", "lysing": "" },
+      { "skra": "rafmagn04.jpg", "lysing": "" },
+      { "skra": "rafmagn05.jpg", "lysing": "" },
+      { "skra": "rafmagn06.jpg", "lysing": "" },
+      { "skra": "rafmagn07.jpg", "lysing": "" },
+      { "skra": "rafmagn08.jpg", "lysing": "" },
+      { "skra": "rafmagn09.jpg", "lysing": "" },
+      { "skra": "rafmagn10.jpg", "lysing": "" },
+      { "skra": "rafmagn11.jpg", "lysing": "" },
+      { "skra": "rafmagn12.jpg", "lysing": "" },
+      { "skra": "rafmagn13.jpg", "lysing": "" },
+      { "skra": "rafmagn14.jpg", "lysing": "" },
+      { "skra": "rafmagn15.jpg", "lysing": "" },
+      { "skra": "rafmagn16.jpg", "lysing": "" },
+      { "skra": "rafmagn17.jpg", "lysing": "" },
+      { "skra": "rafmagn18.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "Hættur af rafmagni - Vilhjálm Þór Kjartansson", "url": "https://www.ira.is/wp-content/uploads/2017/04/HaettaRafm2017.pdf" },
+      { "titill": "Rafmagnskostnaður - Vísindavefur", "url": "https://www.visindavefur.is/svar.php?id=59404" },
+      { "titill": "Að hlaða rafbilinn - Veitur", "url": "https://www.veitur.is/ad-hlada-rafbilinn/serbyli" }
+    ]
   }
 ]
