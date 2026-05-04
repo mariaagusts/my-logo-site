@@ -337,5 +337,20 @@
     "myndir": [
       { "skra": "lausskrufa.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "rullugardnur",
+    "titill": "Rúllugardínur",
+    "flokkur": "gluggar",
+    "dagsetning": "2024-09-11",
+    "texti": "1. Það er hægt að missa nokkur geðheilsustig við að reyna að taka niður rúllugardínur. Mjög margar rúllugardínur eru teknar niður með aðferðinni í youtube video-inu hér fyrir neðan, þ.e.a.s. þar sem flatt skrúfjárn eða brauðhnífur er notaður til að pota inn plastpinna þeim megin þar sem gardínusnúran er ekki.\n\n2. Hinsvegar eru sumar rúllugardínurnar þannig að að það þarf að snúa plaststykkinu (þeim megin sem gardínusnúran er ekki) með puttunum svo það losni frá - það þýðir ekkert að hamast á slíkum gardínum með brauðhníf!",
+    "myndir": [
+      { "skra": "gardina1.jpg", "lysing": "" },
+      { "skra": "gardina2.jpg", "lysing": "" },
+      { "skra": "gardina3.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "YouTube - How to remove roller blinds", "url": "https://www.youtube.com/watch?v=oR-UCos7uD8" }
+    ]
   }
 ]
