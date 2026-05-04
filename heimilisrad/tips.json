@@ -240,5 +240,24 @@
       { "titill": "Rafmagnskostnaður - Vísindavefur", "url": "https://www.visindavefur.is/svar.php?id=59404" },
       { "titill": "Að hlaða rafbilinn - Veitur", "url": "https://www.veitur.is/ad-hlada-rafbilinn/serbyli" }
     ]
+  },
+  {
+    "id": "airtag",
+    "titill": "AirTag til að finna faratæki",
+    "flokkur": "heimili",
+    "dagsetning": "2024-09-25",
+    "texti": "Ég lenti í því í byrjun mánaðar að hlaupahjóli var stolið fyrir framan útidyrahurðina hjá mér. Því miður var ég ekki búin að setja AirTag merki á það eins og ég hafði ætlað mér, en hefði ég gert það þá hefði ég getað fundið það strax næsta morgun (sá sem tók hjólið var aðili sem sá tækifæri til að stytta sér ferðina heim, hann náðist á mynd, tækið hefði ekki verið mætt í gám á leið úr landi næsta morgun sem er kannski erfiðara við að eiga.)\n\nÉg mæli því sterklega með að festa slík AirTags á öll faratæki sem gætu verið tekin í misgripum, jafnvel á barnahjólin sem eiga það til að sitja ólæst fyrir utan skóla eða heimili vina.\n\nÞað er hægt að fela slík AirTags á nokkrum stöðum á svona hlaupahjólum og reiðhjólum, fer eftir því hvað þið treystið ykkur í stórt verkefni hversu vel er hægt að fela þau (t.d. er hægt að taka hátalarann úr AirTaginu svo erfitt sé að finna það). En hér fyrir neðan eru nokkur YouTube-dæmi um slíka felustaði.",
+    "myndir": [
+      { "skra": "airtag1.jpg", "lysing": "" },
+      { "skra": "airtag2.jpg", "lysing": "" },
+      { "skra": "airtag3.jpg", "lysing": "" },
+      { "skra": "airtag4.jpg", "lysing": "" },
+      { "skra": "airtag5.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "YouTube - AirTag hiding spots 1", "url": "https://www.youtube.com/watch?v=hiivC_4li8Q" },
+      { "titill": "YouTube - AirTag hiding spots 2", "url": "https://www.youtube.com/watch?v=vii3uP1_9l8" },
+      { "titill": "YouTube - AirTag hiding spots 3", "url": "https://www.youtube.com/watch?v=lOd3gT87pFk" }
+    ]
   }
 ]
