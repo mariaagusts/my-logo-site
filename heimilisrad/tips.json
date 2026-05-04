@@ -186,5 +186,17 @@
     "tenglar": [
       { "titill": "YouTube - Dishwasher rack tips", "url": "https://www.youtube.com/watch?v=I60Jy4-Iko4" }
     ]
+  },
+  {
+    "id": "laus-krani",
+    "titill": "Laus krani",
+    "flokkur": "eldhus",
+    "dagsetning": "2024-10-28",
+    "texti": "Þessi þvottahúskrani var laus að ofan. Til að herða hann þarf að komast undir hann og aftan fyrir vaskinn og herða boltana sem þar eru undir með skiptilykli. Mögulega eru festingar á öðrum krönum þó öðruvísi.",
+    "myndir": [
+      { "skra": "lauskrani1.jpg", "lysing": "" },
+      { "skra": "lauskrani2.jpg", "lysing": "" },
+      { "skra": "lauskrani3.jpg", "lysing": "" }
+    ]
   }
 ]
