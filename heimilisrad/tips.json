@@ -299,5 +299,18 @@
     "tenglar": [
       { "titill": "YouTube - How to clear drain blockages", "url": "https://youtu.be/hySkwXMn0pA?feature=shared" }
     ]
+  },
+  {
+    "id": "loft-dekkjum",
+    "titill": "Loft í dekkjum (PSI)",
+    "flokkur": "bill",
+    "dagsetning": "2024-09-14",
+    "texti": "Er bíldekkið að missa þrýsting? Í flestum bílum ætti að vera límmiði innan í hurðinni hjá ökumanni sem segir til um hver loftþrýstingurinn (PSI) í dekkjunum á að vera hjá viðkomandi bíl (það er breytilegt eftir stærð dekkja).\n\nÁ dekkjunum sjálfum finnið þið þann loftþrýsting (PSI) sem er mesti leyfilegur þrýstingur, en sá þrýstingur er ekki áskjósanlegur. Miðið þá við nokkur PSI gildi fyrir neðan þá tölu.",
+    "myndir": [
+      { "skra": "bildekk1.jpg", "lysing": "" },
+      { "skra": "bildekk2.jpg", "lysing": "" },
+      { "skra": "bildekk3.jpg", "lysing": "" },
+      { "skra": "bildekk4.jpg", "lysing": "" }
+    ]
   }
 ]
