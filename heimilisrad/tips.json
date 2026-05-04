@@ -312,5 +312,20 @@
       { "skra": "bildekk3.jpg", "lysing": "" },
       { "skra": "bildekk4.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "forskrufud-skrufa",
+    "titill": "Forskrúfuð skrúfa",
+    "flokkur": "vidhald",
+    "dagsetning": "2024-09-13",
+    "texti": "Ef skrúfuhausinn er forskrúfaður og ekki hægt að nota skrúfbita til að ná henni út þá eru nokkrar aðferðir til til að losa hana út.\n\n1. Stundum er nóg að nota hamar til að berja skrúfbitann sem á við um viðkomandi skrúfu aðeins lengra inn í skrúfuna til að ná taki.\n\n2. Önnur einföld útgáfa er að finna góða flata gúmmíteygju og setja hana á milli skrúfunnar og skrúfbitans, þannig nær skrúfbitinn betra taki. Gallinn við þessa aðferð er að fæstir eiga góða flata gúmmíteygju á lager. Líka hægt að prófa að nota þykkt framkvæmdalímband (sem eru oftast silfurlituð, en stundum svört eða hvít.)\n\n3. Til eru sérstakir skrúfbitar sem eru til þess gerðir til að losa svona skrúfur. Þeir heita screw extractors. Þá byrjið þið á því að nota mjóan bor til að bora aðeins í hausinn á skrúfunni, svo notið þið screw extractor til að skrúfa skrúfuna út.\n\n4. Ef hausinn stendur aðeins út þá er hægt að nota borvélina með einföldum hætti með því að láta borvélina læsa sig yfir skrúfuna og skrúfa hana svo varlega út (ekki á miklum hraða).\n\n5. Önnur leið er nota mjóan bor og bora stutt í gegnum hausinn á skrúfunni til að búa til tak fyrir aðra skrúfbita eða til að ná hausnum af skrúfunni. Bara passa að bora ekki of djúpt. Ef þið náið henni aðeins út þá ætti að vera hægt að nota töng til að losa það sem eftir er af skrúfunni eða hausinn á borvélinni sjálfri.",
+    "myndir": [
+      { "skra": "skrufa1.jpg", "lysing": "" },
+      { "skra": "skrufa2.jpg", "lysing": "" },
+      { "skra": "skrufa3.jpg", "lysing": "" },
+      { "skra": "skrufa4.jpg", "lysing": "" },
+      { "skra": "skrufa5.jpg", "lysing": "" },
+      { "skra": "skrufa6.jpg", "lysing": "" }
+    ]
   }
 ]
