@@ -366,5 +366,19 @@
     "tenglar": [
       { "titill": "Gastec.is", "url": "http://gastec.is" }
     ]
+  },
+  {
+    "id": "uppthvottavel-advanserkar",
+    "titill": "Uppþvottavélar",
+    "flokkur": "eldhus",
+    "dagsetning": "2024-09-04",
+    "texti": "Kannski vel þekktar upplýsingar fyrir margar en læt þetta samt fylgja.\n\nFyrir nokkrum árum hélt ég að uppþvottavélin uppi í bústað væri á síðasta snúning. Þvoði illa og þurrkaði. Eftir að hafa fattað að það vantaði \"rinse aid\"/uppþvottagljáa varð hún allt önnur og virkaði loksins sem skyldi og alls ekki kominn tími á að skipta henni út. Eitt auðveldasta trikkið en það sem munar öllu. Vélin kallar eftir því með \"snjókornamerki\" í stjórnborðinu. Fer ofan í hólfið við hliðina á uppþvottavéladuftinu.\n\nEinnig þarf að þrífa filterinn reglulega. Hann er að finna í \"gólfinu\" á vélinni. Snúa filternum þar sem örvarnar mætast og þá poppar hann upp. Bursta hann vel með sápu og setja aftur ofan í með sama snúning.\n\nÍ vélunum er einnig hólf fyrir salt. Víðast hvar erlendis er þörf á því en alla jafna er talað um að vatnið okkar hér á Íslandi sé ekki eins \"hart\" og því óþarfi. Ég held að það sé rétt? En erlendis er notað grófkorna salt ofan í hólfið við hliðina á filternum í gólfinu.",
+    "myndir": [
+      { "skra": "uppthvottavel4.jpg", "lysing": "" },
+      { "skra": "uppthvottavel5.jpg", "lysing": "" },
+      { "skra": "uppthvottavel6.jpg", "lysing": "" },
+      { "skra": "uppthvottavel7.jpg", "lysing": "" },
+      { "skra": "uppthvottavel8.jpg", "lysing": "" }
+    ]
   }
 ]
