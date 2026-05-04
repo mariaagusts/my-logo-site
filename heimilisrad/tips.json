@@ -352,5 +352,19 @@
     "tenglar": [
       { "titill": "YouTube - How to remove roller blinds", "url": "https://www.youtube.com/watch?v=oR-UCos7uD8" }
     ]
+  },
+  {
+    "id": "gaskutar-thrysti",
+    "titill": "Gaskútar og þrýstijafnarar",
+    "flokkur": "garðurinn",
+    "dagsetning": "2024-09-09",
+    "texti": "Ef gasgrillið er hætt að virka og búið að kanna allt annað (td hvort það sé nýtt batterý í \"kveikjaratakkanum\" og nóg gas) þá er mögulegt að þrýstijafnarinn sé bilaður. Hægt að fá nýja þrýstijafnara á bensínstöðvum (kaupa öflugri en þann sem fylgdi með vörunni) eða í betri búðum eins og td gastec.is.\n\nTil að skipta um þrýstijafnara er slangan skorin frá þj. fyrir aftan járnhulsuna og nýr þj. settur á slönguna. Muna að setja hulsuna aftur á og herða með skrúfjárni. Því miður veit ég ekki um aðra aðferð til að koma slöngunni á þj. nema mjög sterkar hendur, getur verið mikið bras að troða henni á, sem er þó gott til að fyrirbyggja gasleka. (Hulsan þarf að ná yfir járnið á þj.)\n\nÉg skipti á sínum tíma öllu yfir í smellugas en 1-2 árum seinna skipti ég öllu aftur tilbaka. Smellugasið er alls ekki þægilegra, lekur auðveldlega meðfram (gaslykt) og þrýstingurinn lélegri úr kútnum (þó kúturinn virðist vera með nóg gas eftir þá leitar það ekki upp).",
+    "myndir": [
+      { "skra": "gas1.jpg", "lysing": "" },
+      { "skra": "gas2.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "Gastec.is", "url": "http://gastec.is" }
+    ]
   }
 ]
