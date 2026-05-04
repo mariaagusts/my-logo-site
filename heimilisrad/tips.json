@@ -259,5 +259,18 @@
       { "titill": "YouTube - AirTag hiding spots 2", "url": "https://www.youtube.com/watch?v=vii3uP1_9l8" },
       { "titill": "YouTube - AirTag hiding spots 3", "url": "https://www.youtube.com/watch?v=lOd3gT87pFk" }
     ]
+  },
+  {
+    "id": "hledslutaeki",
+    "titill": "Hleðslutæki fyrir smærri raftæki",
+    "flokkur": "battery",
+    "dagsetning": "2024-09-25",
+    "texti": "Ef þú átt í erfiðleikum með að hlaða raftækið þitt þá gæti verið að snúran sé slöpp/ónýt en það gæti líka verið að veggtengið sé ekki nægilega öflugt. Það er t.d. ekki nóg að kaupa \"fast charging\" snúru ef hleðslutækið sem fer inn í vegginn styður ekki háhraða hleðslu.\n\n**1. Veggtengið:** Þumalputti; því hærra \"W\" því betra. Til að hlaða farsíma dugar oftast að notast við veggtengi sem gefa upp 5W-20W, hinsvegar er betra að nota 30W fyrir spjaldtölvur (t.d. iPad, lágmark 20W) og allt að 100W eða meira fyrir fartölvur sem notast við USB-C snúrur. Veggtengi sem fást í Tiger t.d. duga eflaust ekki fyrir iPad eða tölvur, mögulega eingöngu fyrir síma (hæghleðslur). Ég myndi persónulega ekki kaupa veggtengi með lægra en 30W ef ég væri að fara að kaupa tengi í Elko eða á Amazon.de (ekki .com, svo klóin sé rétt). Einnig er mikilvægt (fyrir framtíðarkaup) að veggtengið geti tekið við USB-C snúrum í báða enda, þar sem meiri hraða er hægt að fá í gegnum USB-C en í gegnum USB-A (það sem flestir þekkja sem \"venjulega\" USB) og verður það því framtíðin.\n\n**2. Snúrur:** Snúran þarf vissulega að passa fyrir tækið en hægt er að sjá á myndinni hvað mismunandi snúruendar heita. Það er ágætt að vita af því að Apple tæki munu í framtíðinni notast við USB-C hleðsluendann, og þar með skipta út Lightning endanum. Samsung tæki notast líka við USB-C hleðslusnúrur. Framtíðin liggur í USB-C snúrum eins og staðan er í dag. Lykilorðið fyrir háhraðasnúrur er \"Power Delivery\" ef þið leitið eftir því á t.d. Amazon.",
+    "myndir": [
+      { "skra": "hledslutaeki1.jpg", "lysing": "" },
+      { "skra": "hledslutaeki2.jpg", "lysing": "" },
+      { "skra": "hledslutaeki3.jpg", "lysing": "" },
+      { "skra": "hledslutaeki4.jpg", "lysing": "" }
+    ]
   }
 ]
