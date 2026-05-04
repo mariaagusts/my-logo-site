@@ -327,5 +327,15 @@
       { "skra": "skrufa5.jpg", "lysing": "" },
       { "skra": "skrufa6.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "laus-skrufa",
+    "titill": "Laus skrúfa",
+    "flokkur": "vidhald",
+    "dagsetning": "2024-09-12",
+    "texti": "Vegna þyngdar eða átaks eiga sumar skrúfur það til að detta úr götunum sínum, sem þýðir að það er ekkert tak eftir til að skrúfa skrúfuna aftur inn. Það er einfalt mál að koma skrúfunni aftur á sinn stað. Til þess þurfið þið viðartannstöngla! Þið troðið eins mörgum tannstönglum inn í gatið og pláss er fyrir. Gott að fara tvær umferðir, nota t.d. 4 tannstöngla fyrst, klippa þá niður þannig að þeir standi ekki út og bæta svo við tannstönglum þannig að gott tak myndist. Sjálfri finnst mér gott að bæta við trélími í gatið til að bæta við taki. Og þá ætti að vera komið gott tak fyrir skrúfuna sem var þar fyrir. Ef þetta er skrúfa með flötum „rassi", þ.e.a.s. hliðin sem fer inn í gatið, þá er mögulega gott að skipta um skrúfu í sömu breidd og nota skrúfu sem er með oddmjóan enda. En þetta er eitthvað sem þarf að prófa sig áfram með.\n\nEf gatið er þeim mun stærra er mögulega hægt að nota múrtappa (sem venjulega fara í steypta veggi) til að búa til tak. Þá þarf að nota borvél og bor í sömu stærð og múrtappinn til að stækka gatið og nota svo hamar til að koma múrtappanum inn. Ef hann er of langur þá er hægt að nota dúkahníf til að skera umframplastið frá. Nota svo skrúfu sem passar fyrir þá múrtappastærð sem var notuð. Voila!",
+    "myndir": [
+      { "skra": "lausskrufa.jpg", "lysing": "" }
+    ]
   }
 ]
