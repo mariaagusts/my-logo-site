@@ -413,5 +413,17 @@
     "tenglar": [
       { "titill": "YouTube - Floor heating valve fix", "url": "https://www.youtube.com/watch?v=dULHUbLsRGY" }
     ]
+  },
+  {
+    "id": "thvottavel-filter",
+    "titill": "Filter á þvottavélum og stíflur",
+    "flokkur": "thvottahus",
+    "dagsetning": "2024-09-02",
+    "texti": "Framan á þvottavélum er að finna plastfilter sem þarf að losa frá og þrífa nokkrum sinnum á ári. Þið getið jafnvel grætt einhverjar aukakrónur eða hárteygjur í leiðinni! Ég lenti í því að filterinn var alveg pikkfastur á tímabili. Varð mér úti um sérstakt verkfæri sem náði að losa filterinn frá með smá átaki, en jafnframt brjóta hann aðeins í leiðinni reyndar (á að vera hægt að kaupa auka filtera), og þá kom í ljós frostpinnastöng sem var að valda því að ekki var hægt að skrúfa filterinn úr. Hann á annars að skrúfast frá tiltölulega auðveldlega.\n\nSvarta slangan sem er undir sama loki er notuð til þess að tæma tromluna handvirkt ef þvottavélina hættir að tæma sig og vélin enn full af vatni. Þá þarf að setja fötu/fat undir áður en tappinn er tekinn úr slöngunni.\n\nEf þvottavélin hættir að tæma sig þá er líklegt að fráfallsslangan á bakvið þvottavélina sé stífluð. Líklega eitt allra leiðinlegasta verkefni sem til er því innréttingaframleiðendur (fyrir þvottahús) virðast alltaf gleyma því að þvottavélin er ekki bara 60cm að dýpt, heldur eru ýmsar snúrur og slöngur sem þarf að koma fyrir að aftan og helst þannig að hægt sé að nálgast þær þægilega, sem er aldrei. 😵‍💫",
+    "myndir": [
+      { "skra": "thvottavel1.jpg", "lysing": "" },
+      { "skra": "thvottavel2.jpg", "lysing": "" },
+      { "skra": "thvottavel3.jpg", "lysing": "" }
+    ]
   }
 ]
