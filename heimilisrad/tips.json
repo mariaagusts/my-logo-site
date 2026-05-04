@@ -145,5 +145,21 @@
     "tenglar": [
       { "titill": "YouTube - How to clean Dyson hair dryer filter", "url": "https://www.youtube.com/watch?v=OyL6b8O2U9c" }
     ]
+  },
+  {
+    "id": "reykskynjarar-slokkvitaeki",
+    "titill": "Reykskynjarar og slökkvitæki",
+    "flokkur": "öryggi",
+    "dagsetning": "2024-11-21",
+    "texti": "Það er mjöööööög mikilvægt að yfirfara reykskynjara á heimilum reglulega. Oftast notast þessir einföldu reykskynjarar við 9V batterý. Mæli með að eiga alltaf auka eintak heima því það er agalega þreytt ef reykskynjarinn fer að pípa (þegar kominn er tími til að skipta um batterý) seint að kvöldi eða um miðja nótt.\n\nÞað er einnig mikilvægt að huga að staðsetningu reykskynjaranna, ef það er t.d. burðarbiti í loftinu sem stoppar flæðið af reyk á milli rýma þá þarf að setja reykskynjara sitthvoru megin við burðarbitann.\n\nMæli eindregið með því að kaupa samtengjanlega reykskynjara sem virka þannig að ef reykur/eldur mælist í einu herbergi þá fara allir reykskynjararnir af stað. (en þessi gerð notast við önnur batterý heldur en þessir \"einföldu\"). En kosturinn við þessa er líka sú að batterýin endast mun lengur og ekki þörf á að skipta um batterý eins reglulega.\n\nEinnig er munur á reykskynjurum eftir því hvort þeir eru optískir eða jónískir: \"Jóníski skynjarinn skynjar vel reyk með stórum ögnum, til að mynda opinn eld en hann skynjar síður upphaf bruna sem optíski skynjarinn nemur betur (t.d. í kringum rafmagnstæki). Því er æskilegt að hafa báðar gerðir reykskynjara á heimilinu. Optískir skynjarar eiga að vera nálægt rafmagnstöflum og á göngum eða opnum svæðum.\" (Ég er reyndar ekki með á hreinu hvora týpuna ég er með hjá mér, eitthvað sem ég gæti athugað betur.)\n\nÍ lokin er einnig gott að huga að því að eiga til létt slökkvitæki til viðbótar við það stóra sem börn geta auðveldlega notað sjálf. Mæli t.d. með slökkvitæki sem er sérstaklega hannað til að slökkva í olíu í eldhúsi.",
+    "myndir": [
+      { "skra": "reykskynjaribattery.jpg", "lysing": "" },
+      { "skra": "slokkvitaeki.jpg", "lysing": "" },
+      { "skra": "slokkvitaeki2.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "Numens þrádlaust samtengjanlegir reykskynjarar", "url": "https://www.oger.is/" },
+      { "titill": "Oiva slökkvitæki fyrir olíu", "url": "https://vis.is/oryggisvorur/oiva-slokkvitaeki2kg1/" }
+    ]
   }
 ]
