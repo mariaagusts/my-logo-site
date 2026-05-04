@@ -171,5 +171,20 @@
     "myndir": [
       { "skra": "batterycircle.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "upphvottavel",
+    "titill": "Uppþvottavélar",
+    "flokkur": "eldhus",
+    "dagsetning": "2024-11-21",
+    "texti": "Hér er auðvelt ráð sem vill oft gleymast. Hægt er að hækka og lækka efri skúffuna í uppþvottavélum. Ágætis myndband af því meðfylgjandi. Einnig er hægt að fella niður grindur í neðstu skúffunni (amk á flestum) t.d. ef ykkur langar að henda körfunni, sem er undir brúnu pokana fyrir lífræna ruslið, í uppþvottavélina.",
+    "myndir": [
+      { "skra": "uppthvottavel1.jpg", "lysing": "" },
+      { "skra": "uppthvottavel2.jpg", "lysing": "" },
+      { "skra": "uppthvottavel3.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "YouTube - Dishwasher rack tips", "url": "https://www.youtube.com/watch?v=I60Jy4-Iko4" }
+    ]
   }
 ]
