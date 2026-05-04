@@ -161,5 +161,15 @@
       { "titill": "Numens þrádlaust samtengjanlegir reykskynjarar", "url": "https://www.oger.is/" },
       { "titill": "Oiva slökkvitæki fyrir olíu", "url": "https://vis.is/oryggisvorur/oiva-slokkvitaeki2kg1/" }
     ]
+  },
+  {
+    "id": "battery-samhaef",
+    "titill": "3V batterý er ekki það sama og 3V batterý",
+    "flokkur": "verkfaeri",
+    "dagsetning": "2024-12-23",
+    "texti": "Svo lengi lærir sem lifir! Var að rekast á að 100stk pakkinn sem ég keypti af 3V batterýum á Amazon passa ekki í það sem ég keypti þau fyrir. Passið vel að CRxxxx númerið sé rétt!",
+    "myndir": [
+      { "skra": "batterycircle.jpg", "lysing": "" }
+    ]
   }
 ]
