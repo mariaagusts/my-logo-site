@@ -399,5 +399,19 @@
       { "skra": "gluggar09.jpg", "lysing": "" },
       { "skra": "gluggar10.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "golfhiti",
+    "titill": "Gólfhiti",
+    "flokkur": "vidhald",
+    "dagsetning": "2024-09-02",
+    "texti": "Fyrir ykkur sem eruð með gólfhita, þá getur komið fyrir að það hætti að flæða inn á kerfið og enginn hiti í gólfum. Þá er mjög líklegt að \"pinninn\" sé fastur. T.d. tengt Error 06 í Danfoss kerfinu. Þið viljið ekki þurfa að ræsa út pípara fyrir þetta litla vandamál sem auðvelt er að leysa.\n\nPínulitla gyllta pinnann er að finna undir gráu hulsunni (hitastillir). Til að ná henni af þarf að \"twista\" henni frá svarta plastinu (líkt og maður væri að vinda tusku). Sama aðferð til að koma gráu hulsunni aftur á.\n\nEf það kemur í ljós að pinninn er fastur þá þarf að smyrja hann með olíu (t.d. WD40) og nudda honum svo varlega upp og niður með töng eða öðrum verkfærum. Passa þarf að taka ekki of harkalega á pinnanum svo hann skemmist ekki. Ef þetta var orsökin fyrir vandamálinu þá ættuð þið að heyra vatnið flæða inn í kerfið þegar búið er að liðka pinnann.\n\nMuna svo að setja hulsuna aftur á fljótlega. Annars rýkur hitinn upp úr öllu valdi inn á kerfið. Ég miða við að hafa 30-40C° inni á kerfinu (ekki gott fyrir parket að hafa yfir 40C°).\n\nSvona pinnavandamál er líka oft þekkt í ofnum. Ef ofninn er hættur að hita mætti kíkja inn í hitastillinn og athuga hvort þar sé að finna svona pinna sem er fastur.",
+    "myndir": [
+      { "skra": "golfhiti.jpg", "lysing": "" },
+      { "skra": "golfhiti2.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "YouTube - Floor heating valve fix", "url": "https://www.youtube.com/watch?v=dULHUbLsRGY" }
+    ]
   }
 ]
