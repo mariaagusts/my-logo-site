@@ -283,5 +283,21 @@
       { "skra": "lifeyrismal1.jpg", "lysing": "" },
       { "skra": "lifeyrismal2.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "stifla-nidarfoll",
+    "titill": "Stíflur í niðurföllum (vaskar + sturtubotnar + þvottahús/bílskúr)",
+    "flokkur": "vidhald",
+    "dagsetning": "2024-09-17",
+    "texti": "Í mörgum tilvikum mun öflugur stíflueyðir ekki virka til að losa slæma stíflu og sterkir stíflueyðar eru heldur ekki góðir til lengri tíma fyrir rörin né náttúruna. En það er mjög einfalt að losa þrjóska stíflu í niðurfalli \"manually\".\n\nÍ flestum tilvikum þarf bara að losa \"U-ið\" undir vaskinum. Mæli með að hafa gott handklæði eða ílát undir því það er alltaf vatn að finna í \"U-inu\" þegar þið losið það frá. Svo er að muna að hreinsa U-rörið í öðrum vaski en þeim sem þið eruð að losa (common sense?) - annars flæðir út um allt! Til að losa U-ið þarf bara að skrúfa það af með höndunum sitt hvorum megin, það þarf ekki að loka fyrir neitt vatn eða slíkt (bara ekki láta kranann renna á meðan!)\n\nÍ þeim tilvikum þar sem ekki er hægt að komast að U-inu, t.d. í sturtubotnum, þá gildir það líka að ef stíflan er orðin of mikil þá virkar stíflueyðir ekki á vandamálið. Þá þarf að nota einhvers konar áhald sem grípur í hár, t.d. vírbursti með plasthárum eða annars konar plastlengjur með einhverju sem grípur í fyrirstöðuna, t.d. er hægt að nota plast-strekkibönd og skera þversum línur til að búa til tak til að grípa í fyrirstöðuna.\n\nVarðandi niðurföll í þvottahúsum og bílskúr þá er hægt að fjarlægja \"járnlokið\" sem liggur ofan á niðurfallinu með t.d. flötu skrúfjárni, þ.e. með einhverju sem grípur í járnið á milli glufanna svo hægt sé að tosa það upp. Ég hélt lengi vel að þessi \"járnlok\" væru múruð í niðurföllin. Þau eru það ekki. Þegar járnlokið er farið af þá er hægt að komast að mögulegri stíflu.\n\nÍ einstaka tilfellum, sjaldgæfum, er mögulegt að ekki hafi verið settur vatnslás á niðurfallið í þvottahúsi/bílskúr og því mun lykt berast upp um niðurfallið, sérstaklega í ákveðinni vindátt einhverra hluta vegna. Hægt er að kaupa \"niðurfallsloka\" í Byko til að koma í veg fyrir það. Sá loki hleypir vatni niður en lofti/lykt ekki aftur upp.",
+    "myndir": [
+      { "skra": "stifla1.jpg", "lysing": "" },
+      { "skra": "stifla2.jpg", "lysing": "" },
+      { "skra": "stifla3.jpg", "lysing": "" },
+      { "skra": "stifla4.jpg", "lysing": "" }
+    ],
+    "tenglar": [
+      { "titill": "YouTube - How to clear drain blockages", "url": "https://youtu.be/hySkwXMn0pA?feature=shared" }
+    ]
   }
 ]
