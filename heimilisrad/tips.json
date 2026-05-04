@@ -198,5 +198,15 @@
       { "skra": "lauskrani2.jpg", "lysing": "" },
       { "skra": "lauskrani3.jpg", "lysing": "" }
     ]
+  },
+  {
+    "id": "sturtuhaus",
+    "titill": "Sturtuhausar",
+    "flokkur": "badherbegi",
+    "dagsetning": "2024-10-15",
+    "texti": "Ef sturtuhausinn er farinn að sprauta í aðrar áttir en á líkamann þá er auðvelt að fá bununa til að rétta sig af einfaldlega með því að pota í götin með puttunum svo bunan rétti sig af. Ef sturtuhausinn er orðinn nokkurra ára gamall þá gæti verið nauðsynlegt að taka hausinn af og nota stálbursta til að bursta af steinefni sem safnast þar fyrir með tímanum. Sturtuhausar eru vissulega mismunandi en í þessu dæmi þarf til dæmis bara að snúa honum af, án verkfæra.\n\nFékk líka Tips á sínum tíma frá fagmanni hjá Tengi sem sagði mér að kaupa innréttinguna og vask úr IKEA en blöndunartækin frá fagverslun eins og hjá þeim í Tengi - þeir gætu ekki keppt í verði í innréttingum en blöndunartækin hjá IKEA dyggðu mun skemur og færu að leka mun fyrr en þeirra blöndunartæki.\n\nTips frá öðrum notendum á FB: Fljótleg leið, strjúka tvisvar með glersköfu. & Mér finnst líka hjálpa að skrúbba yfir túðurnar með uppþvottasvampi til að fjarlægja kísilinn. Þá er hausinn aftur eins og nýr.",
+    "myndir": [
+      { "skra": "sturtuhaus.jpg", "lysing": "" }
+    ]
   }
 ]
